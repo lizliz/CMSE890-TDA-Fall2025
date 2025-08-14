@@ -6,10 +6,9 @@ If you have found this website before the semester has begun, it is still a work
 
 ## Important Course Information
 
-- **Where:** ??
-- **When:** ??
-- **Slack**: ?? 
-<!-- - [cmse-courses.slack.com](https://cmse-courses.slack.com),  [#cmse381-f24 channel](https://cmse-courses.slack.com/archives/C07CX0QTRAN) -->
+- **Where:** EGR 1225
+- **When:** Tues/Thurs 12:40 - 2:00 PM 
+- **Slack**: [cmse-courses.slack.com](https://cmse-courses.slack.com),  [#cmse890-tda-f25 channel](https://cmse-courses.slack.com/archives/C098BCGBL91). *See syllabus for slack access information*
 
 ## Instructor Information
 
