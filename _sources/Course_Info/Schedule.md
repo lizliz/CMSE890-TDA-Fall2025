@@ -10,7 +10,7 @@ The course schedule is maintained below. Note that this schedule is subject to c
 |:---|:---|:---|:---|:---|:---|
 | T 8/26 | [1](../Lectures/01-IntroAndPointSetBasics/index.md) | Overview of course, Basic Topology Definitions | 1.1, 1.2, 1.3 | | N/A |
 | Th 8/28 | [2](../Lectures/02-MorseFunctions/index.md) | Morse theory | 1.4, 1.5 | | Sona |
-| T 9/2 | 3 | Simplicial complex basics | 2.1 | | |
+| T 9/2 | [3](../Lectures/03-SimplicialComplex/index.md) | Simplicial complex basics | 2.1 | | Dawson |
 | Th 9/4 | 4 | Complexes from point clouds | 2.2, 2.3 | | |
 | T 9/9 | 5 | Homology Part 1 | 2.4 | | |
 | Th 9/11 | 6 | Homology Part 2 | 2.5 | | |
