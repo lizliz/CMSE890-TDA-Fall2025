@@ -12,7 +12,7 @@ The course schedule is maintained below. Note that this schedule is subject to c
 | Th 8/28 | [2](../Lectures/02-MorseFunctions/index.md) | Morse theory | 1.4, 1.5 | | Sona |
 | T 9/2 | [3](../Lectures/03-SimplicialComplex/index.md) | Simplicial complex basics | 2.1 | | Dawson |
 | Th 9/4 | [4](../Lectures/04-CechRips/index.md) | Complexes from point clouds | 2.2, 2.3 | | Jared |
-| T 9/9 | 5 | Homology Part 1 | 2.4 | | |
+| T 9/9 | 5 | Homology Part 1 | 2.4 | | Patience |
 | Th 9/11 | 6 | Homology Part 2 | 2.5 | | |
 | T 9/16 | 7 | Python and homology | | | |
 | Th 9/18 | 8 | Homology: Induced maps | 2.5.1 | | |
