@@ -1,0 +1,670 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Slide transcript &#8212; CMSE 890 - TDA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/02-MorseFunctions/CompTop-Lec2-MorseFcns';</script>
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lecture 3" href="../03-SimplicialComplex/index.html" />
+    <link rel="prev" title="Lecture 2" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/functionLogo.png" class="logo__image only-light" alt="CMSE 890 - TDA - Home"/>
+    <script>document.write(`<img src="../../_static/functionLogo.png" class="logo__image only-dark" alt="CMSE 890 - TDA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CMSE 381 - Fall 2024</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Schedule.html">Course Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Syllabus/Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Textbook.html">Textbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01-IntroAndPointSetBasics/index.html">Day 01 (T 8/26)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-IntroAndPointSetBasics/CompTop-Lec1-IntroAndTopologyBasics.html">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Day 02 (Th 8/28)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03-SimplicialComplex/index.html">Day 03 (T 9/2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-SimplicialComplex/CompTop-Lec3-SimplicialComplexes.html">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04-CechRips/index.html">Day 04 (Th 9/4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-CechRips/CompTop-Lec4-CechRips.html">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05-HomologyPart1/index.html">Day 05 (T 9/9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-HomologyPart1/CompTop-Lec5-HomologyPt1.html">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06-HomologyPart2/index.html">Day 06 (Th 9/11)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-HomologyPart2/CompTop-Lec6-HomologyPt2.html">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Lectures/02-MorseFunctions/CompTop-Lec2-MorseFcns.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Slide transcript</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Slide transcript</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-2-maps-and-morse-function-preliminaries">Lecture 2 - Maps and Morse Function Preliminaries</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maps">Maps</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="slide-transcript">
+<h1>Slide transcript<a class="headerlink" href="#slide-transcript" title="Link to this heading">#</a></h1>
+<p>I am working on finding ways to increase accessibility of the beamer slides provided. The following is an automatically generated transcript from <a class="reference download internal" download="" href="../../_downloads/0d92a2978b6f944fbf9de78742fe60ba/CompTop-Lec2-MorseFcns.pdf"><span class="xref download myst">the pdf of the slides</span></a> but is still not perfect. I would be happy to hear feedback on how this transcript can be improved for additional usefulness.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-2-maps-and-morse-function-preliminaries">
+<h1>Lecture 2 - Maps and Morse Function Preliminaries<a class="headerlink" href="#lecture-2-maps-and-morse-function-preliminaries" title="Link to this heading">#</a></h1>
+<p>Where were we?</p>
+<ul class="simple">
+<li><p>Basics of topology - open, closed, connected,</p></li>
+<li><p>Maps <span class="math notranslate nohighlight">\(f: A \to B\)</span></p></li>
+</ul>
+<section id="maps">
+<h2>Maps<a class="headerlink" href="#maps" title="Link to this heading">#</a></h2>
+<p>Maps</p>
+<p><strong>Definition:</strong>
+A function <span class="math notranslate nohighlight">\(f : T \to U\)</span> is continuous if for every open set
+<span class="math notranslate nohighlight">\(Q \subseteq U\)</span>, <span class="math notranslate nohighlight">\(f^{-1} (Q)\)</span> is open. Continuous functions are also
+called maps.
+Ex1. <span class="math notranslate nohighlight">\(f:\mathbb{R} \to \mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(f(x) = x^2\)</span> Ex2. <span class="math notranslate nohighlight">\(g: \mathbb{R} \to \mathbb{R}\)</span>
+<span class="math notranslate nohighlight">\(g(x) = \lfloor x \rfloor\)</span>
+Embedding</p>
+<p><strong>Definition:</strong>
+A map <span class="math notranslate nohighlight">\(g : T \to U\)</span> is an embedding of T into U if g is injective.</p>
+<p><em>Injective (1-1): <span class="math notranslate nohighlight">\(f(x) = f(y)\)</span> iff <span class="math notranslate nohighlight">\(x=y\)</span></em>
+Ex1. <span class="math notranslate nohighlight">\(f:\mathbb{R} \to \mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(f(x) = x^3\)</span> Ex2. <span class="math notranslate nohighlight">\(g: \mathbb{S}^1 \to \mathbb{R}^2\)</span>
+Homeomorphism</p>
+<p><strong>Definition:</strong>
+Let <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(U\)</span> be topological spaces.</p>
+<p>A <em>homeomorphism</em> is a bijective map <span class="math notranslate nohighlight">\(h : T \to U\)</span> whose inverse is also
+continuous.</p>
+<p>Two topological spaces are <em>homeomorphic</em> if there exists a
+homeomorphism between them.
+<img alt="image" src="../../_images/CTDA_Fig1p4.png" />
+Homeomorphism: Cheap trick</p>
+<div class="prop docutils">
+<p>If <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(U\)</span> are compact metric spaces, every bijective map from <span class="math notranslate nohighlight">\(T\)</span>
+to <span class="math notranslate nohighlight">\(U\)</span> has a continuous inverse.</p>
+</div>
+<p>Homotopy</p>
+<p><strong>Definition:</strong>
+Let <span class="math notranslate nohighlight">\(g : X \to U\)</span> and <span class="math notranslate nohighlight">\(h : X \to U\)</span> be maps.</p>
+<p>A homotopy is a map <span class="math notranslate nohighlight">\(H : X \times [0, 1] \to U\)</span> such that
+<span class="math notranslate nohighlight">\(H(\cdot, 0) = g\)</span> and <span class="math notranslate nohighlight">\(H(\cdot, 1) = h\)</span>.</p>
+<p>Two maps are homotopic if there is a homotopy connecting them.</p>
+<p>Annulus example - Homotopy Annulus:
+<span class="math notranslate nohighlight">\(A = \{ (\theta,r) \mid 1 \leq r \leq 2\}\)</span>. Circle:
+<span class="math notranslate nohighlight">\(\mathbb{S}^1 = \{ (\theta,r) \mid r = 1\}\)</span>
+<span class="math notranslate nohighlight">\(g : A \to A\)</span> identity. <span class="math notranslate nohighlight">\(h : A \to A\)</span>, <span class="math notranslate nohighlight">\(h(\theta,r) = (\theta,1)\)</span>.
+Show <span class="math notranslate nohighlight">\(R(\theta, r, t) = (\theta,(1-t)r+t)\)</span> is a homotopy.
+Homotopy equivalent</p>
+<p><strong>Definition:</strong>
+Two topological spaces <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(U\)</span> are homotopy equivalent if there
+exist maps <span class="math notranslate nohighlight">\(g : T \to U\)</span> and <span class="math notranslate nohighlight">\(h : U \to T\)</span> such that <span class="math notranslate nohighlight">\(h \circ g\)</span> and
+<span class="math notranslate nohighlight">\(g \circ h\)</span> are homotopic to the appropriate identity maps.</p>
+<p>Annulus example - Homotopy equivalent Show <span class="math notranslate nohighlight">\(A\)</span> is homotopy equivalent to
+<span class="math notranslate nohighlight">\(\mathbb{S}^1 \subset A\)</span>
+Retract</p>
+<p><strong>Definition:</strong>
+Let <span class="math notranslate nohighlight">\(T\)</span> be a topological space, and let <span class="math notranslate nohighlight">\(U \subset T\)</span> be a subspace.</p>
+<p>A retraction <span class="math notranslate nohighlight">\(r\)</span> of <span class="math notranslate nohighlight">\(T\)</span> to <span class="math notranslate nohighlight">\(U\)</span> is a map <span class="math notranslate nohighlight">\(r:T \to U\)</span> such that <span class="math notranslate nohighlight">\(r(x) = x\)</span>
+for every <span class="math notranslate nohighlight">\(x \in U\)</span>.
+Ex: Annulus to circle
+Deformation retract</p>
+<p><strong>Definition:</strong>
+The space <span class="math notranslate nohighlight">\(U \subseteq T\)</span> is a deformation retract of <span class="math notranslate nohighlight">\(T\)</span> if the
+identity map on <span class="math notranslate nohighlight">\(T\)</span> can be continuously deformed to a retraction with no
+motion of the points already in <span class="math notranslate nohighlight">\(U\)</span>.</p>
+<p>Specifically, there is a homotopy <span class="math notranslate nohighlight">\(R : T \times [0, 1] \to  T\)</span> such that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R(\cdot, 0)\)</span> is the identity map on <span class="math notranslate nohighlight">\(T\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R(\cdot, 1)\)</span> is a retraction of <span class="math notranslate nohighlight">\(T\)</span> to <span class="math notranslate nohighlight">\(U\)</span>, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(R(x, t) = x\)</span> for every <span class="math notranslate nohighlight">\(x \in  U\)</span> and every <span class="math notranslate nohighlight">\(t \in  [0, 1]\)</span>.</p></li>
+</ul>
+<p>Annulus example: Deformation retract
+<span class="math notranslate nohighlight">\(R(\theta, r, t) = (\theta,(1-t)r+t)\)</span>.</p>
+<p>Check that <span class="math notranslate nohighlight">\(R\)</span> satisfies the three properties to be a deformation
+retract.
+Why do I care?</p>
+<div class="theorem docutils">
+<p>If <span class="math notranslate nohighlight">\(U\)</span> is a deformation retract of <span class="math notranslate nohighlight">\(T\)</span>, then <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(U\)</span> are homotopy
+equivalent.
+Ex. 1
+<img alt="image" src="../../_images/Fig1p6.png" /></p>
+<p>Ex.2
+A to O
+TRY IT: Alphabet Divide the alphabet into <em>equivalence classes</em>:
+collections of letters that are all homotopy equivalent to every other
+letter in their collection.</p>
+<p>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+<h2 class="rubric" id="manifolds">Manifolds</h2>
+<p>Manifold definition</p>
+<p><strong>Definition:</strong>
+A topological space <span class="math notranslate nohighlight">\(M\)</span> is an <span class="math notranslate nohighlight">\(m\)</span>-manifold if every point <span class="math notranslate nohighlight">\(x \in M\)</span> has
+a point homeomorphic to the <span class="math notranslate nohighlight">\(m\)</span>-ball <span class="math notranslate nohighlight">\(\mathbb{B}_o^d\)</span> or the <span class="math notranslate nohighlight">\(m\)</span>-hemisphere
+<span class="math notranslate nohighlight">\(\mathbb{HQ}^d\)</span>.
+<span class="math notranslate nohighlight">\(\mathbb{B}_o^d = \{ y \in \mathbb{R}^{d} \mid \|y\| &lt; 1\)</span>
+<span class="math notranslate nohighlight">\(\mathbb{HQ}^d = \{y \in \mathbb{R}^d \mid d(y,0)&lt;1 \text{ and } y_d \geq 0\}\)</span>.</p>
+<p><img alt="image" src="../../_images/Fig1p7.png" />
+More manifold vocab</p>
+<ul class="simple">
+<li><p>Manifold with/without boundary</p></li>
+<li><p>Surface: 2-manifold subspace of <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span></p></li>
+<li><p>Non-orientable: can start at point <span class="math notranslate nohighlight">\(p\)</span>, stand on one side of the
+manifold and walk back to <span class="math notranslate nohighlight">\(p\)</span> but be on the other side</p></li>
+<li><p>Loop: 1-manifold without boundary</p></li>
+<li><p>Genus: of a surface is <span class="math notranslate nohighlight">\(g\)</span> if <span class="math notranslate nohighlight">\(2g\)</span> is the maximum number of loops that
+can be removed without disconnecting the surface.</p></li>
+<li><p>Smooth embedded manifold: No wrinkles, no zero directional derivative
+Gradients</p></li>
+</ul>
+<p><strong>Definition:</strong>
+Given a smooth function <span class="math notranslate nohighlight">\(f:\mathbb{R}^d \to \mathbb{R}\)</span>, the gradient vector field
+<span class="math notranslate nohighlight">\(\nabla f:\mathbb{R}^d \to \mathbb{R}^d\)</span> at <span class="math notranslate nohighlight">\(x\)</span> is: $$\nabla f (x) =
+\left[
+\frac{\partial f}{\partial x_1}(x), \cdots,
+\frac{\partial f}{\partial x_d}(x)
+\right]</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}*Note: This definition can be extended to more general settings
+$f:M \to \mathbb{R}$.*
+Ex. $f:\mathbb{R}^2 \to \mathbb{R}$, $f(x_1,x_2) = x^2+y^2$ at $(0,0)$ and $(1,0)$
+Critical points\\- Points in $\mathbb{R}^d$ where $\nabla f(p) = [0,\cdots,0]$\\![image](../Figures/Fig1p9.png)
+&quot;Nice&quot; critical points\\**Definition:**
+For a smooth $m$-manifold $M$, the Hessian matrix of $f:M \to \mathbb{R}$ is the
+matrix of second order partial derivatives\\![image](../Figures/Def1p27.png)\\A critical point of $f$ is non-degenerate if the Hessian is non-singular
+(has non-zero determinant); otherwise it is degenerate.\\TRY IT: Saddle Ex. $f:\mathbb{R}^2 \to \mathbb{R}$, $f(x,y) = x^2 - y^2$. Is the
+critical point at the origin degenerate?\\Interactive plot: &lt;https://www.desmos.com/3d/cw0km8przc&gt;
+TRY IT: Monkey saddle Ex. $f:\mathbb{R}^2 \to \mathbb{R}$, $f(x,y) = x^3 - 3xy^2$. Is
+the critical point at the origin degenerate?\\Interactive plot: &lt;https://www.desmos.com/3d/cw0km8przc&gt;
+Morse lemma\\::: theorem
+Given a smooth function $f: M \to \mathbb{R}$ defined on a smooth $m$-manifold
+$M$, let $p$ be a non-degenerate critical point of $f$.\\There is a local coordinate system in a neighborhood $U(p)$ so that\\- $U(p) = (0,\cdots,0)$\\- Locally any $x$ is of the form
+  $$f(x) = f(p) - x_1^2 - \cdots - x_s^2 + x_{s+1}^2 + \cdots + x_m^2.\end{aligned}\end{align} \]</div>
+<p>In this case, the integer <span class="math notranslate nohighlight">\(s\)</span> is called the index of the critical point
+<span class="math notranslate nohighlight">\(p\)</span>.</p>
+<p>Back to critical points <img alt="image" src="../../_images/Fig1p9.png" />
+Morse Functions</p>
+<p><strong>Definition:</strong>
+A smooth function <span class="math notranslate nohighlight">\(f:M \to \mathbb{R}\)</span> defined on a smooth manifold <span class="math notranslate nohighlight">\(M\)</span> is a
+Morse function if</p>
+<ul class="simple">
+<li><p>none of <span class="math notranslate nohighlight">\(f\)</span>’s critical points are degenerate</p></li>
+<li><p>the critical points have distinct function values.
+Why do I care? Every function is almost Morse.
+Morse Functions and sublevelsets</p></li>
+</ul>
+<p><img alt="image" src="../../_images/Fig1p10.png" />
+Homework for next time</p>
+<p><em>Choose one of the following to present.</em></p>
+<ol class="arabic simple">
+<li><p>DW 1.6.9</p></li>
+<li><p>DW 1.6.10</p></li>
+<li><p>DW 1.6.12</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Lectures/02-MorseFunctions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../03-SimplicialComplex/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 3</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Slide transcript</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-2-maps-and-morse-function-preliminaries">Lecture 2 - Maps and Morse Function Preliminaries</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maps">Maps</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elizabeth Munch
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

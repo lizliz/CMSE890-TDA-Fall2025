@@ -1,0 +1,790 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Slide transcript &#8212; CMSE 890 - TDA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/06-HomologyPart2/CompTop-Lec6-HomologyPt2';</script>
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Lecture 6" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/functionLogo.png" class="logo__image only-light" alt="CMSE 890 - TDA - Home"/>
+    <script>document.write(`<img src="../../_static/functionLogo.png" class="logo__image only-dark" alt="CMSE 890 - TDA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CMSE 381 - Fall 2024</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Schedule.html">Course Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Syllabus/Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Textbook.html">Textbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01-IntroAndPointSetBasics/index.html">Day 01 (T 8/26)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-IntroAndPointSetBasics/CompTop-Lec1-IntroAndTopologyBasics.html">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02-MorseFunctions/index.html">Day 02 (Th 8/28)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-MorseFunctions/CompTop-Lec2-MorseFcns.html">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03-SimplicialComplex/index.html">Day 03 (T 9/2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-SimplicialComplex/CompTop-Lec3-SimplicialComplexes.html">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04-CechRips/index.html">Day 04 (Th 9/4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-CechRips/CompTop-Lec4-CechRips.html">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05-HomologyPart1/index.html">Day 05 (T 9/9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-HomologyPart1/CompTop-Lec5-HomologyPt1.html">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Day 06 (Th 9/11)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Lectures/06-HomologyPart2/CompTop-Lec6-HomologyPt2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Slide transcript</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Slide transcript</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-6-here-comes-the-homology">Lecture 6 - Here Comes the Homology</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-the-boundary-map">More on the boundary map</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-chains"><span class="math notranslate nohighlight">\(p\)</span>-Chains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-maps">Boundary maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-representation">Matrix representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chain-complex">Chain complex</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles-and-boundaries">Cycles and Boundaries</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-subspaces-for-a-linear-transformation">Important subspaces for a linear transformation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles">Cycles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-2-cycle">What is a 2-cycle?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-work-space-if-needed">More work space if needed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundaries">Boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nifty-trick">Nifty trick</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem">Theorem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#translation">Translation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-cycles-and-boundaries">Try it: Cycles and boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Try it: Cycles and boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Try it: Cycles and boundaries</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#homology-for-real-now">Homology for real now</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quotient-space">Quotient space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homology">Homology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tryit-what-is-h-1-k">Tryit: What is <span class="math notranslate nohighlight">\(H_1(K)\)</span>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Tryit: What is <span class="math notranslate nohighlight">\(H_1(K)\)</span>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tryit-what-is-h-2-k">Tryit: What is <span class="math notranslate nohighlight">\(H_2(K)\)</span>?</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="slide-transcript">
+<h1>Slide transcript<a class="headerlink" href="#slide-transcript" title="Link to this heading">#</a></h1>
+<p>I am working on finding ways to increase accessibility of the beamer slides provided. The following is an automatically generated transcript from <a class="reference download internal" download="" href="../../_downloads/b46993d58ca83c5d78adbd5adf18d52e/CompTop-Lec6-HomologyPt2.pdf"><span class="xref download myst">the pdf of the slides</span></a> but is still not perfect. I would be happy to hear feedback on how this transcript can be improved for additional usefulness.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-6-here-comes-the-homology">
+<h1>Lecture 6 - Here Comes the Homology<a class="headerlink" href="#lecture-6-here-comes-the-homology" title="Link to this heading">#</a></h1>
+<section id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
+<p>Goals for today:</p>
+<ul class="simple">
+<li><p>Homology!</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="more-on-the-boundary-map">
+<h1>More on the boundary map<a class="headerlink" href="#more-on-the-boundary-map" title="Link to this heading">#</a></h1>
+<section id="p-chains">
+<h2><span class="math notranslate nohighlight">\(p\)</span>-Chains<a class="headerlink" href="#p-chains" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(K\)</span> be a simplicial complex and fix a dimension <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<ul>
+<li><p>A <span class="math notranslate nohighlight">\(p\)</span>-chain is a formal sum of <span class="math notranslate nohighlight">\(p\)</span>-simplices in <span class="math notranslate nohighlight">\(K\)</span>, written</p>
+<div class="math notranslate nohighlight">
+\[\alpha = \sum a_i \sigma_i\]</div>
+</li>
+<li><p><span class="math notranslate nohighlight">\(p\)</span>-chains are added component-wise: if <span class="math notranslate nohighlight">\(\alpha = \sum a_i \sigma_i\)</span>
+and <span class="math notranslate nohighlight">\(\beta = \sum b_i \sigma_i\)</span>, then
+<span class="math notranslate nohighlight">\(\alpha + \beta = \sum (a_i + b_i) \sigma_i\)</span></p></li>
+<li><p>The collection of <span class="math notranslate nohighlight">\(p\)</span>-chains with addition is called the
+<span class="math notranslate nohighlight">\(p^\text{th}\)</span>-chain group (vector space), <span class="math notranslate nohighlight">\(C_p(K)\)</span>.</p></li>
+</ul>
+<p><img alt="image" src="../../_images/SimplexExamples_WithTet-web.png" /></p>
+</section>
+<section id="boundary-maps">
+<h2>Boundary maps<a class="headerlink" href="#boundary-maps" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{matrix}
+\partial _p: &amp; C_p(K) &amp; \to &amp; C_{p-1}(K)\
+&amp; \sigma = [v_0,\cdots,v_p] &amp; \mapsto &amp; \sum_{j=0}^p[v_0,\cdots,\widehat{v_j}, \cdots v_p]
+\end{matrix}\]</div>
+</section>
+<section id="matrix-representation">
+<h2>Matrix representation<a class="headerlink" href="#matrix-representation" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/SimplexExamples_WithTet-web.png" /></p>
+<p><span class="math notranslate nohighlight">\(\partial_1(K) =\)</span></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>AC</p></th>
+<th class="head"><p>AD</p></th>
+<th class="head"><p>AE</p></th>
+<th class="head"><p>BE</p></th>
+<th class="head"><p>CD</p></th>
+<th class="head"><p>CE</p></th>
+<th class="head"><p>DE</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>B</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>C</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>D</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>E</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="chain-complex">
+<h2>Chain complex<a class="headerlink" href="#chain-complex" title="Link to this heading">#</a></h2>
+<p><img alt="chain complex" src="../../_images/chain-complex.png" /></p>
+<div class="math notranslate nohighlight">
+\[\begin{matrix}
+\partial _p: &amp; C_p(K) &amp; \to &amp; C_{p-1}(K)\
+&amp; \sigma = [v_0,\cdots,v_p] &amp; \mapsto &amp; \sum_{j=0}^p[v_0,\cdots,\widehat{v_j}, \cdots v_p]
+\end{matrix}\]</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="cycles-and-boundaries">
+<h1>Cycles and Boundaries<a class="headerlink" href="#cycles-and-boundaries" title="Link to this heading">#</a></h1>
+<section id="important-subspaces-for-a-linear-transformation">
+<h2>Important subspaces for a linear transformation<a class="headerlink" href="#important-subspaces-for-a-linear-transformation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Image</p></li>
+<li><p>Kernel</p></li>
+</ul>
+</section>
+<section id="cycles">
+<h2>Cycles<a class="headerlink" href="#cycles" title="Link to this heading">#</a></h2>
+<p>A chain in the kernel of <span class="math notranslate nohighlight">\(\partial_p\)</span> is called a <strong><span class="math notranslate nohighlight">\(p\)</span>-cycle</strong>.
+<img alt="chain complex" src="../../_images/chain-complex.png" /></p>
+<p><img alt="image" src="../../_images/SimplexExamples_WithTet-web.png" /></p>
+<p>The collection of <span class="math notranslate nohighlight">\(p\)</span>-cycles forms a subspace <span class="math notranslate nohighlight">\(Z_p(K) \subseteq C_p(K)\)</span>.</p>
+</section>
+<section id="what-is-a-2-cycle">
+<h2>What is a 2-cycle?<a class="headerlink" href="#what-is-a-2-cycle" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/SimplexExamples_WithTet-web.png" /></p>
+</section>
+<section id="more-work-space-if-needed">
+<h2>More work space if needed<a class="headerlink" href="#more-work-space-if-needed" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/SimplexExamples_WithTet-web.png" /></p>
+</section>
+<section id="boundaries">
+<h2>Boundaries<a class="headerlink" href="#boundaries" title="Link to this heading">#</a></h2>
+<p>A chain in the image of <span class="math notranslate nohighlight">\(\partial_{p+1}\)</span> is called a <strong><span class="math notranslate nohighlight">\(p\)</span>-boundary</strong>.
+<img alt="chain complex" src="../../_images/chain-complex.png" /></p>
+<p><img alt="image" src="../../_images/SimplexExamples_WithTet-web.png" /></p>
+<p>The collection of <span class="math notranslate nohighlight">\(p\)</span>-boundaries forms a subspace
+<span class="math notranslate nohighlight">\(B_p(K) \subseteq C_p(K)\)</span>.</p>
+</section>
+<section id="nifty-trick">
+<h2>Nifty trick<a class="headerlink" href="#nifty-trick" title="Link to this heading">#</a></h2>
+<section id="theorem">
+<h3>Theorem<a class="headerlink" href="#theorem" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\partial_p\partial_{p+1}(\alpha) = 0\)</span> for every <span class="math notranslate nohighlight">\((p+1)\)</span>-chain <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+</section>
+</section>
+<section id="translation">
+<h2>Translation<a class="headerlink" href="#translation" title="Link to this heading">#</a></h2>
+<p>Every <span class="math notranslate nohighlight">\(p\)</span>-boundary is a <span class="math notranslate nohighlight">\(p\)</span>-cycle.</p>
+<p><img alt="Chain complex" src="../../_images/chain-complex.png" /></p>
+<p><span class="math notranslate nohighlight">\(B_p(K) \subseteq Z_p(K) \subseteq C_p(K)\)</span></p>
+<p><img alt="image" src="../../_images/EdelsVectorEggs.png" /></p>
+</section>
+<section id="try-it-cycles-and-boundaries">
+<h2>Try it: Cycles and boundaries<a class="headerlink" href="#try-it-cycles-and-boundaries" title="Link to this heading">#</a></h2>
+<p>What are the generators of <span class="math notranslate nohighlight">\(B_1(K)\)</span>? Of <span class="math notranslate nohighlight">\(Z_1(K)\)</span>?
+<img alt="image" src="../../_images/SimplexExamples_Ex1-web.png" /></p>
+</section>
+<section id="id1">
+<h2>Try it: Cycles and boundaries<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>What are the generators of <span class="math notranslate nohighlight">\(B_1(K)\)</span>? Of <span class="math notranslate nohighlight">\(Z_1(K)\)</span>?
+<img alt="image" src="../../_images/SimplexExamples_Ex2-web.png" /></p>
+</section>
+<section id="id2">
+<h2>Try it: Cycles and boundaries<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>What are the generators of <span class="math notranslate nohighlight">\(B_1(K)\)</span>? Of <span class="math notranslate nohighlight">\(Z_1(K)\)</span>?
+<img alt="image" src="Lectures/Figures/SimplexExamples_WithTet" /></p>
+<p>Homework (In case we only get this far)</p>
+<ul class="simple">
+<li><p>DW 2.6.3) Let <span class="math notranslate nohighlight">\(K\)</span> be the simplicial complex of a tetrahedron. Write a
+basis for the chain groups <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span>; boundary groups <span class="math notranslate nohighlight">\(B_1\)</span> and
+<span class="math notranslate nohighlight">\(B_2\)</span>; and cycle groups <span class="math notranslate nohighlight">\(Z_1\)</span> and <span class="math notranslate nohighlight">\(Z_2\)</span>. Write the boundary matrix
+representing the boundary operator <span class="math notranslate nohighlight">\(\partial_2\)</span> with rows and columns
+representing bases of <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span> respectively.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="homology-for-real-now">
+<h1>Homology for real now<a class="headerlink" href="#homology-for-real-now" title="Link to this heading">#</a></h1>
+<section id="quotient-space">
+<h2>Quotient space<a class="headerlink" href="#quotient-space" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(V\)</span> be a vector space over a field <span class="math notranslate nohighlight">\(k\)</span>.
+Let <span class="math notranslate nohighlight">\(W \subset V\)</span> be a subspace.
+Define <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(V\)</span> by <span class="math notranslate nohighlight">\(x \sim y\)</span> iff <span class="math notranslate nohighlight">\(x-y \in W\)</span>.</p>
+<p>The equivalence class of <span class="math notranslate nohighlight">\(x\)</span> is denoted
+$<span class="math notranslate nohighlight">\([x] = x + W = \{x + w : w \in W\}.\)</span>$</p>
+<p>The quotient space <span class="math notranslate nohighlight">\(V/W\)</span> is then defined as <span class="math notranslate nohighlight">\(\{[x] \mid x \in V\}\)</span>. This
+is also a vector space with:</p>
+<ul class="simple">
+<li><p>Scalar multiplication:</p></li>
+<li><p>Addition:</p></li>
+</ul>
+</section>
+<section id="homology">
+<h2>Homology<a class="headerlink" href="#homology" title="Link to this heading">#</a></h2>
+<p><strong>Definition:</strong>
+The <span class="math notranslate nohighlight">\(p^{\text{th}}\)</span> homology group is the quotient space
+$<span class="math notranslate nohighlight">\(H_p(K) := Z_p(K)/B_p(K)\)</span>$</p>
+</section>
+<section id="tryit-what-is-h-1-k">
+<h2>Tryit: What is <span class="math notranslate nohighlight">\(H_1(K)\)</span>?<a class="headerlink" href="#tryit-what-is-h-1-k" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/SimplexExamples_Ex1-web.png" /></p>
+</section>
+<section id="id3">
+<h2>Tryit: What is <span class="math notranslate nohighlight">\(H_1(K)\)</span>?<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/SimplexExamples_Ex2-web.png" /></p>
+</section>
+<section id="tryit-what-is-h-2-k">
+<h2>Tryit: What is <span class="math notranslate nohighlight">\(H_2(K)\)</span>?<a class="headerlink" href="#tryit-what-is-h-2-k" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/SimplexExamples_WithTet-web.png" /></p>
+<p>Homework</p>
+<ul class="simple">
+<li><p>Almost certainly didn’t finish all the examples above….</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Lectures/06-HomologyPart2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 6</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Slide transcript</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-6-here-comes-the-homology">Lecture 6 - Here Comes the Homology</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-the-boundary-map">More on the boundary map</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-chains"><span class="math notranslate nohighlight">\(p\)</span>-Chains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-maps">Boundary maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-representation">Matrix representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chain-complex">Chain complex</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles-and-boundaries">Cycles and Boundaries</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-subspaces-for-a-linear-transformation">Important subspaces for a linear transformation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles">Cycles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-2-cycle">What is a 2-cycle?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-work-space-if-needed">More work space if needed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundaries">Boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nifty-trick">Nifty trick</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem">Theorem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#translation">Translation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-cycles-and-boundaries">Try it: Cycles and boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Try it: Cycles and boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Try it: Cycles and boundaries</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#homology-for-real-now">Homology for real now</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quotient-space">Quotient space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homology">Homology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tryit-what-is-h-1-k">Tryit: What is <span class="math notranslate nohighlight">\(H_1(K)\)</span>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Tryit: What is <span class="math notranslate nohighlight">\(H_1(K)\)</span>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tryit-what-is-h-2-k">Tryit: What is <span class="math notranslate nohighlight">\(H_2(K)\)</span>?</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elizabeth Munch
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

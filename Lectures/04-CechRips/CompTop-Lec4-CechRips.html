@@ -1,0 +1,740 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Slide transcript &#8212; CMSE 890 - TDA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/04-CechRips/CompTop-Lec4-CechRips';</script>
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lecture 5" href="../05-HomologyPart1/index.html" />
+    <link rel="prev" title="Lecture 4" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/functionLogo.png" class="logo__image only-light" alt="CMSE 890 - TDA - Home"/>
+    <script>document.write(`<img src="../../_static/functionLogo.png" class="logo__image only-dark" alt="CMSE 890 - TDA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CMSE 381 - Fall 2024</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Schedule.html">Course Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Syllabus/Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Textbook.html">Textbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01-IntroAndPointSetBasics/index.html">Day 01 (T 8/26)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-IntroAndPointSetBasics/CompTop-Lec1-IntroAndTopologyBasics.html">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02-MorseFunctions/index.html">Day 02 (Th 8/28)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-MorseFunctions/CompTop-Lec2-MorseFcns.html">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03-SimplicialComplex/index.html">Day 03 (T 9/2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-SimplicialComplex/CompTop-Lec3-SimplicialComplexes.html">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Day 04 (Th 9/4)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05-HomologyPart1/index.html">Day 05 (T 9/9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-HomologyPart1/CompTop-Lec5-HomologyPt1.html">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06-HomologyPart2/index.html">Day 06 (Th 9/11)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-HomologyPart2/CompTop-Lec6-HomologyPt2.html">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Lectures/04-CechRips/CompTop-Lec4-CechRips.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Slide transcript</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Slide transcript</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-4-nerve-cech-and-rips-complexes">Lecture 4 - Nerve, Cech, and Rips Complexes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-2-goals">Section 2.2 Goals</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#and-rips-complexes">and Rips Complexes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-cloud">Point cloud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ball">Ball</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-want-to-study">What we want to study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-last-time-nerve">From last time: Nerve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-cech-complex">Example: Cech complex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warning">Warning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rips-complex">Rips complex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warning-radius-vs-diameter">Warning: Radius vs diameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leading-up-to-the-alpha-complex">Leading up to the alpha complex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-complex">Alpha complex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Properties</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="slide-transcript">
+<h1>Slide transcript<a class="headerlink" href="#slide-transcript" title="Link to this heading">#</a></h1>
+<p>I am working on finding ways to increase accessibility of the beamer slides provided. The following is an automatically generated transcript from <a class="reference download internal" download="" href="../../_downloads/0fb19ada0899424d15a038274f3e4ae2/CompTop-Lec4-CechRips.pdf"><span class="xref download myst">the pdf of the slides</span></a> but is still not perfect. I would be happy to hear feedback on how this transcript can be improved for additional usefulness.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-4-nerve-cech-and-rips-complexes">
+<h1>Lecture 4 - Nerve, Cech, and Rips Complexes<a class="headerlink" href="#lecture-4-nerve-cech-and-rips-complexes" title="Link to this heading">#</a></h1>
+<section id="section-2-2-goals">
+<h2>Section 2.2 Goals<a class="headerlink" href="#section-2-2-goals" title="Link to this heading">#</a></h2>
+<p>Goals for today:</p>
+<ul class="simple">
+<li><p>Complexes from point clouds: Rips &amp; complexes</p></li>
+<li><p>Sparse Complexes: Alpha complex
+Recall: Geometric vs Abstract Simplicial Complex</p></li>
+<li><p>Given a collection of points <span class="math notranslate nohighlight">\(V \subseteq \mathbb{R}^N\)</span></p></li>
+<li><p>For a subset of these <span class="math notranslate nohighlight">\(\{a_0,\ldots,a_n\}\)</span>, a (geometric) <span class="math notranslate nohighlight">\(n\)</span>-simplex
+is the convex hull of the points.</p></li>
+<li><p>A simplicial complex is a collection of geometric <span class="math notranslate nohighlight">\(n\)</span> simplices so
+that</p>
+<ul>
+<li><p>Every face of a simplex is also in the complex.</p></li>
+<li><p>The intersection of any two simplices is either empty or a face of
+both.</p></li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul class="simple">
+<li><p>Given a finite set <span class="math notranslate nohighlight">\(V\)</span></p></li>
+<li><p>An abstract simplex is a subset of <span class="math notranslate nohighlight">\(V\)</span>.</p></li>
+<li><p>An abstract simplicial complex is a set <span class="math notranslate nohighlight">\(K\)</span> of finite subsets of some
+<span class="math notranslate nohighlight">\(V\)</span> such that if <span class="math notranslate nohighlight">\(\sigma \in K\)</span> and <span class="math notranslate nohighlight">\(\tau \subseteq \sigma\)</span>, then
+<span class="math notranslate nohighlight">\(\tau \in K\)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="and-rips-complexes">
+<h1>and Rips Complexes<a class="headerlink" href="#and-rips-complexes" title="Link to this heading">#</a></h1>
+<section id="point-cloud">
+<h2>Point cloud<a class="headerlink" href="#point-cloud" title="Link to this heading">#</a></h2>
+<p>A point cloud is a (finite) collection of points in a metric space
+<span class="math notranslate nohighlight">\((M,d)\)</span>.</p>
+</section>
+<section id="ball">
+<h2>Ball<a class="headerlink" href="#ball" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[B_o(x,r) = \{y \in M \mid d(x,y) &lt; r\}\]</div>
+<div class="math notranslate nohighlight">
+\[B(x,r) = \{y \in M \mid d(x,y) \leq r\}\]</div>
+</section>
+<section id="what-we-want-to-study">
+<h2>What we want to study<a class="headerlink" href="#what-we-want-to-study" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/EmbeddingDisksExample-Simps-Radius0p3-web.png" />
+<img alt="image" src="../../_images/EmbeddingDisksExample-Simps-Radius0p5-web.png" />
+<img alt="image" src="../../_images/EmbeddingDisksExample-Simps-Radius0p7-web.png" />
+<img alt="image" src="../../_images/EmbeddingDisksExample-Simps-Radius0p9-web.png" /></p>
+<p><img alt="image" src="../../_images/EmbeddingDisksExample-Simps-Radius1p1-web.png" />
+<img alt="image" src="../../_images/EmbeddingDisksExample-Simps-Radius1p5-web.png" />
+<img alt="image" src="../../_images/EmbeddingDisksExample-Simps-Radius3-web.png" /></p>
+</section>
+<section id="from-last-time-nerve">
+<h2>From last time: Nerve<a class="headerlink" href="#from-last-time-nerve" title="Link to this heading">#</a></h2>
+<p>Given a finite collection of sets <span class="math notranslate nohighlight">\(\FF\)</span>, the <strong>nerve</strong> is
+$$\mathrm{Nrv}(\UU) = {X \subseteq \FF \mid \bigcap _{U \in X} U \neq \emptyset}.</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}![image](../Figures/Fig2p2)
+From earlier: Homotopy type
+**Definition:**
+Two topological spaces $T$ and $U$ are homotopy equivalent if there
+exist maps $g : T \to U$ and $h : U \to T$ such that $h \circ g$ and
+$g \circ h$ are homotopic to the appropriate identity maps.
+- *Intuition*: Can deform one space into the other.\\- Example: Divide the alphabet into *equivalence classes*: collections
+  of letters that are all homotopy equivalent to every other letter in
+  their collection.
+::: center
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+ *Semi-covered in lecture 2*
+## Nerve lemma (Metric space version)\\::: theorem
+Given a finite cover $\UU$ (open or closed) of a metric space $M$, the
+underlying space $|N(\UU)|$ is homotopy equivalent to $M$ if every
+non-empty intersection $\bigcap_{i=0}^kU_{\alpha_i}$ of cover elements
+is homotopy equivalent to a point (contractible).\\## complex\\**Definition:**
+Let $P \subset (M,d)$ be a finite point cloud. Fix $r \geq 0$. The
+complex is $$\begin{aligned}
+\check{C}^r(P) &amp;= \left \{
+\sigma \subseteq P
+\mid
+\bigcap_{x \in \sigma}  B(x,r) \neq \emptyset
+\right\}\
+&amp; = \mathrm{N}(\{B(x,r)\}_{x \in P})
+\end{aligned}\end{aligned}\end{align} \]</div>
+</section>
+<section id="example-cech-complex">
+<h2>Example: Cech complex<a class="headerlink" href="#example-cech-complex" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/disks_Ex1-web.png" /></p>
+</section>
+<section id="warning">
+<h2>Warning<a class="headerlink" href="#warning" title="Link to this heading">#</a></h2>
+<p>The complex is an abstract simplicial complex. The obvious map into
+<span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span> doesn’t necessarily get you a geometric simplicial complex!</p>
+</section>
+<section id="rips-complex">
+<h2>Rips complex<a class="headerlink" href="#rips-complex" title="Link to this heading">#</a></h2>
+<p><strong>Definition:</strong>
+Given <span class="math notranslate nohighlight">\(P \subseteq (M,d)\)</span>, the Vietoris-Rips complex is
+$$VR^r(P) = \left{
+\sigma \subseteq P
+\mid
+d(x_i,x_j)\leq 2r \text{ for all } x_i,x_j \in \sigma
+\right}</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}## Example: Rips complex\\![image](../Figures/disks_Ex1-web.png)
+## Equilateral triangle example\\![image](../Figures/Triangle-web.png)
+## Rips-Lemma\\::: theorem
+Given point cloud $P \subset (M,d)$ and $r \geq 0$,
+$$\check{C}^r(P) \subseteq VR^r(P) \subseteq \check{C}^{2r}(P)
+% VR(2r) \subseteq \check{C}(\sqrt{2}r) \subseteq VR(2\sqrt{2}r)\end{aligned}\end{align} \]</div>
+</section>
+<section id="warning-radius-vs-diameter">
+<h2>Warning: Radius vs diameter<a class="headerlink" href="#warning-radius-vs-diameter" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}VR^r(P) = \left\{
+\sigma \subseteq P
+\mid
+d(x_i,x_j)\leq 2r \text{ for all } x_i,x_j \in \sigma
+\right\}\\$$ ![image](../Figures/disks_Ex1-web.png)
+## What we want to study\\![image](../Figures/EmbeddingDisksExample-Simps-Radius0p3-web.png)
+![image](../Figures/EmbeddingDisksExample-Simps-Radius0p5-web.png)
+![image](../Figures/EmbeddingDisksExample-Simps-Radius0p7-web.png)
+![image](../Figures/EmbeddingDisksExample-Simps-Radius0p9-web.png)\\![image](../Figures/EmbeddingDisksExample-Simps-Radius1p1-web.png)
+![image](../Figures/EmbeddingDisksExample-Simps-Radius1p5-web.png)
+![image](../Figures/EmbeddingDisksExample-Simps-Radius3-web.png)
+# Alpha complex\\## Voronoi diagram\\Given a point cloud $P\subseteq \mathbb{R}^N$.
+The Voronoi cell of $u \in P$ is
+$$V_u = \{x \in \mathbb{R}^d \mid \|x-u\| \leq \|x-v\|, v \in P\}\\$$ The Voronoi
+diagram is the collection of Voronoi cells
+$Vor(P) = \{V_u \mid u \in P\}$.
+## Simple examples
+## Website\\&lt;http://alexbeutel.com/webgl/voronoi.html&gt;\\![image](../Figures/VoronoiWebsite.png)
+## Delaunay triangulation\\The Delaunay complex of point cloud $P \subseteq \mathbb{R}^N$ is the nerve of
+the Voronoi diagram.
+$$\mathrm{Del}(P) = \{ \sigma \subseteq P \mid \bigcap _{u \in P} V_u \neq \emptyset\}.\end{aligned}\end{align} \]</div>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/VoronoiDiagram.png" /></p>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Delaunay is an abstract simplicial complex.</p></li>
+<li><p>If we have points in general position, the obvious embedding gives a
+geometric simplicial complex.</p></li>
+<li><p>Delaunay is FIXED (has nothing to do with a radius or diameter
+parameter….)</p></li>
+</ul>
+<p><img alt="image" src="../../_images/VoronoiDiagram.png" /></p>
+</section>
+<section id="leading-up-to-the-alpha-complex">
+<h2>Leading up to the alpha complex<a class="headerlink" href="#leading-up-to-the-alpha-complex" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/VoronoiDiagram.png" /></p>
+</section>
+<section id="alpha-complex">
+<h2>Alpha complex<a class="headerlink" href="#alpha-complex" title="Link to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(\mathrm{Del}_p^\alpha = \{x \in B(p, \alpha) \mid d (x, p) \leq d (x, q) \text{ for all } q \in P\} = B(p,r) \cap V_p\)</span></p>
+<p>The alpha complex for point cloud <span class="math notranslate nohighlight">\(P\)</span> with radius <span class="math notranslate nohighlight">\(r \geq 0\)</span> is the
+nerve
+$$\mathrm{Del}_p^\alpha = \mathrm{Nrv}({D_p^\alpha \mid p \in P}).</p>
+<p>$$</p>
+<p><img alt="image" src="../../_images/AlphaComplex.png" /></p>
+</section>
+<section id="id1">
+<h2>Properties<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{Alpha}(r) \subseteq \mathrm{Delaunay}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{Alpha}(r) \subseteq \check{C}(r)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{Alpha}(r)\)</span> has the same homotopy type as the union of balls
+of radius <span class="math notranslate nohighlight">\(r\)</span>.
+For next time</p></li>
+<li><p>EH III.7 (p75) Let <span class="math notranslate nohighlight">\(P \subseteq \mathbb{R}^d\)</span> be a finite set of points in
+general position. Denote by <span class="math notranslate nohighlight">\(\check{C}(r)\)</span> and <span class="math notranslate nohighlight">\(\mathrm{Alpha}(r)\)</span> as
+the and alpha complexes for radius <span class="math notranslate nohighlight">\(r \geq 0\)</span>, respectively.</p>
+<div class="center docutils">
+<p><em>Is it true that
+<span class="math notranslate nohighlight">\(\mathrm{Alpha}(r) = \check{C}(r) \cap \mathrm{Delaunay}\)</span>?</em></p>
+</div>
+<p>If yes, prove the following two subcomplex relations. If no, give
+examples to show which subcomplex relations are not valid.</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\mathrm{Alpha}(r) \subseteq \check{C}(r) \cap \mathrm{Delaunay}.\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\check{C}(r) \cap \mathrm{Delaunay} \subseteq \mathrm{Alpha}(r)\)</span></p></li>
+</ol>
+</li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Lectures/04-CechRips"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 4</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../05-HomologyPart1/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 5</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Slide transcript</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-4-nerve-cech-and-rips-complexes">Lecture 4 - Nerve, Cech, and Rips Complexes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-2-goals">Section 2.2 Goals</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#and-rips-complexes">and Rips Complexes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-cloud">Point cloud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ball">Ball</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-want-to-study">What we want to study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-last-time-nerve">From last time: Nerve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-cech-complex">Example: Cech complex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warning">Warning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rips-complex">Rips complex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warning-radius-vs-diameter">Warning: Radius vs diameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leading-up-to-the-alpha-complex">Leading up to the alpha complex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-complex">Alpha complex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Properties</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elizabeth Munch
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,871 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Slide transcript &#8212; CMSE 890 - TDA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/01-IntroAndPointSetBasics/CompTop-Lec1-IntroAndTopologyBasics';</script>
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lecture 2" href="../02-MorseFunctions/index.html" />
+    <link rel="prev" title="Lecture 1" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/functionLogo.png" class="logo__image only-light" alt="CMSE 890 - TDA - Home"/>
+    <script>document.write(`<img src="../../_static/functionLogo.png" class="logo__image only-dark" alt="CMSE 890 - TDA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CMSE 381 - Fall 2024</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Schedule.html">Course Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Syllabus/Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Textbook.html">Textbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Day 01 (T 8/26)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02-MorseFunctions/index.html">Day 02 (Th 8/28)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-MorseFunctions/CompTop-Lec2-MorseFcns.html">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03-SimplicialComplex/index.html">Day 03 (T 9/2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-SimplicialComplex/CompTop-Lec3-SimplicialComplexes.html">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04-CechRips/index.html">Day 04 (Th 9/4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-CechRips/CompTop-Lec4-CechRips.html">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05-HomologyPart1/index.html">Day 05 (T 9/9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-HomologyPart1/CompTop-Lec5-HomologyPt1.html">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06-HomologyPart2/index.html">Day 06 (Th 9/11)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-HomologyPart2/CompTop-Lec6-HomologyPt2.html">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Lectures/01-IntroAndPointSetBasics/CompTop-Lec1-IntroAndTopologyBasics.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Slide transcript</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Slide transcript</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-1-introduction-topology-basics">Lecture 1 - Introduction &amp; Topology Basics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syllabus">Syllabus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#textbook">Textbook</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#topological-data-analysis">Topological Data Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-in-data">Shape in data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topological-data-analysis-tda">Topological Data Analysis (TDA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-topology">What is topology?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history-pt-2">History Pt 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topological-invariants-euler-characteristic">Topological Invariants- Euler Characteristic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantification-vs-representation-of-shape">Quantification vs Representation of Shape</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-active-research-directions">Current active research directions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-this-course">Goals for this course</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-topology-vocabulary">Intro to Topology Vocabulary</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-section">Goals of this section</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-l-2">Metric - <span class="math notranslate nohighlight">\(L_2\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-l-infty">Metric - <span class="math notranslate nohighlight">\(L_\infty\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-topology">Metric Topology</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-points">Limit points</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-version">Complement version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maps">Maps</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="slide-transcript">
+<h1>Slide transcript<a class="headerlink" href="#slide-transcript" title="Link to this heading">#</a></h1>
+<p>I am working on finding ways to increase accessibility of the beamer slides provided. The following is an automatically generated transcript from <a class="reference download internal" download="" href="../../_downloads/fc764af260252a246e2cee0fc6da3fdb/CompTop-Lec1-IntroAndTopologyBasics.pdf"><span class="xref download myst">the pdf of the slides</span></a> but is still not perfect. I would be happy to hear feedback on how this transcript can be improved for additional usefulness.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-1-introduction-topology-basics">
+<h1>Lecture 1 - Introduction &amp; Topology Basics<a class="headerlink" href="#lecture-1-introduction-topology-basics" title="Link to this heading">#</a></h1>
+<section id="syllabus">
+<h2>Syllabus<a class="headerlink" href="#syllabus" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Available on the course website:
+<a class="reference external" href="https://elizabethmunch.com/cmse890">elizabethmunch.com/cmse890</a></p></li>
+<li><p>Schedule &amp; Office hours</p></li>
+<li><p>Slack</p></li>
+<li><p>Prerequisites:</p>
+<ul>
+<li><p>Linear Algebra</p></li>
+<li><p>Some programming experience</p></li>
+</ul>
+</li>
+<li><p>Python, jupyterhub, and engineering DECS accounts</p></li>
+<li><p>Homework</p>
+<ul>
+<li><p>Present a problem assigned in the previous class</p></li>
+<li><p>Approximately twice during the semester</p></li>
+<li><p>Goal: Present on something not in your expertise</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="textbook">
+<h2>Textbook<a class="headerlink" href="#textbook" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/DeyWang-TextScreenshot.png" />
+Introductions</p>
+<ul class="simple">
+<li><p>Name</p></li>
+<li><p>Department/Program</p></li>
+<li><p>Research interest</p></li>
+<li><p>Non-work interest</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="topological-data-analysis">
+<h1>Topological Data Analysis<a class="headerlink" href="#topological-data-analysis" title="Link to this heading">#</a></h1>
+<section id="shape-in-data">
+<h2>Shape in data<a class="headerlink" href="#shape-in-data" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/564px-Aloe_polyphylla_1.jpg" /></p>
+<p><img alt="image" src="../../_images/difference_ex.png" /></p>
+<p><img alt="image" src="../../_images/experimental_pulseTrain_withZoom_770RPM_Scaled-web.png" /></p>
+<p><img alt="image" src="../../_images/Walnuts.jpg" /></p>
+<p><img alt="image" src="../../_images/Szymczak-Airways.jpg" /></p>
+<p><img alt="image" src="../../_images/ReebGraphExample-Ma2011.png" /></p>
+<p>Images: Wikipedia, Szymczak et al., Ma et al.</p>
+<p>&lt;1-2&gt;</p>
+</section>
+<section id="topological-data-analysis-tda">
+<h2>Topological Data Analysis (TDA)<a class="headerlink" href="#topological-data-analysis-tda" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/DataSketchingSlide_FigsOnly-web.png" />
+<strong>Raw Data</strong>
+X-ray CT
+Point Clouds
+Networks
+<strong>Topological Summary</strong>
+Persistence Diagrams
+Euler Characteristic Curves
+Mapper graphs</p>
+<p><strong>Analysis</strong>
+Statistics
+Machine Learning</p>
+</section>
+<section id="what-is-topology">
+<h2>What is topology?<a class="headerlink" href="#what-is-topology" title="Link to this heading">#</a></h2>
+<p><strong>Topology <span class="math notranslate nohighlight">\(\neq\)</span> Topography</strong>
+Mathematical study of spaces preserved under continuous deformations</p>
+<ul class="simple">
+<li><p>stretching and bending</p></li>
+<li><p>not tearing or gluing</p></li>
+</ul>
+<p><img alt="image" src="../../_images/Double_torus_illustration.png" /></p>
+<p>Study of the shape and features of the surface of the Earth</p>
+<p><img alt="image" src="../../_images/CanajoharieTopoMap.png" />
+Images: Wikipedia</p>
+</section>
+<section id="history-pt-2">
+<h2>History Pt 2<a class="headerlink" href="#history-pt-2" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Esoteric field of study 1700-2000</p>
+<ul class="simple">
+<li><p>Algebraic topology</p></li>
+<li><p>Applications/intersections with dynamical systems</p></li>
+<li><p>Would never be considered “applied” in traditional sense.</p></li>
+</ul>
+<blockquote>
+<div><p>Topology, the pinnacle of human thought.
+In four centuries it may be useful.</p>
+<ul class="simple">
+<li><p>Alexander Solzhenitzin, “The First Circle” 1968</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Things change ca.2000</p>
+<ul class="simple">
+<li><p>Introduction of Persistent Homology</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="history">
+<h2>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/Leonhard_Euler.jpg" />
+Leonhard Euler (1707-1783)</p>
+<p><img alt="image" src="../../_images/Konigsberg_bridges.png" />
+<img alt="image" src="../../_images/7_bridges.png" />
+<img alt="image" src="../../_images/Konigsberg_graph.png" /></p>
+<p>Bridges of Konigsberg</p>
+<p>Images: Wikipedia
+&lt;2&gt;</p>
+</section>
+<section id="topological-invariants-euler-characteristic">
+<h2>Topological Invariants- Euler Characteristic<a class="headerlink" href="#topological-invariants-euler-characteristic" title="Link to this heading">#</a></h2>
+<p>Images: Wikipedia</p>
+<p>Euler characteristic as topological signature
+<img alt="image" src="../../_images/EulerCharacteristic_2_Cropped.png" />
+<strong>Different</strong> Euler characteristics mean spaces must be topologically
+<strong>different</strong></p>
+<p><strong>Different</strong> spaces might have the <strong>same</strong> Euler characteristics
+Euler characteristic is an example of a <strong>topological signature</strong></p>
+</section>
+<section id="quantification-vs-representation-of-shape">
+<h2>Quantification vs Representation of Shape<a class="headerlink" href="#quantification-vs-representation-of-shape" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="../../_images/ManifoldExperiment.jpg" />
+Persistent Homology</p>
+<p><img alt="image" src="../../_images/ReebGraphBasicExample-Narrow-web.png" />
+Reeb graph</p>
+<p><img alt="image" src="../../_images/MapperEx-web.png" /></p>
+<p>Mapper</p>
+</section>
+<section id="current-active-research-directions">
+<h2>Current active research directions<a class="headerlink" href="#current-active-research-directions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Multidimensional persistence</p></li>
+<li><p>Machine learning, statistics</p></li>
+<li><p>Time series analysis and dynamical systems</p></li>
+<li><p>Metrics</p></li>
+<li><p>Parallelization</p></li>
+<li><p>Visualization</p></li>
+</ul>
+<!-- -->
+<ul class="simple">
+<li><p>Application areas:</p>
+<ul>
+<li><p>Neuroscience</p></li>
+<li><p>Plant Biology</p></li>
+<li><p>Gene expression</p></li>
+<li><p>Image processing</p></li>
+<li><p>Sensor networks</p></li>
+<li><p>Atmospheric science</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="goals-for-this-course">
+<h2>Goals for this course<a class="headerlink" href="#goals-for-this-course" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Understand the computation and interpretation of several commonly used
+tools in TDA</p>
+<ul>
+<li><p>Persistent Homology</p></li>
+<li><p>Reeb graphs</p></li>
+<li><p>Mapper</p></li>
+</ul>
+</li>
+<li><p>Know what types of data and/or are amenable to TDA methods.</p></li>
+<li><p>Have experience working with open-source code banks for computation.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="intro-to-topology-vocabulary">
+<h1>Intro to Topology Vocabulary<a class="headerlink" href="#intro-to-topology-vocabulary" title="Link to this heading">#</a></h1>
+<section id="goals-of-this-section">
+<h2>Goals of this section<a class="headerlink" href="#goals-of-this-section" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Cover some basic terms from Ch 1.1, 1.2, 1.3</p></li>
+<li><p>Depending on your math background, this might be obvious or this might
+seem impossible. If the latter, spend some time tonight trying some
+examples! Oh yeah, and read the textbook!</p></li>
+</ul>
+</section>
+<section id="topology">
+<h2>Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h2>
+<p><strong>Definition:</strong>
+A topological space is a point set <span class="math notranslate nohighlight">\(\mathbb T\)</span> with a set of subsets <span class="math notranslate nohighlight">\(T\)</span>
+(called open sets) such that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\emptyset\)</span>, <span class="math notranslate nohighlight">\(\mathbb T\)</span> <span class="math notranslate nohighlight">\(\in T\)</span></p></li>
+<li><p>For every <span class="math notranslate nohighlight">\(U \subseteq T\)</span>, the union of the sets in <span class="math notranslate nohighlight">\(U\)</span> is in <span class="math notranslate nohighlight">\(T\)</span></p></li>
+<li><p>For every finite <span class="math notranslate nohighlight">\(U \subseteq T\)</span>, the common intersection of the
+subsets in <span class="math notranslate nohighlight">\(U\)</span> is in <span class="math notranslate nohighlight">\(T\)</span>.
+Ex. <span class="math notranslate nohighlight">\(\mathbb T= \{a,b,c\}\)</span>,
+<span class="math notranslate nohighlight">\(T = \{ \emptyset, T_1 = \{a\}, T_2 = \{b\}, T_3 = \{a,b\}, \mathbb T= \{a,b,c\} \}\)</span></p></li>
+</ul>
+</section>
+<section id="metric-l-2">
+<h2>Metric - <span class="math notranslate nohighlight">\(L_2\)</span><a class="headerlink" href="#metric-l-2" title="Link to this heading">#</a></h2>
+<p><strong>Definition:</strong>
+A metric space is a pair <span class="math notranslate nohighlight">\((\mathbb T,d)\)</span> where <span class="math notranslate nohighlight">\(\mathbb T\)</span> is a set, and
+<span class="math notranslate nohighlight">\(d: \mathbb T\times \mathbb T\to \mathbb R\)</span> satisfies</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(d(p,q) = 0\)</span> iff <span class="math notranslate nohighlight">\(p=q\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(d(p,q) = d(q,p)\)</span> for all <span class="math notranslate nohighlight">\(p,q \in \mathbb T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(d(p,q) \leq d(p,r) + d(r,q)\)</span> for all <span class="math notranslate nohighlight">\(p,q,r \in \mathbb T\)</span>
+Example: <span class="math notranslate nohighlight">\(\mathbb T= \mathbb R^2\)</span>,
+<span class="math notranslate nohighlight">\(d((a,b), (c,d)) = \sqrt{(c-a)^2 + (b-d)^2}\)</span></p></li>
+</ul>
+</section>
+<section id="metric-l-infty">
+<h2>Metric - <span class="math notranslate nohighlight">\(L_\infty\)</span><a class="headerlink" href="#metric-l-infty" title="Link to this heading">#</a></h2>
+<p><strong>Definition:</strong>
+A metric space is a pair <span class="math notranslate nohighlight">\((\mathbb T,d)\)</span> where <span class="math notranslate nohighlight">\(\mathbb T\)</span> is a set, and
+<span class="math notranslate nohighlight">\(d: \mathbb T\times \mathbb T\to \mathbb R\)</span> satisfies</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(d(p,q) = 0\)</span> iff <span class="math notranslate nohighlight">\(p=q\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(d(p,q) = d(q,p)\)</span> for all <span class="math notranslate nohighlight">\(p,q \in \mathbb T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(d(p,q) \leq d(p,r) + d(r,q)\)</span> for all <span class="math notranslate nohighlight">\(p,q,r \in \mathbb T\)</span>
+Example: <span class="math notranslate nohighlight">\(\mathbb T= \mathbb R^2\)</span>,
+<span class="math notranslate nohighlight">\(d((a,b), (c,d)) = \max \{|u_1-v_1| , |u_2-v_2|\}\)</span></p></li>
+</ul>
+</section>
+<section id="metric-topology">
+<h2>Metric Topology<a class="headerlink" href="#metric-topology" title="Link to this heading">#</a></h2>
+<p><strong>Definition:</strong>
+Given a metric space <span class="math notranslate nohighlight">\((\mathbb T,d)\)</span>, an open metric ball is</p>
+<div class="math notranslate nohighlight">
+\[B_o(c,r) = \{ p \in \mathbb T\mid d(p,c) &lt; r\}.\]</div>
+<p>The metric topology is the set of all metric balls</p>
+<div class="math notranslate nohighlight">
+\[\{ B_o(c,r)  \mid c \in \mathbb T, 0 &lt; r \leq \infty\}.\]</div>
+<p>Ex. <span class="math notranslate nohighlight">\(\mathbb R\)</span>, <span class="math notranslate nohighlight">\(\mathbb R^2\)</span>
+TRY IT: Draw the subset of <span class="math notranslate nohighlight">\(\mathbb R^2\)</span> contained in <span class="math notranslate nohighlight">\(B_o(0,1)\)</span> for
+<span class="math notranslate nohighlight">\(d((u_1,u_2),(v_1,v_2)) =\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\| u-v \|_1 = |u_1-v_1| + |u_2-v_2|\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| u-v \|_2 = \sqrt{(u_1-v_1)^2 + (u_2-v_2)^2}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| u-v \|_\infty = \max \{|u_1-v_1| , |u_2-v_2|\}\)</span>
+Open and closed sets</p></li>
+</ul>
+<p><strong>Definition:</strong>
+A set is open if it is in the topology <span class="math notranslate nohighlight">\(T\)</span>. A set is closed if its
+complement is open.
+Ex 1. <span class="math notranslate nohighlight">\(\mathbb T= \{a,b,c\}\)</span>,
+<span class="math notranslate nohighlight">\(T = \{ \emptyset, T_1 = \{a\}, T_2 = \{b\}, T_3 = \{a,b\}, \mathbb T= \{a,b,c\} \}\)</span></p>
+<p>Open and closed sets - metric space version</p>
+<section id="limit-points">
+<h3>Limit points<a class="headerlink" href="#limit-points" title="Link to this heading">#</a></h3>
+<p><strong>Definition:</strong>
+Let <span class="math notranslate nohighlight">\(Q \subset \mathbb T\)</span> be a point set. A point <span class="math notranslate nohighlight">\(p \in \mathbb T\)</span> is a
+<em>limit point</em> of <span class="math notranslate nohighlight">\(Q\)</span> if for every <span class="math notranslate nohighlight">\(\varepsilon&gt;0\)</span>, <span class="math notranslate nohighlight">\(Q\)</span> contains a point
+<span class="math notranslate nohighlight">\(q \neq p\)</span> with <span class="math notranslate nohighlight">\(d(p,q) &lt;\varepsilon\)</span>.</p>
+<p>Open and closed sets - metric space version</p>
+<p><strong>Definition:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathrm{Cl}(Q)\)</span>: The closure of a point set <span class="math notranslate nohighlight">\(Q \subseteq \mathbb T\)</span>
+is the set containing every point in Q and every limit point of <span class="math notranslate nohighlight">\(Q\)</span>.</p></li>
+<li><p>A point set <span class="math notranslate nohighlight">\(Q\)</span> is closed if <span class="math notranslate nohighlight">\(Q = \mathrm{Cl} (Q)\)</span>, i.e. <span class="math notranslate nohighlight">\(Q\)</span> contains
+all its limit points.</p></li>
+</ul>
+<p>Open and closed sets - metric space version</p>
+</section>
+<section id="complement-version">
+<h3>Complement version<a class="headerlink" href="#complement-version" title="Link to this heading">#</a></h3>
+<p><strong>Definition:</strong></p>
+<ul class="simple">
+<li><p>The complement of a point set <span class="math notranslate nohighlight">\(Q\)</span> is <span class="math notranslate nohighlight">\(T \setminus Q\)</span>.</p></li>
+<li><p>A point set <span class="math notranslate nohighlight">\(Q\)</span> is open if its complement is closed, i.e.
+<span class="math notranslate nohighlight">\(T \ Q = \mathrm{Cl} (T \setminus Q)\)</span>.</p></li>
+</ul>
+<p>Open cover</p>
+<p><strong>Definition:</strong>
+An open (closed) cover of a topological space <span class="math notranslate nohighlight">\((\mathbb T, T )\)</span> is a
+collection <span class="math notranslate nohighlight">\(C\)</span> of open (closed) sets so that
+<span class="math notranslate nohighlight">\(T \subseteq \bigcup_{U \in C}\)</span>.
+Ex. <span class="math notranslate nohighlight">\(\mathbb R\)</span>, <span class="math notranslate nohighlight">\(C = \{ (n-1,n+1) \mid  n \in \mathbb Z\}\)</span>
+Connected</p>
+<p><strong>Definition:</strong>
+A topological space <span class="math notranslate nohighlight">\((\mathbb T, T )\)</span> is disconnected if there are two
+disjoint non-empty open sets <span class="math notranslate nohighlight">\(U, V \in T\)</span> so that <span class="math notranslate nohighlight">\(T = U \cup V\)</span>. A
+topological space is connected if its not disconnected.
+Ex. <span class="math notranslate nohighlight">\(A = (1,2) \cup (5,7) \subset \mathbb R\)</span></p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="maps">
+<h1>Maps<a class="headerlink" href="#maps" title="Link to this heading">#</a></h1>
+<p>Homework for next time</p>
+<p>Need a volunteer! For this homework, it can’t be someone who is a Math
+PhD student, preferably someone who hasn’t taken a topology class.</p>
+<p><em>Choose two of the following to present.</em></p>
+<ol class="arabic simple">
+<li><p>DW 1.6.1. Be sure to explain <em>why</em> the constructions you have
+created are/are not Hausdorff.</p></li>
+<li><p>DW 1.6.2</p></li>
+<li><p>DW 1.6.3</p></li>
+<li><p>DW 1.6.4</p></li>
+<li><p>DW 1.6.5</p></li>
+<li><p>DW 1.6.6</p></li>
+</ol>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Lectures/01-IntroAndPointSetBasics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 1</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../02-MorseFunctions/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Slide transcript</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-1-introduction-topology-basics">Lecture 1 - Introduction &amp; Topology Basics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syllabus">Syllabus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#textbook">Textbook</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#topological-data-analysis">Topological Data Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-in-data">Shape in data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topological-data-analysis-tda">Topological Data Analysis (TDA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-topology">What is topology?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history-pt-2">History Pt 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topological-invariants-euler-characteristic">Topological Invariants- Euler Characteristic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantification-vs-representation-of-shape">Quantification vs Representation of Shape</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-active-research-directions">Current active research directions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-this-course">Goals for this course</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-topology-vocabulary">Intro to Topology Vocabulary</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-section">Goals of this section</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-l-2">Metric - <span class="math notranslate nohighlight">\(L_2\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-l-infty">Metric - <span class="math notranslate nohighlight">\(L_\infty\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-topology">Metric Topology</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-points">Limit points</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-version">Complement version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maps">Maps</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elizabeth Munch
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
