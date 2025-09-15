@@ -650,15 +650,17 @@ document.write(`
 <section id="other-dimensions">
 <h2>Other dimensions<a class="headerlink" href="#other-dimensions" title="Link to this heading">#</a></h2>
 <p><img alt="Image" src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/SimplexExamples_1.png" /></p>
-<p>I could save the matrices <code class="docutils literal notranslate"><span class="pre">B0</span></code> and <code class="docutils literal notranslate"><span class="pre">B3</span></code> if I really wanted to, but because the first represents
-\begin{equation*}
+<p>I could save the matrices <code class="docutils literal notranslate"><span class="pre">B0</span></code> and <code class="docutils literal notranslate"><span class="pre">B3</span></code> if I really wanted to, but because the first represents</p>
+<div class="math notranslate nohighlight">
+\[
 \partial_0:C_0(K) \to 0
-\end{equation*}
-and (because there are no 3-simplices and thus <span class="math notranslate nohighlight">\(C_3(K) = 0\)</span>) the second represents
-\begin{equation*}
+\]</div>
+<p>and (because there are no 3-simplices and thus <span class="math notranslate nohighlight">\(C_3(K) = 0\)</span>) the second represents</p>
+<div class="math notranslate nohighlight">
+\[
 \partial_3:0 \to C_2(K)
-\end{equation*}
-both are just the 0-transformation so we don’t have to work hard to calculate anything.</p>
+\]</div>
+<p>both are just the 0-transformation so we don’t have to work hard to calculate anything.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="calculating-betti-number">
@@ -670,8 +672,9 @@ both are just the 0-transformation so we don’t have to work hard to calculate 
 <section id="where-does-all-this-come-from">
 <h2>Where does all this come from<a class="headerlink" href="#where-does-all-this-come-from" title="Link to this heading">#</a></h2>
 <p>Remember from linear algebra that for any linear transformation <span class="math notranslate nohighlight">\(f:U \to V\)</span>, <span class="math notranslate nohighlight">\(\mathrm{dim}(U) = \mathrm{dim}(\mathrm{Ker}\,f)) + \mathrm{dim}(\mathrm{Im}\,f)).\)</span></p>
-<p>So for <span class="math notranslate nohighlight">\(\partial_p\)</span>, This means that
-$<span class="math notranslate nohighlight">\(\mathrm{dim}(C_p) = \mathrm{dim}(Z_p) + \mathrm{dim}(B_{p-1}).\)</span>$</p>
+<p>So for <span class="math notranslate nohighlight">\(\partial_p\)</span>, This means that</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{dim}(C_p) = \mathrm{dim}(Z_p) + \mathrm{dim}(B_{p-1}).\]</div>
 <p>Notation:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -688,9 +691,11 @@ $<span class="math notranslate nohighlight">\(\mathrm{dim}(C_p) = \mathrm{dim}(Z
 </tbody>
 </table>
 </div>
-<p>so the above equation becomes $<span class="math notranslate nohighlight">\(c_p = z_p + b_{p-1}.\)</span>$</p>
-<p>For any quotient space <span class="math notranslate nohighlight">\(V/W\)</span>, linear algebra tells us that <span class="math notranslate nohighlight">\(\mathrm{dim}(V/W) = \mathrm{dim}(V) - \mathrm{dim}(W)\)</span>.</p>
-<p>This means <span class="math notranslate nohighlight">\(\beta_p = z_p-b_p\)</span>.</p>
+<p>so the above equation becomes <span class="math notranslate nohighlight">\(c_p = z_p + b_{p-1}.\)</span></p>
+<p>For any quotient space <span class="math notranslate nohighlight">\(V/W\)</span>, linear algebra tells us that</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{dim}(V/W) = \mathrm{dim}(V) - \mathrm{dim}(W).\]</div>
+<p>This means <span class="math notranslate nohighlight">\(\beta_p = \mathrm{dim}(Z_p/B_p) = z_p-b_p\)</span>.</p>
 </section>
 <section id="smith-normal-form">
 <h2>Smith normal form<a class="headerlink" href="#smith-normal-form" title="Link to this heading">#</a></h2>
@@ -699,8 +704,9 @@ $<span class="math notranslate nohighlight">\(\mathrm{dim}(C_p) = \mathrm{dim}(Z
 <p><img alt="Image" src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/BdyInSNF.png" /></p>
 <section id="matrix-representation">
 <h3>Matrix representation<a class="headerlink" href="#matrix-representation" title="Link to this heading">#</a></h3>
-<p>If we keep careful track of our row and column operations when determining the Smith normal form for matrix <code class="docutils literal notranslate"><span class="pre">A</span></code>, we get matrices <span class="math notranslate nohighlight">\(N\)</span>, <span class="math notranslate nohighlight">\(U\)</span>, and <span class="math notranslate nohighlight">\(V\)</span> such that
-$<span class="math notranslate nohighlight">\(N = UAV.\)</span>$</p>
+<p>If we keep careful track of our row and column operations when determining the Smith normal form for matrix <code class="docutils literal notranslate"><span class="pre">A</span></code>, we get matrices <span class="math notranslate nohighlight">\(N\)</span>, <span class="math notranslate nohighlight">\(U\)</span>, and <span class="math notranslate nohighlight">\(V\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[N = UAV.\]</div>
 </section>
 </section>
 <section id="smith-normal-form-code">
@@ -724,7 +730,7 @@ $<span class="math notranslate nohighlight">\(N = UAV.\)</span>$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x30d211290&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x149a102d0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/7cf6fe5ffd0b51f1ccf075ea5200498298f41c4a8544513e9b35986e074a14cd.png" src="../../_images/7cf6fe5ffd0b51f1ccf075ea5200498298f41c4a8544513e9b35986e074a14cd.png" />
