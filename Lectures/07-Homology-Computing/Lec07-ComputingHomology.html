@@ -1,0 +1,1385 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lecture 7: Jupyter Notebook &#8212; CMSE 890 - TDA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/07-Homology-Computing/Lec07-ComputingHomology';</script>
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Lecture 7" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/functionLogo.png" class="logo__image only-light" alt="CMSE 890 - TDA - Home"/>
+    <script>document.write(`<img src="../../_static/functionLogo.png" class="logo__image only-dark" alt="CMSE 890 - TDA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CMSE 381 - Fall 2024</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Schedule.html">Course Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Syllabus/Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Textbook.html">Textbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01-IntroAndPointSetBasics/index.html">Day 01 (T 8/26)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-IntroAndPointSetBasics/CompTop-Lec1-IntroAndTopologyBasics.html">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02-MorseFunctions/index.html">Day 02 (Th 8/28)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-MorseFunctions/CompTop-Lec2-MorseFcns.html">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03-SimplicialComplex/index.html">Day 03 (T 9/2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-SimplicialComplex/CompTop-Lec3-SimplicialComplexes.html">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04-CechRips/index.html">Day 04 (Th 9/4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-CechRips/CompTop-Lec4-CechRips.html">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05-HomologyPart1/index.html">Day 05 (T 9/9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-HomologyPart1/CompTop-Lec5-HomologyPt1.html">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06-HomologyPart2/index.html">Day 06 (Th 9/11)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-HomologyPart2/CompTop-Lec6-HomologyPt2.html">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Day 07 (T 9/16)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lecture 7: Jupyter Notebook</a></li>
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Lectures/07-Homology-Computing/Lec07-ComputingHomology.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 7: Jupyter Notebook</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture 7: Jupyter Notebook</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-homology">Computing Homology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmse-890">CMSE 890</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dr-liz-munch">Dr. Liz Munch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-homology-dimension">Computing Homology Dimension</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-partial-2">Computing <span class="math notranslate nohighlight">\(\partial_2\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-dimensions">Other dimensions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-betti-number">Calculating Betti Number</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-does-all-this-come-from">Where does all this come from</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smith-normal-form">Smith normal form</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-representation">Matrix representation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smith-normal-form-code">Smith normal form code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#script-to-run">Script to run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smith-normal-form-for-partial-1">Smith Normal Form for <span class="math notranslate nohighlight">\(\partial_1\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-script-to-run">Another script to run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smith-normal-form-for-partial-2">Smith Normal Form for <span class="math notranslate nohighlight">\(\partial_2\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#you-do-it">You do it:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fill-out-this-table-to-answer-the-previous-question">Fill out this table to answer the previous question</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-commented-out-in-this-cell-no-peeking">Solution commented out in this cell…. no peeking!</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-off-the-generators-of-homology">Reading off the generators of homology</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generators-for-z-p-k">Generators for <span class="math notranslate nohighlight">\(Z_p(K)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generators-for-z-1-in-this-example">Generators for <span class="math notranslate nohighlight">\(Z_1\)</span> in this example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generators-for-b-p-k">Generators for <span class="math notranslate nohighlight">\(B_p(K)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generators-for-b-1-k-in-this-example">Generators for <span class="math notranslate nohighlight">\(B_1(K)\)</span> in this example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-generators-of-homology">Computing generators of homology</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#if-there-s-time">If there’s time…..</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-7-jupyter-notebook">
+<h1>Lecture 7: Jupyter Notebook<a class="headerlink" href="#lecture-7-jupyter-notebook" title="Link to this heading">#</a></h1>
+<section id="computing-homology">
+<h2>Computing Homology<a class="headerlink" href="#computing-homology" title="Link to this heading">#</a></h2>
+</section>
+<section id="cmse-890">
+<h2>CMSE 890<a class="headerlink" href="#cmse-890" title="Link to this heading">#</a></h2>
+<section id="dr-liz-munch">
+<h3>Dr. Liz Munch<a class="headerlink" href="#dr-liz-munch" title="Link to this heading">#</a></h3>
+<p><em>Note: If you’re viewing this jupyter notebook on the website, you need to click on the download button above to actually run it.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+<span class="kn">import</span> <span class="nn">PIL</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="computing-homology-dimension">
+<h1>Computing Homology Dimension<a class="headerlink" href="#computing-homology-dimension" title="Link to this heading">#</a></h1>
+<p>First, we want an example to use.</p>
+<p><img alt="Simplex example 1" src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/SimplexExamples_1.png" /></p>
+<p>Save the boundary matrix for <span class="math notranslate nohighlight">\(\partial_1:C_1(K) \to C_0(K)\)</span> with standard basis as a numpy matrix <code class="docutils literal notranslate"><span class="pre">B1</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vertex_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
+<span class="n">edge_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AE&#39;</span><span class="p">,</span><span class="s1">&#39;AD&#39;</span><span class="p">,</span><span class="s1">&#39;BC&#39;</span><span class="p">,</span><span class="s1">&#39;BE&#39;</span><span class="p">,</span><span class="s1">&#39;CD&#39;</span><span class="p">,</span><span class="s1">&#39;CE&#39;</span><span class="p">]</span>
+<span class="n">triangle_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BCE&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here is an example of the boundary matrix as a pandas data frame for visualization of row and column labels.</span>
+<span class="c1"># You don&#39;t need this, and in fact won&#39;t use it for real computations.</span>
+<span class="c1"># You really want the numpy array version in the next cell.</span>
+
+<span class="n">B1_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">vertex_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span> <span class="n">edge_list</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">B1_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">B1_df</span><span class="p">[</span><span class="n">edge</span><span class="p">][[</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]]]</span> <span class="o">=</span> <span class="mi">1</span> 
+
+<span class="n">B1_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AE</th>
+      <th>AD</th>
+      <th>BC</th>
+      <th>BE</th>
+      <th>CD</th>
+      <th>CE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>E</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If I really want a numpy matrix, I can do this:</span>
+<span class="n">B1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">B1_df</span><span class="p">)</span>
+<span class="n">B1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 1, 0, 0, 0, 0],
+       [0, 0, 1, 1, 0, 0],
+       [0, 0, 1, 0, 1, 1],
+       [0, 1, 0, 0, 1, 0],
+       [1, 0, 0, 1, 0, 1]])
+</pre></div>
+</div>
+</div>
+</div>
+<section id="computing-partial-2">
+<h2>Computing <span class="math notranslate nohighlight">\(\partial_2\)</span><a class="headerlink" href="#computing-partial-2" title="Link to this heading">#</a></h2>
+<p><img alt="Image" src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/SimplexExamples_1.png" /></p>
+<p>Do the same for <span class="math notranslate nohighlight">\(\partial_2:C_2(K) \to C_1(K)\)</span> and save it as <code class="docutils literal notranslate"><span class="pre">B2</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save a numpy matrix B2 representing the $\partial_2$ transformation</span>
+
+<span class="n">B2df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">triangle_list</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span> <span class="n">edge_list</span><span class="p">)</span>
+
+<span class="n">B2df</span><span class="p">[</span><span class="s1">&#39;BCE&#39;</span><span class="p">][[</span><span class="s1">&#39;BC&#39;</span><span class="p">,</span><span class="s1">&#39;BE&#39;</span><span class="p">,</span><span class="s1">&#39;CE&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">B2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">B2df</span><span class="p">)</span>
+
+<span class="n">B2df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BCE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AE</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AD</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>BC</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>BE</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>CD</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>CE</th>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="other-dimensions">
+<h2>Other dimensions<a class="headerlink" href="#other-dimensions" title="Link to this heading">#</a></h2>
+<p><img alt="Image" src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/SimplexExamples_1.png" /></p>
+<p>I could save the matrices <code class="docutils literal notranslate"><span class="pre">B0</span></code> and <code class="docutils literal notranslate"><span class="pre">B3</span></code> if I really wanted to, but because the first represents
+\begin{equation*}
+\partial_0:C_0(K) \to 0
+\end{equation*}
+and (because there are no 3-simplices and thus <span class="math notranslate nohighlight">\(C_3(K) = 0\)</span>) the second represents
+\begin{equation*}
+\partial_3:0 \to C_2(K)
+\end{equation*}
+both are just the 0-transformation so we don’t have to work hard to calculate anything.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="calculating-betti-number">
+<h1>Calculating Betti Number<a class="headerlink" href="#calculating-betti-number" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Definition:</strong> The <span class="math notranslate nohighlight">\(p\)</span>-th Betti number <span class="math notranslate nohighlight">\(\beta_p\)</span> is the dimension of the <span class="math notranslate nohighlight">\(p\)</span>-dimensional homology group, <span class="math notranslate nohighlight">\(H_p(K)\)</span>.</p></li>
+<li><p>The beauty of linear algebra is that we (where here, we <span class="math notranslate nohighlight">\(=\)</span> my computer) can easily figure out the Betti number by just checking things on matrices.</p></li>
+</ul>
+<section id="where-does-all-this-come-from">
+<h2>Where does all this come from<a class="headerlink" href="#where-does-all-this-come-from" title="Link to this heading">#</a></h2>
+<p>Remember from linear algebra that for any linear transformation <span class="math notranslate nohighlight">\(f:U \to V\)</span>, <span class="math notranslate nohighlight">\(\mathrm{dim}(U) = \mathrm{dim}(\mathrm{Ker}\,f)) + \mathrm{dim}(\mathrm{Im}\,f)).\)</span></p>
+<p>So for <span class="math notranslate nohighlight">\(\partial_p\)</span>, This means that
+$<span class="math notranslate nohighlight">\(\mathrm{dim}(C_p) = \mathrm{dim}(Z_p) + \mathrm{dim}(B_{p-1}).\)</span>$</p>
+<p>Notation:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p><span class="math notranslate nohighlight">\(\mathrm{dim}(C_p)\)</span></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(\mathrm{dim}(Z_p)\)</span></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(\mathrm{dim}(B_{p})\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(c_p\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(z_p\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(b_p\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>so the above equation becomes $<span class="math notranslate nohighlight">\(c_p = z_p + b_{p-1}.\)</span>$</p>
+<p>For any quotient space <span class="math notranslate nohighlight">\(V/W\)</span>, linear algebra tells us that <span class="math notranslate nohighlight">\(\mathrm{dim}(V/W) = \mathrm{dim}(V) - \mathrm{dim}(W)\)</span>.</p>
+<p>This means <span class="math notranslate nohighlight">\(\beta_p = z_p-b_p\)</span>.</p>
+</section>
+<section id="smith-normal-form">
+<h2>Smith normal form<a class="headerlink" href="#smith-normal-form" title="Link to this heading">#</a></h2>
+<p>To do this, we will calculate the Smith Normal Form of our boundary matrix using row and column operations (equivalently, using a change of basis).  A matrix (well, as long as we’re doing every thing in <span class="math notranslate nohighlight">\(\mathbb{Z}_2\)</span> like we are) is in smith normal form if it has an upper left block equal to the identity matrix, and zeros everywhere else.</p>
+<p>In particular, a boundary matrix in Smith normal form looks like this:</p>
+<p><img alt="Image" src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/BdyInSNF.png" /></p>
+<section id="matrix-representation">
+<h3>Matrix representation<a class="headerlink" href="#matrix-representation" title="Link to this heading">#</a></h3>
+<p>If we keep careful track of our row and column operations when determining the Smith normal form for matrix <code class="docutils literal notranslate"><span class="pre">A</span></code>, we get matrices <span class="math notranslate nohighlight">\(N\)</span>, <span class="math notranslate nohighlight">\(U\)</span>, and <span class="math notranslate nohighlight">\(V\)</span> such that
+$<span class="math notranslate nohighlight">\(N = UAV.\)</span>$</p>
+</section>
+</section>
+<section id="smith-normal-form-code">
+<h2>Smith normal form code<a class="headerlink" href="#smith-normal-form-code" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Download the <a class="reference external" href="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/refs/heads/main/JupyterFigures/smith.py"><code class="docutils literal notranslate"><span class="pre">smith.py</span></code> script</a>, and save it to the same location as this jupyter notebook.</p></li>
+<li><p>The function <code class="docutils literal notranslate"><span class="pre">smith.smith_form</span></code> outputs <code class="docutils literal notranslate"><span class="pre">(N,U,V)</span></code>.</p></li>
+<li><p><strong>Notation:</strong> When we calculate the Smith normal form of the boundary matrix, we can write <span class="math notranslate nohighlight">\(N_p = U_{p-1}\partial_pV_p.\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This scipt computes the Smith normal form assuming inputs use Z_2 coefficients.</span>
+<span class="kn">import</span> <span class="nn">smith</span>
+
+<span class="n">N1</span><span class="p">,</span><span class="n">U0</span><span class="p">,</span><span class="n">V1</span><span class="o">=</span> <span class="n">smith</span><span class="o">.</span><span class="n">smith_form</span><span class="p">(</span><span class="n">B1</span><span class="p">)</span>
+<span class="n">N2</span><span class="p">,</span><span class="n">U1</span><span class="p">,</span><span class="n">V2</span><span class="o">=</span> <span class="n">smith</span><span class="o">.</span><span class="n">smith_form</span><span class="p">(</span><span class="n">B2</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">N1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x30d211290&gt;
+</pre></div>
+</div>
+<img alt="../../_images/7cf6fe5ffd0b51f1ccf075ea5200498298f41c4a8544513e9b35986e074a14cd.png" src="../../_images/7cf6fe5ffd0b51f1ccf075ea5200498298f41c4a8544513e9b35986e074a14cd.png" />
+</div>
+</div>
+</section>
+<section id="script-to-run">
+<h2>Script to run<a class="headerlink" href="#script-to-run" title="Link to this heading">#</a></h2>
+<p>This just makes the next cell look nicer</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotFirstSetOfMatrices</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span><span class="n">U0</span><span class="p">,</span><span class="n">V1</span><span class="p">,</span><span class="n">edge_list</span><span class="p">,</span><span class="n">vertex_list</span><span class="p">,</span><span class="n">figure_file</span> <span class="o">=</span> <span class="s1">&#39;SimplexExamples_1.png&#39;</span><span class="p">):</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">N1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$N_1$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vertex_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">vertex_list</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">U0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$U_0$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vertex_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">vertex_list</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vertex_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">vertex_list</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">B1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$B_1$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vertex_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">vertex_list</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">V1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$V_1$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+
+    <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/&#39;</span> <span class="o">+</span> <span class="n">figure_file</span><span class="p">)))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="smith-normal-form-for-partial-1">
+<h2>Smith Normal Form for <span class="math notranslate nohighlight">\(\partial_1\)</span><a class="headerlink" href="#smith-normal-form-for-partial-1" title="Link to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(N_1 = U_{0}\partial_1 V_1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotFirstSetOfMatrices</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span><span class="n">U0</span><span class="p">,</span><span class="n">V1</span><span class="p">,</span><span class="n">edge_list</span><span class="p">,</span><span class="n">vertex_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eb926017acdaedf9c576e98bb955818f715beda9c61a69fffa29894b72a273f7.png" src="../../_images/eb926017acdaedf9c576e98bb955818f715beda9c61a69fffa29894b72a273f7.png" />
+</div>
+</div>
+</section>
+<section id="another-script-to-run">
+<h2>Another script to run<a class="headerlink" href="#another-script-to-run" title="Link to this heading">#</a></h2>
+<p>This just makes the next cell look nicer</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting</span>
+<span class="k">def</span> <span class="nf">plotSecondSetOfMatrices</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span><span class="n">U1</span><span class="p">,</span><span class="n">V2</span><span class="p">,</span><span class="n">edge_list</span><span class="p">,</span><span class="n">triangle_list</span><span class="p">,</span><span class="n">figure_file</span> <span class="o">=</span> <span class="s1">&#39;SimplexExamples_1.png&#39;</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">N2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$N_2$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">triangle_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">triangle_list</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">U1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$U_1$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+
+
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">B2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$B_2$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">triangle_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">triangle_list</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">V2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$V_2$... This should show the 1....&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">triangle_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">triangle_list</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">triangle_list</span><span class="p">))))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">triangle_list</span><span class="p">)</span>
+
+    <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/&#39;</span><span class="o">+</span><span class="n">figure_file</span><span class="p">)))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="smith-normal-form-for-partial-2">
+<h2>Smith Normal Form for <span class="math notranslate nohighlight">\(\partial_2\)</span><a class="headerlink" href="#smith-normal-form-for-partial-2" title="Link to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(N_2 = U_{1}\partial_2 V_2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotSecondSetOfMatrices</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span><span class="n">U1</span><span class="p">,</span><span class="n">V2</span><span class="p">,</span><span class="n">edge_list</span><span class="p">,</span><span class="n">triangle_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/931259ab1114a9fce99f597fe531bd3ec20d8edbaf94aa0b0a036bedc4e1595e.png" src="../../_images/931259ab1114a9fce99f597fe531bd3ec20d8edbaf94aa0b0a036bedc4e1595e.png" />
+</div>
+</div>
+</section>
+<section id="you-do-it">
+<h2>You do it:<a class="headerlink" href="#you-do-it" title="Link to this heading">#</a></h2>
+<p>Now use these matrix outputs to calculate the betti numbers <span class="math notranslate nohighlight">\(\beta_0\)</span>, <span class="math notranslate nohighlight">\(\beta_1\)</span>, and <span class="math notranslate nohighlight">\(\beta_2\)</span>.
+Specifically, use the image below and the fact that <span class="math notranslate nohighlight">\(\beta_p = z_p - b_p\)</span>.</p>
+<p><img alt="Image" src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/BdyInSNF.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N2_pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">N2</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">edge_list</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">triangle_list</span><span class="p">)</span>
+<span class="n">N2_pd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BCE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AE</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>AD</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>BC</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>BE</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>CD</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>CE</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N1_pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">vertex_list</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">edge_list</span><span class="p">)</span>
+<span class="n">N1_pd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AE</th>
+      <th>AD</th>
+      <th>BC</th>
+      <th>BE</th>
+      <th>CD</th>
+      <th>CE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>E</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="fill-out-this-table-to-answer-the-previous-question">
+<h2>Fill out this table to answer the previous question<a class="headerlink" href="#fill-out-this-table-to-answer-the-previous-question" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[0 \longrightarrow C_2(K) \longrightarrow C_1(K) \longrightarrow C_0(K) \longrightarrow 0\]</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(c_p\)</span></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(z_p\)</span></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(b_p\)</span></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(\beta_p\)</span> (Betti number)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(p=0\)</span></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(p=1\)</span></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(p=2\)</span></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="solution-commented-out-in-this-cell-no-peeking">
+<h3>Solution commented out in this cell…. no peeking!<a class="headerlink" href="#solution-commented-out-in-this-cell-no-peeking" title="Link to this heading">#</a></h3>
+<!-- ![Solution](https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/SimplexExamples_1-AnnotatedBdy.jpg)
+
+| | $c_p$ | $z_p$ | $b_p$ | $\beta_p = z_p - b_p$|
+| :--- | :--- | :--- | :--- | :--- |
+|$p=0$ | 5 | (5) | 4 | 1 |
+|$p=1$ | 6 | 2 | 1 | 1 |
+|$p=2$ | 1 | 0 | (0) | 0 | --></section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reading-off-the-generators-of-homology">
+<h1>Reading off the generators of homology<a class="headerlink" href="#reading-off-the-generators-of-homology" title="Link to this heading">#</a></h1>
+<p><img alt="Simplicial Complex Example 1" src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/SimplexExamples_1.png" /></p>
+<section id="generators-for-z-p-k">
+<h2>Generators for <span class="math notranslate nohighlight">\(Z_p(K)\)</span><a class="headerlink" href="#generators-for-z-p-k" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Remember <span class="math notranslate nohighlight">\(Z_p(K)\)</span> is the kernel of the boundary map <span class="math notranslate nohighlight">\(\partial_1: C_p(K) \to C_{p-1}(K)\)</span>.</p></li>
+<li><p>We can think of Smith Normal Form as giving a particularly nice basis for the domain and range to make finding the kernel and image easy.</p></li>
+<li><p>The generators for <span class="math notranslate nohighlight">\(Z_1\)</span> are the last <span class="math notranslate nohighlight">\(z_1\)</span> columns of <span class="math notranslate nohighlight">\(V_1\)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotFirstSetOfMatrices</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span><span class="n">U0</span><span class="p">,</span><span class="n">V1</span><span class="p">,</span><span class="n">edge_list</span><span class="p">,</span><span class="n">vertex_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eb926017acdaedf9c576e98bb955818f715beda9c61a69fffa29894b72a273f7.png" src="../../_images/eb926017acdaedf9c576e98bb955818f715beda9c61a69fffa29894b72a273f7.png" />
+</div>
+</div>
+</section>
+<section id="generators-for-z-1-in-this-example">
+<h2>Generators for <span class="math notranslate nohighlight">\(Z_1\)</span> in this example<a class="headerlink" href="#generators-for-z-1-in-this-example" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">V1</span><span class="p">[:,</span><span class="o">-</span><span class="n">z1</span><span class="p">:])</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="sa">r</span><span class="s1">&#39;$\alpha$&#39;</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;$\beta$&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">V1</span><span class="p">[:,</span><span class="o">-</span><span class="n">z1</span><span class="p">]</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">V1</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9de1241b2f4a9c507c0ee276885d38adc8c31795b97412bc362dbfeb7788b91c.png" src="../../_images/9de1241b2f4a9c507c0ee276885d38adc8c31795b97412bc362dbfeb7788b91c.png" />
+</div>
+</div>
+</section>
+<section id="generators-for-b-p-k">
+<h2>Generators for <span class="math notranslate nohighlight">\(B_p(K)\)</span><a class="headerlink" href="#generators-for-b-p-k" title="Link to this heading">#</a></h2>
+<p>The generators for <span class="math notranslate nohighlight">\(B_p(K)\)</span> are stored as the first <span class="math notranslate nohighlight">\(b_p\)</span> columns of <span class="math notranslate nohighlight">\(U_p^{-1}\)</span>.</p>
+<p>In this case, we think of the labels for the rows as the <span class="math notranslate nohighlight">\(p\)</span>-simplices</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotSecondSetOfMatrices</span><span class="p">(</span><span class="n">N2</span><span class="p">,</span><span class="n">U1</span><span class="p">,</span><span class="n">V2</span><span class="p">,</span><span class="n">triangle_list</span><span class="p">,</span><span class="n">edge_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/baffc545b2ad26b0847dcf60c16300429b6222d9b467263112c7b25b86810b5e.png" src="../../_images/baffc545b2ad26b0847dcf60c16300429b6222d9b467263112c7b25b86810b5e.png" />
+</div>
+</div>
+</section>
+<section id="generators-for-b-1-k-in-this-example">
+<h2>Generators for <span class="math notranslate nohighlight">\(B_1(K)\)</span> in this example<a class="headerlink" href="#generators-for-b-1-k-in-this-example" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute $U_1$ inverse</span>
+<span class="n">U1_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">U1</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">U1_inv</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">edge_list</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/20131c5531cbfce2f37ad8ede7fc2a4b85cabecc145867a5c1b1e4eba0062f67.png" src="../../_images/20131c5531cbfce2f37ad8ede7fc2a4b85cabecc145867a5c1b1e4eba0062f67.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">U1_inv</span><span class="p">[:,:</span><span class="n">b1</span><span class="p">])</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="sa">r</span><span class="s1">&#39;$\gamma$&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">edge_list</span><span class="p">);</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="n">U1_inv</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9f6bb421727c0d2b26713ff4734f674a120e8e4c47f9152529c802ac9d9ad10e.png" src="../../_images/9f6bb421727c0d2b26713ff4734f674a120e8e4c47f9152529c802ac9d9ad10e.png" />
+</div>
+</div>
+</section>
+<section id="computing-generators-of-homology">
+<h2>Computing generators of homology<a class="headerlink" href="#computing-generators-of-homology" title="Link to this heading">#</a></h2>
+<p>For now, brute force:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Compute the equivalence class of alpha:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;alpha:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span> <span class="n">alpha</span> <span class="o">+</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;alpha + gamma:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span> <span class="n">alpha</span> <span class="o">+</span> <span class="n">gamma</span> <span class="p">,</span><span class="mi">2</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Notice that neither element of the equivalence class is beta or 0 &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute the equivalence class of alpha:
+[&#39;AE&#39;, &#39;AD&#39;, &#39;BC&#39;, &#39;BE&#39;, &#39;CD&#39;, &#39;CE&#39;]
+alpha: [1 1 1 1 1 0]
+alpha + gamma: [1 1 0 0 1 1]
+
+Notice that neither element of the equivalence class is beta or 0 
+[0 0 1 1 0 1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Compute the equivalence class of beta:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;beta:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span> <span class="n">beta</span> <span class="o">+</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;beta+gamma:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span> <span class="n">beta</span> <span class="o">+</span> <span class="n">gamma</span> <span class="p">,</span><span class="mi">2</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Notice that 0 is an element of the equivalence class, so [beta] = [0]. &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute the equivalence class of beta:
+beta: [0 0 1 1 0 1]
+beta+gamma: [0 0 0 0 0 0]
+Notice that 0 is an element of the equivalence class, so [beta] = [0]. 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="if-there-s-time">
+<h1>If there’s time…..<a class="headerlink" href="#if-there-s-time" title="Link to this heading">#</a></h1>
+<p>For the following example (the tetrahedron is empty):</p>
+<p><img alt="Simplicial Complex example 3" src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/SimplexExamples_3.png" /></p>
+<ul class="simple">
+<li><p>What are the boundary matrices <span class="math notranslate nohighlight">\(\partial_0\)</span>, <span class="math notranslate nohighlight">\(\partial_1\)</span>, and <span class="math notranslate nohighlight">\(\partial_2\)</span>?</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">smith</span></code> package to get the smith normal form of each.</p></li>
+<li><p>Fill out the table below to determine the Betti numbers.</p></li>
+<li><p>Give representatives for each of the homology classes.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[0 \longrightarrow C_2(K) \longrightarrow C_1(K) \longrightarrow C_0(K) \longrightarrow 0\]</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(c_p\)</span></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(z_p\)</span></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(b_p\)</span></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(\beta_p = z_p - b_p\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(p=0\)</span></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(p=1\)</span></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(p=2\)</span></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Lectures/07-Homology-Computing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 7</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture 7: Jupyter Notebook</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-homology">Computing Homology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmse-890">CMSE 890</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dr-liz-munch">Dr. Liz Munch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-homology-dimension">Computing Homology Dimension</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-partial-2">Computing <span class="math notranslate nohighlight">\(\partial_2\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-dimensions">Other dimensions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-betti-number">Calculating Betti Number</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-does-all-this-come-from">Where does all this come from</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smith-normal-form">Smith normal form</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-representation">Matrix representation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smith-normal-form-code">Smith normal form code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#script-to-run">Script to run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smith-normal-form-for-partial-1">Smith Normal Form for <span class="math notranslate nohighlight">\(\partial_1\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-script-to-run">Another script to run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smith-normal-form-for-partial-2">Smith Normal Form for <span class="math notranslate nohighlight">\(\partial_2\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#you-do-it">You do it:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fill-out-this-table-to-answer-the-previous-question">Fill out this table to answer the previous question</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-commented-out-in-this-cell-no-peeking">Solution commented out in this cell…. no peeking!</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-off-the-generators-of-homology">Reading off the generators of homology</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generators-for-z-p-k">Generators for <span class="math notranslate nohighlight">\(Z_p(K)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generators-for-z-1-in-this-example">Generators for <span class="math notranslate nohighlight">\(Z_1\)</span> in this example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generators-for-b-p-k">Generators for <span class="math notranslate nohighlight">\(B_p(K)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generators-for-b-1-k-in-this-example">Generators for <span class="math notranslate nohighlight">\(B_1(K)\)</span> in this example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-generators-of-homology">Computing generators of homology</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#if-there-s-time">If there’s time…..</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elizabeth Munch
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

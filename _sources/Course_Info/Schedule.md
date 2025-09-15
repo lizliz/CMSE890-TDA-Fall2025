@@ -14,7 +14,7 @@ The course schedule is maintained below. Note that this schedule is subject to c
 | Th 9/4 | [4](../Lectures/04-CechRips/index.md) | Complexes from point clouds | 2.2, 2.3 | | Jared |
 | T 9/9 | [5](../Lectures/05-HomologyPart1/index.md) | Homology Part 1 | 2.4 | | Patience |
 | Th 9/11 | [6](../Lectures/06-HomologyPart2/index.md) | Homology Part 2 | 2.5 | | Ian |
-| T 9/16 | 7 | Python and homology | | | |
+| T 9/16 | [7](../Lectures/07-Homology-Computing/index.md) | Python and homology | EH IV.2 | | Atoshi & Zhengrong |
 | Th 9/18 | 8 | Homology: Induced maps | 2.5.1 | | |
 | T 9/23 |  | *No class, Liz in Alabama* | | | |
 | Th 9/25 | | *No class* | | | |

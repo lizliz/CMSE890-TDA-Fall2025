@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Slide transcript &#8212; CMSE 890 - TDA</title>
+    <title>Lecture 7 &#8212; CMSE 890 - TDA</title>
   
   
   
@@ -59,12 +59,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/05-HomologyPart1/CompTop-Lec5-HomologyPt1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/07-Homology-Computing/index';</script>
     <script src="https://tikzjax.com/v1/tikzjax.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lecture 6" href="../06-HomologyPart2/index.html" />
-    <link rel="prev" title="Lecture 5" href="index.html" />
+    <link rel="next" title="Lecture 7: Jupyter Notebook" href="Lec07-ComputingHomology.html" />
+    <link rel="prev" title="Slide transcript" href="../06-HomologyPart2/CompTop-Lec6-HomologyPt2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -206,8 +206,8 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Day 05 (T 9/9)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Slide transcript</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05-HomologyPart1/index.html">Day 05 (T 9/9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-HomologyPart1/CompTop-Lec5-HomologyPt1.html">Slide transcript</a></li>
 
 
 </ul>
@@ -220,8 +220,8 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../07-Homology-Computing/index.html">Day 07 (T 9/16)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../07-Homology-Computing/Lec07-ComputingHomology.html">Lecture 7: Jupyter Notebook</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Day 07 (T 9/16)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Lec07-ComputingHomology.html">Lecture 7: Jupyter Notebook</a></li>
 
 
 
@@ -282,7 +282,7 @@
       
       
       
-      <li><a href="../../_sources/Lectures/05-HomologyPart1/CompTop-Lec5-HomologyPt1.md" target="_blank"
+      <li><a href="../../_sources/Lectures/07-Homology-Computing/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -353,9 +353,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -366,33 +364,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Slide transcript</h1>
+    <h1>Lecture 7</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Slide transcript</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-5-here-comes-the-homology">Lecture 5 - Here Comes the Homology</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-review-homology">Linear Algebra Review &amp; Homology</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-space">Vector space</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis">Basis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goal">Goal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-chains"><span class="math notranslate nohighlight">\(p\)</span>-Chains</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-linearity">Checking linearity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
-</ul>
-</li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -402,136 +378,25 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="slide-transcript">
-<h1>Slide transcript<a class="headerlink" href="#slide-transcript" title="Link to this heading">#</a></h1>
-<p>I am working on finding ways to increase accessibility of the beamer slides provided. The following is an automatically generated transcript from <a class="reference download internal" download="" href="../../_downloads/267ca1ed80f8adfe593be36c4ad8d7a8/CompTop-Lec5-HomologyPt1.pdf"><span class="xref download myst">the pdf of the slides</span></a> but is still not perfect. I would be happy to hear feedback on how this transcript can be improved for additional usefulness.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="lecture-5-here-comes-the-homology">
-<h1>Lecture 5 - Here Comes the Homology<a class="headerlink" href="#lecture-5-here-comes-the-homology" title="Link to this heading">#</a></h1>
-<section id="goals">
-<h2>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
-<p>Goals for today:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-7">
+<h1>Lecture 7<a class="headerlink" href="#lecture-7" title="Link to this heading">#</a></h1>
+<p>This lecture covers the basic ideas of computing homology from Smith Normal Form of the boundary matrix.</p>
 <ul class="simple">
-<li><p>Ch 2.4: Cycles and Boundaries</p></li>
-</ul>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="linear-algebra-review-homology">
-<h1>Linear Algebra Review &amp; Homology<a class="headerlink" href="#linear-algebra-review-homology" title="Link to this heading">#</a></h1>
-<p><strong>Definition:</strong>
-A field <span class="math notranslate nohighlight">\((k,+,\cdot)\)</span> is a set <span class="math notranslate nohighlight">\(k\)</span> with two operations <span class="math notranslate nohighlight">\(+\)</span> and <span class="math notranslate nohighlight">\(\cdot\)</span>
-such that for any <span class="math notranslate nohighlight">\(a,b,c \in k\)</span>:</p>
-<ul class="simple">
-<li><p>Closure:</p></li>
-<li><p>Commutativity:</p>
+<li><p><strong>Reading:</strong> EH IV.2</p></li>
+<li><p><strong>Slides:</strong></p>
 <ul>
-<li></li>
-<li></li>
+<li><p>No slides for this lecture.</p></li>
 </ul>
 </li>
-<li><p>Associativity:</p>
+<li><p><strong>Code (Download both for class):</strong></p>
 <ul>
-<li></li>
-<li></li>
-</ul>
-</li>
-<li><p>Identity:</p>
-<ul>
-<li></li>
-<li></li>
-</ul>
-</li>
-<li><p>Inverses:</p>
-<ul>
-<li></li>
-<li></li>
-</ul>
-</li>
-<li><p>Distributivity:</p></li>
-</ul>
-<p><strong>Examples:</strong></p>
-<section id="vector-space">
-<h2>Vector space<a class="headerlink" href="#vector-space" title="Link to this heading">#</a></h2>
-<p><strong>Definition:</strong>
-A vector space over a field <span class="math notranslate nohighlight">\(k\)</span> is a set <span class="math notranslate nohighlight">\(V\)</span> with vector addition and
-scalar multiplication such that</p>
-<ul class="simple">
-<li><p>Associative <span class="math notranslate nohighlight">\(+\)</span>:</p></li>
-<li><p>Commutative <span class="math notranslate nohighlight">\(+\)</span>:</p></li>
-<li><p>Identity</p>
-<ul>
-<li></li>
-<li></li>
-</ul>
-</li>
-<li><p>Inverses:</p>
-<ul>
-<li></li>
-</ul>
-</li>
-<li><p>Scalar vs. field mult:</p></li>
-<li><p>Distributivity:</p>
-<ul>
-<li></li>
-<li></li>
+<li><p><a class="reference internal" href="Lec07-ComputingHomology.html"><span class="std std-doc">Lec07-ComputingHomology.ipynb</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/e2c9c61a959832ae2ef5610d7e770b83/smith.py"><span class="xref download myst">smith.py</span></a>, a Python script for computing Smith Normal Form with <span class="math notranslate nohighlight">\(\mathbb{Z}_2\)</span> coefficients.</p></li>
 </ul>
 </li>
 </ul>
-<p><strong>Examples:</strong></p>
-</section>
-<section id="basis">
-<h2>Basis<a class="headerlink" href="#basis" title="Link to this heading">#</a></h2>
-<p><strong>Definition:</strong>
-A basis for a vector space <span class="math notranslate nohighlight">\(V\)</span> is a collection of vectors
-<span class="math notranslate nohighlight">\(\{b_\alpha\}_{\alpha \in A}\)</span> such that</p>
-<ul class="simple">
-<li><p>they are linearly independent and,</p></li>
-<li><p>they span <span class="math notranslate nohighlight">\(V\)</span>.</p></li>
-</ul>
-</section>
-<section id="goal">
-<h2>Goal<a class="headerlink" href="#goal" title="Link to this heading">#</a></h2>
-<p>Build a vector space from a simplicial complex!</p>
-</section>
-<section id="p-chains">
-<h2><span class="math notranslate nohighlight">\(p\)</span>-Chains<a class="headerlink" href="#p-chains" title="Link to this heading">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(K\)</span> be a simplicial complex and fix a dimension <span class="math notranslate nohighlight">\(p\)</span>.
-A <span class="math notranslate nohighlight">\(p\)</span>-chain is a finite formal sum of <span class="math notranslate nohighlight">\(p\)</span>-simplices in <span class="math notranslate nohighlight">\(K\)</span>, written
-$$\alpha = \sum a_i \sigma_i</p>
-<div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}![image](../Figures/SimplexExamples_WithTet-web.png)
-## Addition of chains\\$p$-chains are added component-wise: if $\alpha = \sum a_i \sigma_i$ and
-$\beta = \sum b_i \sigma_i$, then
-$\alpha + \beta =$
-## Chain group\\The collection of $p$-chains with addition is called the
-$p^\text{th}$-chain group (vector space), $C_p(K)$.\\**Some checks**\\- Associative $+$:\\- Commutative $+$:\\- Zero element\\- Inverses:
-## Linear Transformations\\A linear transformation between two vector spaces $V$ and $W$ is a map
-$T:V\to W$ such that the following hold:\\- 
-- \\Matrix representation:
-## Boundary maps[^1]\\$$\begin{matrix}
-\partial _p: &amp; C_p(K) &amp; \to &amp; C_{p-1}(K)\
-&amp; \sigma = [v_0,\cdots,v_p] &amp; \mapsto &amp; \sum_{j=0}^p[v_0,\cdots,\widehat{v_j}, \cdots v_p]
-\end{matrix}\end{aligned}\end{align} \]</div>
-</section>
-<section id="checking-linearity">
-<h2>Checking linearity<a class="headerlink" href="#checking-linearity" title="Link to this heading">#</a></h2>
-<div class="math notranslate nohighlight">
-\[\partial_p(\alpha + \beta) = \partial_p(\alpha) + \partial_p(\beta); \hspace{.5in} \alpha = \sum a_i \sigma_i,\qquad  \beta = \sum b_i, \sigma_i\]</div>
-</section>
-<section id="homework">
-<h2>Homework<a class="headerlink" href="#homework" title="Link to this heading">#</a></h2>
-<div class="minipage docutils">
-<p><img alt="image" src="../../_images/SimplexExamples_WithTet-web.png" /></p>
-<div class="minipage docutils">
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\partial_1([a,e]) =\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\partial_1([a,e] + [b,e]) =\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\partial_1([a,e] + [c,e] + [c,d] + [a,d]) =\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\partial_2([a,c,e] + [a,c,d]) =\)</span></p></li>
-</ul>
+<div class="toctree-wrapper compound">
 </div>
-</div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -547,7 +412,7 @@ $T:V\to W$ such that the following hold:\\-
         },
         kernelOptions: {
             name: "python3",
-            path: "./Lectures/05-HomologyPart1"
+            path: "./Lectures/07-Homology-Computing"
         },
         predefinedOutput: true
     }
@@ -565,20 +430,20 @@ $T:V\to W$ such that the following hold:\\-
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="../06-HomologyPart2/CompTop-Lec6-HomologyPt2.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lecture 5</p>
+        <p class="prev-next-title">Slide transcript</p>
       </div>
     </a>
     <a class="right-next"
-       href="../06-HomologyPart2/index.html"
+       href="Lec07-ComputingHomology.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 6</p>
+        <p class="prev-next-title">Lecture 7: Jupyter Notebook</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -588,35 +453,6 @@ $T:V\to W$ such that the following hold:\\-
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Slide transcript</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-5-here-comes-the-homology">Lecture 5 - Here Comes the Homology</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-review-homology">Linear Algebra Review &amp; Homology</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-space">Vector space</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis">Basis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goal">Goal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-chains"><span class="math notranslate nohighlight">\(p\)</span>-Chains</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-linearity">Checking linearity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
-</ul>
-</li>
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

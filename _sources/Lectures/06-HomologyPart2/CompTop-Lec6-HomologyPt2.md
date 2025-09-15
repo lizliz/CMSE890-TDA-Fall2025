@@ -123,7 +123,7 @@ What are the generators of $B_1(K)$? Of $Z_1(K)$?
 ## Try it: Cycles and boundaries
 
 What are the generators of $B_1(K)$? Of $Z_1(K)$?
-![image](../Figures/SimplexExamples_WithTet)
+![image](../Figures/SimplexExamples_WithTet-web.png)
 
 Homework (In case we only get this far)
 
