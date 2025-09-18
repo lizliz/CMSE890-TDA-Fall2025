@@ -7,6 +7,9 @@
 
 
 import numpy as np 
+import matplotlib.pyplot as plt
+import PIL
+import urllib
 
 
 
@@ -113,3 +116,76 @@ def smith_form(A, returnRank = False):
 	else:
 		return N,U,V
 
+
+# Plotting scripts
+def plotFirstSetOfMatrices(N1,U0,B1,V1,edge_list,vertex_list,figure_file = 'SimplexExamples_1.png'):
+
+    fig, ax = plt.subplots(nrows=1, ncols=5, figsize = (20,10))
+
+    ax[0].spy(N1)
+    ax[0].set_title("$N_1$")
+    ax[0].set_xticks(list(range(len(edge_list))))
+    ax[0].set_xticklabels(edge_list)
+    ax[0].set_yticks(list(range(len(vertex_list))))
+    ax[0].set_yticklabels(vertex_list)
+
+    ax[1].spy(U0)
+    ax[1].set_title("$U_0$")
+    ax[1].set_xticks(list(range(len(vertex_list))))
+    ax[1].set_xticklabels(vertex_list)
+    ax[1].set_yticks(list(range(len(vertex_list))))
+    ax[1].set_yticklabels(vertex_list)
+
+    ax[2].spy(B1)
+    ax[2].set_title("$B_1$")
+    ax[2].set_xticks(list(range(len(edge_list))))
+    ax[2].set_xticklabels(edge_list)
+    ax[2].set_yticks(list(range(len(vertex_list))))
+    ax[2].set_yticklabels(vertex_list)
+
+    ax[3].spy(V1)
+    ax[3].set_title("$V_1$")
+    ax[3].set_xticks(list(range(len(edge_list))))
+    ax[3].set_xticklabels(edge_list)
+    ax[3].set_yticks(list(range(len(edge_list))))
+    ax[3].set_yticklabels(edge_list)
+
+    img = np.array(PIL.Image.open(urllib.request.urlopen('https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/' + figure_file)))
+    ax[4].imshow(img)
+    ax[4].axis('off')
+
+def plotSecondSetOfMatrices(N2,U1,B2, V2,edge_list,triangle_list,figure_file = 'SimplexExamples_1.png'):
+    fig, ax = plt.subplots(nrows=1, ncols=5, figsize = (20,10))
+
+    ax[0].spy(N2)
+    ax[0].set_title("$N_2$")
+    ax[0].set_xticks(list(range(len(triangle_list))))
+    ax[0].set_xticklabels(triangle_list)
+    ax[0].set_yticks(list(range(len(edge_list))))
+    ax[0].set_yticklabels(edge_list)
+
+    ax[1].spy(U1)
+    ax[1].set_title("$U_1$")
+    ax[1].set_xticks(list(range(len(edge_list))))
+    ax[1].set_xticklabels(edge_list)
+    ax[1].set_yticks(list(range(len(edge_list))))
+    ax[1].set_yticklabels(edge_list)
+
+
+    ax[2].spy(B2)
+    ax[2].set_title("$B_2$")
+    ax[2].set_xticks(list(range(len(triangle_list))))
+    ax[2].set_xticklabels(triangle_list)
+    ax[2].set_yticks(list(range(len(edge_list))))
+    ax[2].set_yticklabels(edge_list)
+
+    ax[3].spy(V2)
+    ax[3].set_title("$V_2$")
+    ax[3].set_xticks(list(range(len(triangle_list))))
+    ax[3].set_xticklabels(triangle_list)
+    ax[3].set_yticks(list(range(len(triangle_list))))
+    ax[3].set_yticklabels(triangle_list)
+
+    img = np.array(PIL.Image.open(urllib.request.urlopen('https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/main/JupyterFigures/'+figure_file)))
+    ax[4].imshow(img)
+    ax[4].axis('off')
