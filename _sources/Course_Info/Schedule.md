@@ -15,10 +15,10 @@ The course schedule is maintained below. Note that this schedule is subject to c
 | T 9/9 | [5](../Lectures/05-HomologyPart1/index.md) | Homology Part 1 | 2.4 | | Patience |
 | Th 9/11 | [6](../Lectures/06-HomologyPart2/index.md) | Homology Part 2 | 2.5 | | Ian |
 | T 9/16 | [7](../Lectures/07-Homology-Computing/index.md) | Python and homology | EH IV.2 | Bring laptop, [download files from here](../Lectures/07-Homology-Computing/index.md) | Atoshi & Zhengrong |
-| Th 9/18 | 8 | Filtrations, Betti curves, Induced maps | 2.5.1, 3.1 | | Ishika |
-| T 9/23 |  | *No class* | | | |
+| Th 9/18 | [8](../Lectures/08-InducedMaps/) | Filtrations, Betti curves, Induced maps | 2.5.1, 3.1 |  | Ishika |
+| T 9/23 |  | *No class* | | Watch an [AATRN](https://www.youtube.com/@aatrn1/playlists) video and post about it on the slack channel | |
 | Th 9/25 | | *No class* | | | |
-| T 9/30 | 9 | Filtrations & Persistence | 3.1 | | |
+| T 9/30 | 9 | Filtrations & Persistence | 3.1 | | None |
 | Th 10/2 | 10 | Persistence diagram | 3.2 | | |
 | T 10/7 | 11 | Persistence algorithm | 3.3 | | |
 | Th 10/9 | 12 | Persistence of point clouds | | | |
