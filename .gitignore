@@ -8,6 +8,7 @@ _build
 __pycache__/
 *.syncfolderspro
 Lectures/2024-Fall-Annotated/_DelSyncFiles*
+Lectures/Annotated-Fall2025/CMSE890-Scratch.pdf
 MNIST*
 data*
 .vscode/

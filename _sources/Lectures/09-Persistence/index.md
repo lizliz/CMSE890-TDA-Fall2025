@@ -6,4 +6,4 @@ This lecture covers persistent homology.
 - **Slides:**
   - [Lecture 9 slides pdf](./CompTop-Lec09-Persistence.pdf)
   <!-- - [Transcript of slides](./CompTop-Lec6-HomologyPt2.md) -->
-- **Annotated slides (Fall 2025):**  [Lecture 9 slides - Annotated](../Annotated-Fall2025/CompTop-Lec09-Persistence.pdf.pdf)
+- **Annotated slides (Fall 2025):**  [Lecture 9 slides - Annotated](../Annotated-Fall2025/CompTop-Lec09-Persistence.pdf)
