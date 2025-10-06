@@ -19,8 +19,8 @@ The course schedule is maintained below. Note that this schedule is subject to c
 | T 9/23 |  | *No class* | | Watch an [AATRN](https://www.youtube.com/@aatrn1/playlists) video and post about it on the slack channel | |
 | Th 9/25 | | *No class* | | | |
 | T 9/30 | [9](../Lectures/09-Persistence/index.md) | Filtrations & Persistence | 3.1, EH VII.1 | | None |
-| Th 10/2 | 10 | Persistence diagram | 3.2 | | |
-| T 10/7 | 11 | Persistence algorithm | 3.3 | | |
+| Th 10/2 | [10](../Lectures/10-Persistence_Algorithm/index.md) | Persistence algorithm | 3.1, EH VII.1 | | Jannik |
+| T 10/7 | [11](../Lectures/11-PersistenceWithPython/11-PersistenceWithPython.ipynb) | Persistence with Python |  | | None |
 | Th 10/9 | 12 | Persistence of point clouds | | | |
 | T 10/14 | 13 | Python and persistence | | | |
 | Th 10/16 | 14 | Bottleneck and Wasserstein Distance, stability | 3.2 | | |
