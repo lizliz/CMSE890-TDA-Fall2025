@@ -229,6 +229,49 @@ def find_lowest_ones(R, S):
 
     return result
 
+def get_pairs(low, S):
+    """
+    Given the list of lowest 1s in each column and the list of simplices S,
+    return the list of (birth_simplex, death_simplex) pairs.
+
+    Parameters:
+    low: List of lowest 1s in each column (with -1 for columns with no 1s)
+    S: List of simplices.
+
+    Returns:
+    List of (birth_simplex, death_simplex) pairs.
+    """
+    pairs = []
+    for i in range(len(S)):
+        if low[i] != -1:
+            pairs.append((S[low[i]], S[i]))
+        else:
+            if i not in low:
+                pairs.append((S[i], None))
+                
+    return pairs
+
+def get_pers_points(pairs, f_val):
+    """
+    Given the list of (birth_simplex, death_simplex) pairs and a function f_val that gives the value of each simplex,
+    return the list of (birth_value, death_value) points for the persistence diagram.
+
+    Parameters:
+    pairs: List of (birth_simplex, death_simplex) pairs.
+    f_val: Function that gives the value of each simplex.
+
+    Returns:
+    List of (birth_value, death_value) points.
+    """
+    PersPoints = []
+    for p in pairs:
+        if p[1] is not None and f_val(p[0]) != f_val(p[1]):
+            PersPoints.append((f_val(p[0]), f_val(p[1])))
+        elif p[1] is None:
+            PersPoints.append((f_val(p[0]), np.inf))
+
+    return PersPoints
+
 #============================
 if __name__ == "__main__":
     # Example simplices
