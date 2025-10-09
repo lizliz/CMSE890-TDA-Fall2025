@@ -1,4 +1,4 @@
-# Lecture 10 
+# Lecture 11 
 
 This lecture uses Python to run the standard persistence algorithm.
 

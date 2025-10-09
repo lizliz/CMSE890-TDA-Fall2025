@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -63,7 +63,8 @@
     <script src="https://tikzjax.com/v1/tikzjax.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Lecture 10" href="index.html" />
+    <link rel="next" title="Lecture 12" href="../12-PointCloudPersistence/index.html" />
+    <link rel="prev" title="Lecture 11" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -235,6 +236,10 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Jupyter Notebook</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../12-PointCloudPersistence/index.html">Day 12 (Th 10/9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../12-PointCloudPersistence/12-RipsPersistence.html">Jupyter Notebook</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -385,10 +390,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-persistence-algorithm">The Persistence Algorithm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-star-filtration">Lower Star Filtration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-off-the-classes">Reading off the classes</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-star-filtration">Lower Star Filtration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">Q1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">Q2</a></li>
@@ -412,11 +414,11 @@ document.write(`
 <p>This tutorial will be built on teaching software I wrote to understand the standard persistence algorithm in a way that we can see the boundary matrices. <em>Warning: This is not fast, optimized, or otherwise recommended for use in any real applications so don’t judge me.</em> You need to download the file <a class="reference download internal" download="" href="../../_downloads/4c82f1dc68546dbd40d755e345b793b4/TeachingPersistence.py"><span class="xref download myst">TeachingPersistence.py</span></a> and save it to the same folder as this jupyter notebook in order to run.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">TeachingPersistence</span> <span class="k">as</span> <span class="nn">Pers</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">TeachingPersistence</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">Pers</span>
 
 <span class="c1"># Standard imports </span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -426,7 +428,7 @@ document.write(`
 </section>
 <section id="the-persistence-algorithm">
 <h2>The Persistence Algorithm<a class="headerlink" href="#the-persistence-algorithm" title="Link to this heading">#</a></h2>
-<p>As discussed last class, the persistence algorithm is given by the following. We start with a matrix <span class="math notranslate nohighlight">\(B\)</span> giving the boundary information for a simplicial complex, with columns sorted in order of the filtration.</p>
+<p>As discussed last class, the persistence algorithm is given by the following. We have a function on a simplicial complex <span class="math notranslate nohighlight">\(f:K \to \mathbb{R}\)</span>. Then we choose a compatible ordering of the simplices and built a matrix <span class="math notranslate nohighlight">\(B\)</span> giving the boundary information for a simplicial complex, with columns sorted in order of the filtration.</p>
 <ul class="simple">
 <li><p>Let <span class="math notranslate nohighlight">\(low(j)\)</span> be the row index of the lowest one in column <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
 <li><p>If column <span class="math notranslate nohighlight">\(j\)</span> is entirely 0, <span class="math notranslate nohighlight">\(low(j)\)</span> is <span class="math notranslate nohighlight">\(-1\)</span>. <em>(Note: it was <code class="docutils literal notranslate"><span class="pre">NaN</span></code> in the previous slides)</em></p></li>
@@ -442,6 +444,7 @@ document.write(`
 &amp; \qquad \text{Add column } j' \text{ to column } j
 \end{aligned}
 \end{split}\]</div>
+<p>Say we have a pair <span class="math notranslate nohighlight">\((\sigma,\tau)\)</span>, where <span class="math notranslate nohighlight">\(\tau\)</span> is the row entry for the lowest one in <span class="math notranslate nohighlight">\(\sigma\)</span>’s column. If <span class="math notranslate nohighlight">\(\sigma\)</span> is a <span class="math notranslate nohighlight">\(p\)</span>-simplex, and <span class="math notranslate nohighlight">\(\tau\)</span> is a <span class="math notranslate nohighlight">\((p+1)\)</span>-simplex, then we know that a <span class="math notranslate nohighlight">\(p\)</span>-dimensional class was born with the addition of simplex <span class="math notranslate nohighlight">\(\sigma\)</span> and dies with the addition of simplex <span class="math notranslate nohighlight">\(\tau\)</span>. In the <span class="math notranslate nohighlight">\(p\)</span>-dimensional persistence diagram, this means that we have a point in the diagram at <span class="math notranslate nohighlight">\((f(\sigma),f(\tau))\)</span>.</p>
 </section>
 <section id="lower-star-filtration">
 <h2>Lower Star Filtration<a class="headerlink" href="#lower-star-filtration" title="Link to this heading">#</a></h2>
@@ -469,7 +472,7 @@ f(\sigma) = \max\{ f(v) \mid v \in \sigma\}.
 <p>I’ll use this to make a Python function that will give me the filtration function value <span class="math notranslate nohighlight">\(f(\sigma)\)</span> for all the simplices, not just the vertices.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_val</span><span class="p">(</span><span class="n">sigma</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f_val</span><span class="p">(</span><span class="n">sigma</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">max</span><span class="p">([</span><span class="n">f</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">sigma</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Example, f([0,1,5]) = </span><span class="si">{</span><span class="n">f_val</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -744,21 +747,6 @@ Pair: (52, 60)
 </div>
 </div>
 </div>
-<section id="reading-off-the-classes">
-<h3>Reading off the classes<a class="headerlink" href="#reading-off-the-classes" title="Link to this heading">#</a></h3>
-<p>As noted in class, we can track the persistence class that dies with each negative simplex addition.  If a simplex is negative, then its column is non-zero, and the entries in that column give the class that was just killed.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Pers</span><span class="o">.</span><span class="n">drawMat</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">S</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/c9fc63815afe95fe2ba83709bac2eec819e47d97849da9e6b86d5f066fe747f2.png" src="../../_images/c9fc63815afe95fe2ba83709bac2eec819e47d97849da9e6b86d5f066fe747f2.png" />
-</div>
-</div>
-<p>For example, looking above, we see that the class killed by the addition of triangle <code class="docutils literal notranslate"><span class="pre">3,5,6</span></code> is <code class="docutils literal notranslate"><span class="pre">12</span> <span class="pre">+</span> <span class="pre">23</span> <span class="pre">+</span> <span class="pre">15</span> <span class="pre">+</span> <span class="pre">35</span></code>.</p>
-</section>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
@@ -835,8 +823,17 @@ Pair: (52, 60)
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lecture 10</p>
+        <p class="prev-next-title">Lecture 11</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../12-PointCloudPersistence/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 12</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -856,10 +853,7 @@ Pair: (52, 60)
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-persistence-algorithm">The Persistence Algorithm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-star-filtration">Lower Star Filtration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-off-the-classes">Reading off the classes</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-star-filtration">Lower Star Filtration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">Q1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">Q2</a></li>
