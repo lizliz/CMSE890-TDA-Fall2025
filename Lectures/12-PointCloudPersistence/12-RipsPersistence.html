@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -437,20 +437,20 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ripser</span> <span class="c1"># This is in the scikit-tda package</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">persim</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_diagrams</span> <span class="c1"># Also in scikit-tda</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ripser</span> <span class="c1"># This is in the scikit-tda package</span>
+<span class="kn">from</span> <span class="nn">persim</span> <span class="kn">import</span> <span class="n">plot_diagrams</span> <span class="c1"># Also in scikit-tda</span>
 
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">teaspoon.MakeData.PointCloud</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gPC</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">teaspoon.TDA.Draw</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">Draw</span>
+<span class="kn">import</span> <span class="nn">teaspoon.MakeData.PointCloud</span> <span class="k">as</span> <span class="nn">gPC</span>
+<span class="kn">import</span> <span class="nn">teaspoon.TDA.Draw</span> <span class="k">as</span> <span class="nn">Draw</span>
 
 <span class="c1"># Standard imports </span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial</span><span class="w"> </span><span class="kn">import</span> <span class="n">distance_matrix</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance_matrix</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
 
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -481,6 +481,19 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">P</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0. , 0. ],
+       [1. , 0. ],
+       [0. , 2. ],
+       [1. , 1.5],
+       [0.5, 0.5],
+       [2. , 2. ],
+       [2. , 0.5],
+       [2.5, 1. ]])
 </pre></div>
 </div>
 </div>
@@ -628,12 +641,12 @@ with keys dict_keys([&#39;dgms&#39;, &#39;cocycles&#39;, &#39;num_edges&#39;, &#
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_diagrams</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;dgms&#39;</span><span class="p">])</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/02779919eca1bce4ef5108e47bb8c1b091c24ac0f10c70ff5e691726e98b1e5e.png" src="../../_images/02779919eca1bce4ef5108e47bb8c1b091c24ac0f10c70ff5e691726e98b1e5e.png" />
+<img alt="../../_images/21c1b6798e983b2af19a354863350d66504086f4dc730074831ba6e47cc9e54e.png" src="../../_images/21c1b6798e983b2af19a354863350d66504086f4dc730074831ba6e47cc9e54e.png" />
 </div>
 </div>
 </section>
@@ -657,12 +670,224 @@ Answer: One connected component, so $\beta_0 = 1$; One loop, so $\beta_1 = 1$. -
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">gPC</span><span class="o">.</span><span class="n">Annulus</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">Draw</span><span class="o">.</span><span class="n">drawPtCloud</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a2f64aa6da94c2b967a828931cc526166b8f56f6dd3b02189ce864e0cbb8a7b3.png" src="../../_images/a2f64aa6da94c2b967a828931cc526166b8f56f6dd3b02189ce864e0cbb8a7b3.png" />
+<img alt="../../_images/b0d0c4a4c76bdbaf69e3b040cad383d3fd1ce6804286705802586dc51a2f851f.png" src="../../_images/b0d0c4a4c76bdbaf69e3b040cad383d3fd1ce6804286705802586dc51a2f851f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.76243294,  0.97205737],
+       [-1.26672625,  2.27607755],
+       [-2.49430639, -1.2800484 ],
+       [ 2.83770111,  0.09580523],
+       [ 2.8644357 , -0.38387615],
+       [ 2.03038535, -1.36911699],
+       [ 0.49754451,  2.58180015],
+       [ 0.38025519, -2.94497835],
+       [ 1.15954566,  2.52816422],
+       [-2.04693913,  0.78140259],
+       [ 2.22777347, -0.47923324],
+       [ 2.3500861 , -1.58805883],
+       [ 2.05806357, -1.84835211],
+       [-2.04777456, -1.30399017],
+       [-2.15252848, -2.06196926],
+       [-1.04559809,  2.71517326],
+       [-1.21111187, -2.39947752],
+       [-2.019565  , -1.68303387],
+       [-1.56022083,  1.50040389],
+       [ 1.07717745,  2.4392088 ],
+       [-0.21604177, -2.40344244],
+       [-0.47848901, -2.66142265],
+       [-0.02776209,  2.6492904 ],
+       [-2.90595973,  0.3210419 ],
+       [-1.46636893, -1.66905686],
+       [ 0.90625111, -1.86529861],
+       [-2.49340269,  0.28944743],
+       [ 2.84324216, -0.59631852],
+       [ 1.48364243, -1.69611387],
+       [ 0.04626871,  2.90373007],
+       [-2.4766083 ,  1.02454059],
+       [-0.38980522,  2.24549147],
+       [ 0.00402259,  2.66762951],
+       [ 0.17186335, -2.15167745],
+       [-2.66230308,  0.22585939],
+       [-0.47781738, -2.11175657],
+       [ 1.41093249, -1.53042717],
+       [ 1.01179998, -2.05682477],
+       [ 1.42645998,  2.33057493],
+       [ 2.29014624,  0.3152334 ],
+       [ 2.5776112 ,  0.36558618],
+       [ 1.4686417 ,  2.56228504],
+       [ 0.24250334,  2.64648712],
+       [-2.82779065, -0.45644002],
+       [ 0.28064451,  2.33564368],
+       [ 1.10257405, -2.54001123],
+       [-1.40149213,  1.92612691],
+       [ 2.63405962,  0.56504005],
+       [ 2.49247177,  1.27475393],
+       [-1.77978761, -1.65593865],
+       [-2.26959587, -1.33390187],
+       [-0.24062323,  2.51630889],
+       [-0.32997001, -2.10442957],
+       [-0.84953516,  1.93031812],
+       [ 2.82574208, -0.26507861],
+       [-2.64782397,  1.3907923 ],
+       [ 0.26333632, -2.33336768],
+       [ 0.67432154,  2.62716382],
+       [-1.3457415 ,  2.11482066],
+       [ 1.43857738, -1.87998323],
+       [-2.86631595, -0.40006947],
+       [-1.5003611 ,  2.52356556],
+       [ 2.90734303, -0.48698858],
+       [ 1.68941934,  1.65186164],
+       [-1.54174209, -2.15688489],
+       [-1.41709997, -2.42830245],
+       [ 1.99317487,  1.98483806],
+       [-2.66731067, -0.07399672],
+       [ 1.91541029, -1.35987517],
+       [ 2.50392383, -0.38185748],
+       [-0.88954589, -2.09392074],
+       [-2.32586324,  1.80816576],
+       [-1.94724498, -1.68415527],
+       [-2.84503877,  0.2552908 ],
+       [-1.79423258, -2.40310682],
+       [ 0.61664103, -2.10470217],
+       [-1.44291411,  1.93911541],
+       [-0.87326655, -2.5690005 ],
+       [ 2.85553963,  0.16195922],
+       [-2.61946997, -0.47751869],
+       [-1.4358022 ,  1.96515746],
+       [-1.20460551,  1.87762869],
+       [-2.18348589, -0.83296522],
+       [-1.19533713, -1.6618921 ],
+       [ 1.88798519, -0.88440115],
+       [-2.72743752,  0.26046041],
+       [ 0.23400844,  2.39902814],
+       [-2.18041528, -1.43837798],
+       [-1.63630215, -2.39523752],
+       [-0.83112571, -2.43628816],
+       [ 0.95895232,  2.83049933],
+       [ 1.97590378, -1.37541697],
+       [-2.33015657, -1.05825042],
+       [-0.20774524,  2.42530855],
+       [-2.02718163, -1.12793753],
+       [-0.05857569,  2.21441586],
+       [ 2.16633875, -1.33391594],
+       [-1.94888242,  1.67517294],
+       [ 2.07111946,  0.932817  ],
+       [ 2.4371451 , -0.35106948],
+       [-2.80329537, -0.76442792],
+       [ 1.65465296,  1.46682304],
+       [-1.70520708,  2.41620266],
+       [ 2.80476886,  0.15360835],
+       [ 2.12875352,  0.44796196],
+       [ 0.96486068,  2.14147839],
+       [-2.36238195, -1.51427336],
+       [-0.71645192, -2.87532347],
+       [ 0.0158555 ,  2.57710989],
+       [ 0.97630578, -2.60382147],
+       [-2.62569779, -0.43108784],
+       [-2.13419516,  1.43410999],
+       [-2.27350559, -0.26897064],
+       [-2.16441397,  0.5993368 ],
+       [-0.10822852,  2.3328303 ],
+       [ 2.7037723 ,  0.25824985],
+       [ 1.5747935 , -2.3235471 ],
+       [ 0.21105743, -2.64143135],
+       [ 2.06815706, -0.18587762],
+       [ 2.34829223,  0.06454898],
+       [ 0.30283948, -2.93627354],
+       [-0.54181773,  2.00818029],
+       [-0.7529509 , -2.40343136],
+       [-2.27147549,  0.02276391],
+       [-0.71165603, -1.91132106],
+       [ 1.11334786, -2.60200712],
+       [-1.73247483,  2.19956029],
+       [-2.26551455, -1.72560151],
+       [ 0.62891638,  2.57056352],
+       [-1.11792625,  1.7065487 ],
+       [-2.50377833, -1.58485172],
+       [-2.27641468, -1.65666021],
+       [ 0.89925124,  2.08224407],
+       [ 0.41555918,  2.88312545],
+       [-1.37190278,  2.65186908],
+       [ 2.02073919, -0.79184719],
+       [-0.08950867, -2.69726008],
+       [ 0.12077471, -2.18466736],
+       [-2.38395535,  0.88890668],
+       [-1.05014165,  2.06255931],
+       [-2.17876932, -0.30665543],
+       [ 0.34025338,  2.32935051],
+       [ 1.95847036, -0.72964278],
+       [-1.03474818, -1.8522477 ],
+       [ 2.32881473, -1.73204748],
+       [-2.48555012,  1.28906456],
+       [-2.14248618,  0.12928078],
+       [ 1.69529413, -1.90684823],
+       [ 0.63826844,  2.7701254 ],
+       [-2.45792227, -1.65797642],
+       [ 2.49550758,  1.04625264],
+       [-0.08812661, -2.03297074],
+       [-0.59062634,  2.238792  ],
+       [ 1.93137007, -2.16907727],
+       [-1.59772231, -2.19894248],
+       [-2.18214411, -0.11614279],
+       [-1.2096695 ,  2.65871866],
+       [-1.74232942, -2.41589824],
+       [-2.84789412,  0.7343372 ],
+       [-0.85278805, -1.81225075],
+       [ 2.35148865, -0.80933228],
+       [ 2.69364347, -0.99492707],
+       [-2.40856622, -0.7598865 ],
+       [-2.95438461, -0.22558623],
+       [-2.97472376, -0.33144545],
+       [-0.7561349 , -1.85876501],
+       [ 0.73413466, -2.00195865],
+       [ 0.33191277, -2.38660804],
+       [-1.28798254,  2.44645597],
+       [-0.28334635,  2.08174109],
+       [-2.40363714,  1.43536019],
+       [ 2.702349  ,  0.27246188],
+       [ 0.76580191,  1.87271538],
+       [-0.56342167,  1.99228791],
+       [-2.77065137, -0.33580568],
+       [ 1.00944695,  1.91093312],
+       [-1.15419965, -2.68149142],
+       [-2.23569652, -0.14361017],
+       [-2.20793834, -0.75465916],
+       [-2.43470183, -0.7332519 ],
+       [ 2.11520409, -0.4686775 ],
+       [ 1.94898385, -0.8118823 ],
+       [-1.39482747,  2.27775507],
+       [ 1.05736827, -1.93849771],
+       [-2.04764553, -1.53894872],
+       [-2.78919145,  1.04843516],
+       [-2.38144292, -1.03320686],
+       [-2.44730761, -0.98052759],
+       [-0.03204719,  2.73581902],
+       [ 0.25340191,  2.12459508],
+       [-0.08103629,  2.21583356],
+       [ 1.99593032, -1.15377649],
+       [ 2.03815488, -0.64748671],
+       [ 1.57778489, -2.43308223],
+       [-1.68532796, -2.20144187],
+       [ 0.60468723, -2.0147109 ],
+       [-2.28426076,  1.1401741 ],
+       [-1.2484405 , -2.35509733],
+       [-1.66227652, -1.37794664],
+       [ 2.71413302,  1.1687207 ]])
+</pre></div>
+</div>
 </div>
 </div>
 <p>Then computing persistence is one line. Note that ripser defaults to only computing up to 1-dimensional persistence unless you tell it otherwise. For fun, I’m telling it to go up to 2-dimensional persistence.</p>
@@ -789,8 +1014,8 @@ Answer: One connected component, so $\beta_0 = 1$; One loop, so $\beta_1 = 1$. -
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 31.2 ms, sys: 2.19 ms, total: 33.3 ms
-Wall time: 33.1 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 52.7 ms, sys: 6.46 ms, total: 59.1 ms
+Wall time: 57.8 ms
 </pre></div>
 </div>
 </div>
@@ -804,8 +1029,8 @@ Wall time: 33.1 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 754 ms, sys: 35.7 ms, total: 789 ms
-Wall time: 896 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 764 ms, sys: 29.8 ms, total: 793 ms
+Wall time: 794 ms
 </pre></div>
 </div>
 </div>
@@ -820,8 +1045,8 @@ Wall time: 896 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 28.5 s, sys: 1.12 s, total: 29.6 s
-Wall time: 30.2 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 30.7 s, sys: 2.08 s, total: 32.7 s
+Wall time: 33.2 s
 </pre></div>
 </div>
 </div>
@@ -840,7 +1065,7 @@ Wall time: 30.2 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/21354bbd66e6af93a103d4026955a0fabcd02d32ba4a0712cda82b16ed77b927.png" src="../../_images/21354bbd66e6af93a103d4026955a0fabcd02d32ba4a0712cda82b16ed77b927.png" />
+<img alt="../../_images/30066dfa680292c4b53b7bd717dba4f46fa34b935d67cc8e39050ba5f711daae.png" src="../../_images/30066dfa680292c4b53b7bd717dba4f46fa34b935d67cc8e39050ba5f711daae.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -853,7 +1078,7 @@ Wall time: 30.2 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/64d1c26e38979d5862f66bd9905ed1b15a865d8c14be0507a7de94ebb6421066.png" src="../../_images/64d1c26e38979d5862f66bd9905ed1b15a865d8c14be0507a7de94ebb6421066.png" />
+<img alt="../../_images/5efc227ae93cac45305ba7a8cb2efe90c8e8a67d070bd76ff930b641a47c1e9b.png" src="../../_images/5efc227ae93cac45305ba7a8cb2efe90c8e8a67d070bd76ff930b641a47c1e9b.png" />
 </div>
 </div>
 <p>One option for visualization is to draw a histogram of the death times. In this case, I draw it horizontally since that matches with the death axis in the persistence diagrams.</p>
@@ -872,7 +1097,7 @@ Wall time: 30.2 s
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Death time&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/4c919693beeefe46ca871fb0fb53f25b9f61bcdee51ee0e0a1e248d29be0f4aa.png" src="../../_images/4c919693beeefe46ca871fb0fb53f25b9f61bcdee51ee0e0a1e248d29be0f4aa.png" />
+<img alt="../../_images/34112c7e4ef1fad90f3c97c780b1d0efb0448391d68130293480a51cad77a41c.png" src="../../_images/34112c7e4ef1fad90f3c97c780b1d0efb0448391d68130293480a51cad77a41c.png" />
 </div>
 </div>
 </section>
@@ -885,7 +1110,7 @@ Wall time: 30.2 s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P1</span> <span class="o">=</span> <span class="n">gPC</span><span class="o">.</span><span class="n">Annulus</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">P2</span> <span class="o">=</span> <span class="n">gPC</span><span class="o">.</span><span class="n">Annulus</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">P1</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">P1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Annulus 1&#39;</span><span class="p">)</span>
@@ -973,7 +1198,7 @@ Wall time: 30.2 s
 <p>Below is code to compute the persistence of the annulus with the default parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">gPC</span><span class="o">.</span><span class="n">Annulus</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="n">r</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">gPC</span><span class="o">.</span><span class="n">Annulus</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="n">r</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">Dgms</span> <span class="o">=</span> <span class="n">ripser</span><span class="o">.</span><span class="n">ripser</span><span class="p">(</span><span class="n">P</span><span class="p">)[</span><span class="s1">&#39;dgms&#39;</span><span class="p">]</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -984,7 +1209,7 @@ Wall time: 30.2 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/468017cf88548e1428743ba4c6445aea17a7bb7fc5da516e8bd2f5d4b030d67c.png" src="../../_images/468017cf88548e1428743ba4c6445aea17a7bb7fc5da516e8bd2f5d4b030d67c.png" />
+<img alt="../../_images/9a2f21d03771f3231525d9465003caaf30c01b73b47605d96a3040590fd31b5f.png" src="../../_images/9a2f21d03771f3231525d9465003caaf30c01b73b47605d96a3040590fd31b5f.png" />
 </div>
 </div>
 <div style="border:2px solid #e74c3c; border-radius:8px; padding:1em; background:#fff6f6;color:#000000; width:80%">
