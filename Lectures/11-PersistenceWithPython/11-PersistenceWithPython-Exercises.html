@@ -599,13 +599,13 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S_new</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;A&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">],</span> 
          <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">],</span> 
-         <span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="s1">&#39;F&#39;</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="s1">&#39;F&#39;</span><span class="p">],</span>
          <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">],</span> 
-         <span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">,</span><span class="s1">&#39;G&#39;</span><span class="p">],</span> 
+         <span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">,</span><span class="s1">&#39;G&#39;</span><span class="p">],</span> 
          <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]]</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">f_val_new</span><span class="p">(</span><span class="n">simplex</span><span class="p">):</span>
-    <span class="n">lookup</span> <span class="o">=</span>  <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;AC&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;DF&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;AF&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;EG&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;AD&#39;</span><span class="p">:</span><span class="mi">6</span><span class="p">}</span>
+    <span class="n">lookup</span> <span class="o">=</span>  <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;AC&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;DF&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;AF&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;EG&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;AD&#39;</span><span class="p">:</span><span class="mi">6</span><span class="p">}</span>
     <span class="k">return</span> <span class="n">lookup</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">simplex</span><span class="p">])]</span>
 
 <span class="n">B_new</span> <span class="o">=</span> <span class="n">Pers</span><span class="o">.</span><span class="n">boundary</span><span class="p">(</span><span class="n">S_new</span><span class="p">)</span>
@@ -625,7 +625,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/90750de10b40b58f3c75c258238039e34e7405aa023fd090bd7e39c4c175dfaf.png" src="../../_images/90750de10b40b58f3c75c258238039e34e7405aa023fd090bd7e39c4c175dfaf.png" />
+<img alt="../../_images/9b5e01fb8c5ab7a80253b513ed4489860ec346594b680853127d8f4595566244.png" src="../../_images/9b5e01fb8c5ab7a80253b513ed4489860ec346594b680853127d8f4595566244.png" />
 </div>
 </div>
 <p>Here are the persistence points. We can determine the dimension of the point aquired by noting the dimension of the simplex that gave birth.</p>
@@ -639,10 +639,12 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&#39;A&#39;], None)
+([&#39;G&#39;], None)
 ([&#39;C&#39;], [&#39;A&#39;, &#39;C&#39;])
 ([&#39;D&#39;], [&#39;D&#39;, &#39;F&#39;])
 ([&#39;F&#39;], [&#39;A&#39;, &#39;F&#39;])
-([&#39;G&#39;], [&#39;E&#39;, &#39;G&#39;])
+([&#39;B&#39;], None)
+([&#39;E&#39;], [&#39;E&#39;, &#39;G&#39;])
 ([&#39;A&#39;, &#39;D&#39;], None)
 </pre></div>
 </div>
@@ -655,7 +657,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(1, inf), (1, 2), (1, 3), (1, 4), (1, 5), (6, inf)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(1, inf), (1, inf), (1, 2), (1, 3), (1, 4), (5, inf), (3, 5), (6, inf)]
 </pre></div>
 </div>
 </div>
@@ -663,10 +665,12 @@ document.write(`
 <p>Since this code to get the points will do things in the same order as the pairs was passed in, we know that the 0-dimensional diagram has points:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">inf)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">inf)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">2)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">3)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">4)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">5)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">inf)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(3,5)</span></code></p></li>
 </ul>
 <p>The 1-dimensional diagram has just the infinite class</p>
 <ul class="simple">
