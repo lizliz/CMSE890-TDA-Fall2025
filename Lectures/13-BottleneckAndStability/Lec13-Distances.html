@@ -63,6 +63,7 @@
     <script src="https://tikzjax.com/v1/tikzjax.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lecture 14" href="../14-MLAndPers/index.html" />
     <link rel="prev" title="Lecture 13" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -245,6 +246,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Jupyter Notebook</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../14-MLAndPers/index.html">Day 14 (Th 10/16)</a></li>
 </ul>
 
     </div>
@@ -498,7 +500,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3e43c7666f5be0ac9ef16014e9fbdca621f3d72f3a7ca38025b3bb3a8782c03e.png" src="../../_images/3e43c7666f5be0ac9ef16014e9fbdca621f3d72f3a7ca38025b3bb3a8782c03e.png" />
+<img alt="../../_images/182a7efb5df221361fa1b8ebedc327cc16cf58b4b5d731504bc306d03cb3f338.png" src="../../_images/182a7efb5df221361fa1b8ebedc327cc16cf58b4b5d731504bc306d03cb3f338.png" />
 </div>
 </div>
 </section>
@@ -512,7 +514,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.507435530424118)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.5072879493236542)
 </pre></div>
 </div>
 </div>
@@ -526,7 +528,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.507435530424118
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5072879493236542
 </pre></div>
 </div>
 </div>
@@ -540,16 +542,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.        ,  4.        ,  0.04076159],
-       [ 1.        , -1.        ,  0.06527939],
-       [ 2.        , 13.        ,  1.31353348],
-       [ 3.        , 23.        ,  0.10917202],
-       [ 4.        , 14.        ,  0.05196902],
-       [ 5.        , 28.        ,  0.13576218],
-       [ 6.        ,  1.        ,  0.28933641],
-       [ 7.        , 27.        ,  0.06198767],
-       [ 8.        , 16.        ,  0.04542997],
-       [ 9.        ,  8.        ,  0.10704169]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.00000000e+00,  1.30000000e+01,  4.39319909e-02],
+       [ 1.00000000e+00,  1.00000000e+01,  1.67351186e-01],
+       [ 2.00000000e+00,  4.00000000e+00,  1.48225933e-01],
+       [ 3.00000000e+00,  3.20000000e+01,  1.97753370e-01],
+       [ 4.00000000e+00,  1.00000000e+00,  2.03044057e-01],
+       [ 5.00000000e+00,  2.60000000e+01,  1.08057469e-01],
+       [ 6.00000000e+00,  2.70000000e+01,  7.98587799e-02],
+       [ 7.00000000e+00,  1.50000000e+01,  5.46116829e-02],
+       [ 8.00000000e+00, -1.00000000e+00,  3.65316868e-03],
+       [ 9.00000000e+00,  0.00000000e+00,  3.57827038e-01]])
 </pre></div>
 </div>
 </div>
@@ -561,8 +563,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The max in the matching is 1.507435530424118, 
-which should be the same as the distance returned:  1.507435530424118
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The max in the matching is 1.5072879493236542, 
+which should be the same as the distance returned:  1.5072879493236542
 </pre></div>
 </div>
 </div>
@@ -571,7 +573,6 @@ which should be the same as the distance returned:  1.507435530424118
 <section id="annulus-with-annulus">
 <h3>Annulus with annulus<a class="headerlink" href="#annulus-with-annulus" title="Link to this heading">#</a></h3>
 <p>This example shows the matching between the two annuli. In this case, the promient points are just far enough away from each other that it’s cheaper to match them with the diagonal rather than each other. Also note that the blue point at approximately <span class="math notranslate nohighlight">\((.2,1.7)\)</span> would have a shorter match to the diagonal, but this doesn’t matter because the length is dominated by the orange point’s match to the diagonal.</p>
-<p>Also, ignore the <span class="math notranslate nohighlight">\(H_0\)</span> label, that’s an</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_matching</span><span class="p">(</span><span class="n">Dgms1</span><span class="p">,</span> <span class="n">Dgms2</span><span class="p">,</span> <span class="n">matching</span><span class="p">)</span>
@@ -580,7 +581,7 @@ which should be the same as the distance returned:  1.507435530424118
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/aa867d0c47a8ab2a2f2994fe076357394cea322caaf31b60f1cdf6a955e820d4.png" src="../../_images/aa867d0c47a8ab2a2f2994fe076357394cea322caaf31b60f1cdf6a955e820d4.png" />
+<img alt="../../_images/a34fead2ff6373d1673f1019becaf48d573ab766252e94ddd1d07e781a5bd3a2.png" src="../../_images/a34fead2ff6373d1673f1019becaf48d573ab766252e94ddd1d07e781a5bd3a2.png" />
 </div>
 </div>
 </section>
@@ -596,7 +597,16 @@ which should be the same as the distance returned:  1.507435530424118
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9e1c49dc14af51e816e6a783a870e3d88e1d37e10ec11e0a2397e2260d055eb7.png" src="../../_images/9e1c49dc14af51e816e6a783a870e3d88e1d37e10ec11e0a2397e2260d055eb7.png" />
+<img alt="../../_images/3f8032ce154eae9a4a88f94423d52d47795de7f15ebbe27704d06936babbe5e4.png" src="../../_images/3f8032ce154eae9a4a88f94423d52d47795de7f15ebbe27704d06936babbe5e4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist</span><span class="p">,</span> <span class="n">matching</span> <span class="o">=</span> <span class="n">bottleneck</span><span class="p">(</span><span class="n">Dgms1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">DgmsT</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">matching</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># plot_matching(Dgms1[0], DgmsT[0], matching)</span>
+<span class="c1"># plt.title(f&#39;Bottleneck: {dist:.3f}&#39;); </span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -608,7 +618,7 @@ which should be the same as the distance returned:  1.507435530424118
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f274b2d52de611676415ca9c31f4c8117ab53fd50da9bc824f18e53d8c009b38.png" src="../../_images/f274b2d52de611676415ca9c31f4c8117ab53fd50da9bc824f18e53d8c009b38.png" />
+<img alt="../../_images/eac94484c4843a9a34a0ddfe8fcbda2ff5a1cd0c903cc9beff22ff17db275577.png" src="../../_images/eac94484c4843a9a34a0ddfe8fcbda2ff5a1cd0c903cc9beff22ff17db275577.png" />
 </div>
 </div>
 </section>
@@ -625,7 +635,7 @@ which should be the same as the distance returned:  1.507435530424118
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/904cc1735fcbda40d88b2f5f43a15703754cf574b634d5555bbbf148e18a969d.png" src="../../_images/904cc1735fcbda40d88b2f5f43a15703754cf574b634d5555bbbf148e18a969d.png" />
+<img alt="../../_images/c87584b5ae2777011b70e43cfbed78274f3dd696d3720dfe4fcf57f5485ca9d8.png" src="../../_images/c87584b5ae2777011b70e43cfbed78274f3dd696d3720dfe4fcf57f5485ca9d8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -637,7 +647,7 @@ which should be the same as the distance returned:  1.507435530424118
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4c0949547a2a55760b6a76304416a739a58de1cd012f577b6c10a2124dafe0ca.png" src="../../_images/4c0949547a2a55760b6a76304416a739a58de1cd012f577b6c10a2124dafe0ca.png" />
+<img alt="../../_images/19f1d02c988ed040df6c1edcbba6682ace30fd6fe7267ada307fb31e1660899c.png" src="../../_images/19f1d02c988ed040df6c1edcbba6682ace30fd6fe7267ada307fb31e1660899c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -649,7 +659,7 @@ which should be the same as the distance returned:  1.507435530424118
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d4adc67d3d80486324a150dd35eaf708dffcd3b91be36b7475e3c86108e68150.png" src="../../_images/d4adc67d3d80486324a150dd35eaf708dffcd3b91be36b7475e3c86108e68150.png" />
+<img alt="../../_images/299e71ddca91692c6b88802d68a04c5bd39ce469def2b2df89f0a15e70aa52e9.png" src="../../_images/299e71ddca91692c6b88802d68a04c5bd39ce469def2b2df89f0a15e70aa52e9.png" />
 </div>
 </div>
 <p>Things to notice:</p>
@@ -698,32 +708,32 @@ which should be the same as the distance returned:  1.507435530424118
   <tbody>
     <tr>
       <th>0</th>
-      <td>[[0.0, 0.015289604663848877], [0.0, 0.02153220...</td>
-      <td>[[1.3366060256958008, 1.3891898393630981], [1....</td>
-      <td>Torus</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>[[0.0, 0.0032850070856511593], [0.0, 0.0076380...</td>
-      <td>[[0.4026804566383362, 0.42224881052970886], [0...</td>
+      <td>[[0.0, 0.007819653488695621], [0.0, 0.01302518...</td>
+      <td>[[0.4191993176937103, 0.4404963552951813], [0....</td>
       <td>Annulus</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>[[0.0, 0.02632305398583412], [0.0, 0.040707629...</td>
+      <td>[[0.8978211879730225, 0.9040729403495789], [0....</td>
+      <td>Torus</td>
+    </tr>
+    <tr>
       <th>2</th>
-      <td>[[0.0, 0.0027830954641103745], [0.0, 0.0086768...</td>
-      <td>[[0.6305979490280151, 0.6748096346855164], [0....</td>
-      <td>Sphere</td>
+      <td>[[0.0, 0.017514366656541824], [0.0, 0.03365221...</td>
+      <td>[[1.141452670097351, 1.183762788772583], [1.12...</td>
+      <td>Torus</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>[[0.0, 0.004892099183052778], [0.0, 0.01348327...</td>
-      <td>[[0.48006224632263184, 0.5333523154258728], [0...</td>
+      <td>[[0.0, 0.014576570130884647], [0.0, 0.01523624...</td>
+      <td>[[0.6589267253875732, 0.6930535435676575], [0....</td>
       <td>Sphere</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>[[0.0, 0.0026985604781657457], [0.0, 0.0094977...</td>
-      <td>[[0.3977130949497223, 0.44457417726516724], [0...</td>
+      <td>[[0.0, 0.005973882507532835], [0.0, 0.00714802...</td>
+      <td>[[0.46258941292762756, 0.46492934226989746], [...</td>
       <td>Annulus</td>
     </tr>
   </tbody>
@@ -738,15 +748,26 @@ which should be the same as the distance returned:  1.507435530424118
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">manifoldsDF</span><span class="p">)):</span>
         <span class="n">Dgm1</span> <span class="o">=</span> <span class="n">manifoldsDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;Dgm1&#39;</span><span class="p">]</span>
         <span class="n">Dgm2</span> <span class="o">=</span> <span class="n">manifoldsDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;Dgm1&#39;</span><span class="p">]</span>
-        <span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">bottleneck</span><span class="p">(</span><span class="n">Dgm1</span><span class="p">,</span> <span class="n">Dgm2</span><span class="p">)</span>
+        <span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">wasserstein</span><span class="p">(</span><span class="n">Dgm1</span><span class="p">,</span> <span class="n">Dgm2</span><span class="p">)</span>
         <span class="n">D</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-        
-<span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">D</span><span class="p">);</span>
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>       
+<span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bc428b768e9ebd1136b2cab38759f19758b7ed6d3f96165512d8df3e0fb167e1.png" src="../../_images/bc428b768e9ebd1136b2cab38759f19758b7ed6d3f96165512d8df3e0fb167e1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x12d83f9d0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/18f98f6ecb1ca5f15445f86bc11191520b07a02254361db300980d0f95f8ae38.png" src="../../_images/18f98f6ecb1ca5f15445f86bc11191520b07a02254361db300980d0f95f8ae38.png" />
 </div>
 </div>
 <p>To visualize, I’m going to use an <a class="reference external" href="https://en.wikipedia.org/wiki/Multidimensional_scaling">MDS</a> plot for the distance matrix. Think of this as similar to PCA where each plotted point represents one input, in our case a persistence diagram. I’ve labeled the points by which kind of point cloud they were generated from. However, in this case the goal of the MDS plot is to draw points so that their relative distances are preserved. That is, points that are close in the distance are drawn close together relative to those that are farther apart.</p>
@@ -784,11 +805,11 @@ which should be the same as the distance returned:  1.507435530424118
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/liz/Library/CloudStorage/Dropbox/Math/Teaching/TDA-TopicsCourse/.conda-tda-class/lib/python3.13/site-packages/sklearn/manifold/_mds.py:677: FutureWarning: The default value of `n_init` will change from 4 to 1 in 1.9.
   warnings.warn(
-/var/folders/lm/dn75vz_d72b1cntn3ncjj10c0000gn/T/ipykernel_24871/3279050293.py:12: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.11. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap()`` or ``pyplot.get_cmap()`` instead.
+/var/folders/lm/dn75vz_d72b1cntn3ncjj10c0000gn/T/ipykernel_30280/3279050293.py:12: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.11. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap()`` or ``pyplot.get_cmap()`` instead.
   cmap = cm.get_cmap(&#39;tab10&#39;, len(unique))
 </pre></div>
 </div>
-<img alt="../../_images/c18c60a8cd69f690c2d221d3940f1cde79b57773219ed7650e53a8695cf2c9bd.png" src="../../_images/c18c60a8cd69f690c2d221d3940f1cde79b57773219ed7650e53a8695cf2c9bd.png" />
+<img alt="../../_images/fce6e02c98704c2a8abfc54f8af803ec3b93700e824fb3b9b3aec62211d28f64.png" src="../../_images/fce6e02c98704c2a8abfc54f8af803ec3b93700e824fb3b9b3aec62211d28f64.png" />
 </div>
 </div>
 <p>Notice that the diagrams drawn from the same kind of point cloud have small distance relative to those that come from different point clouds.</p>
@@ -833,6 +854,15 @@ which should be the same as the distance returned:  1.507435530424118
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Lecture 13</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../14-MLAndPers/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 14</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

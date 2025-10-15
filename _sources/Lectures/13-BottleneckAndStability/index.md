@@ -10,4 +10,4 @@ This lecture introduces the standard distances for persistence diagrams: bottlen
 - **Jupyter Notebook:**
   - [Lec13-Distances.ipynb](Lec13-Distances.ipynb)
 
-<!-- Note to self: This lecture went about 20 minutes short, more content could be added. Maybe more interactivity, more examples, more code?  -->
+<!-- Note to self: This lecture went about 20 minutes short, more content could be added. Maybe more interactivity, more examples, more code? Also needed definition of Hasudorff distance since many weren't familiar. Could also use some more explanation of MDS.  -->
