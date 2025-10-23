@@ -1,0 +1,1296 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lecture 15: ML and Persistence with Python &#8212; CMSE 890 - TDA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/15-Python-ML-Pers/15-Python-ML-Pers';</script>
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Lecture 15" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/functionLogo.png" class="logo__image only-light" alt="CMSE 890 - TDA - Home"/>
+    <script>document.write(`<img src="../../_static/functionLogo.png" class="logo__image only-dark" alt="CMSE 890 - TDA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CMSE 381 - Fall 2024</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Schedule.html">Course Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Syllabus/Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Textbook.html">Textbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01-IntroAndPointSetBasics/index.html">Day 01 (T 8/26)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-IntroAndPointSetBasics/CompTop-Lec1-IntroAndTopologyBasics.html">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02-MorseFunctions/index.html">Day 02 (Th 8/28)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-MorseFunctions/CompTop-Lec2-MorseFcns.html">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03-SimplicialComplex/index.html">Day 03 (T 9/2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-SimplicialComplex/CompTop-Lec3-SimplicialComplexes.html">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04-CechRips/index.html">Day 04 (Th 9/4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-CechRips/CompTop-Lec4-CechRips.html">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05-HomologyPart1/index.html">Day 05 (T 9/9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-HomologyPart1/CompTop-Lec5-HomologyPt1.html">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06-HomologyPart2/index.html">Day 06 (Th 9/11)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-HomologyPart2/CompTop-Lec6-HomologyPt2.html">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07-Homology-Computing/index.html">Day 07 (T 9/16)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-Homology-Computing/Lec07-ComputingHomology.html">Lecture 7: Jupyter Notebook</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../07-Homology-Computing/Lec07-ExampleSoln.html">Last Example Solution</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-InducedMaps/index.html">Day 08 (Th 9/18)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-Persistence/index.html">Day 09 (Th 9/30)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10-Persistence_Algorithm/index.html">Day 10 (Th 10/2)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../11-PersistenceWithPython/index.html">Day 11 (T 10/7)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../11-PersistenceWithPython/11-PersistenceWithPython.html">Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11-PersistenceWithPython/11-PersistenceWithPython-Exercises.html">Solution for Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../12-PointCloudPersistence/index.html">Day 12 (Th 10/9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../12-PointCloudPersistence/12-RipsPersistence.html">Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12-PointCloudPersistence/12-RipsPersistence-Exercises.html">Solution for Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../13-BottleneckAndStability/index.html">Day 13 (T 10/14)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../13-BottleneckAndStability/Lec13-Distances.html">Jupyter Notebook</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../14-MLAndPers/index.html">Day 14 (Th 10/16)</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Day 15 (Th 10/23)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Jupyter Notebook</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Lectures/15-Python-ML-Pers/15-Python-ML-Pers.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 15: ML and Persistence with Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-notes-and-reminders">Class notes and reminders</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-for-everyone">Homework for everyone!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-we-up-to">What are we up to?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-data">Generating data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrams-from-normally-distributed-points">Diagrams from normally distributed points</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#now-generate-a-lot-of-diagrams-but-with-different-means">Now generate a lot of diagrams but with different means</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrams-sampled-from-manifolds">Diagrams sampled from manifolds</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorization-methods">Vectorization Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carlsson-coordinates">Carlsson Coordinates</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#do-this">Do this:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landscapes">Landscapes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#annulus-example">Annulus example</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Do this:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-classifier-with-landscapes">Running a classifier with Landscapes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Do this:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persistence-images">Persistence Images</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Do this:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-15-ml-and-persistence-with-python">
+<h1>Lecture 15: ML and Persistence with Python<a class="headerlink" href="#lecture-15-ml-and-persistence-with-python" title="Link to this heading">#</a></h1>
+<section id="class-notes-and-reminders">
+<h2>Class notes and reminders<a class="headerlink" href="#class-notes-and-reminders" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>No class next week since Liz is travelling.</p></li>
+<li><p>The following class is Tuesday, Nov 4, at the usual time.</p></li>
+</ul>
+<section id="homework-for-everyone">
+<h3>Homework for everyone!<a class="headerlink" href="#homework-for-everyone" title="Link to this heading">#</a></h3>
+<p>Pick a lecture from the AATRN YouTube channel focused on Persistence, preferably one that uses machine learning, deep learning, and/or vectorization in some form. Write a post prior to next class on the Slack channel with:</p>
+<ul class="simple">
+<li><p>A link to the video you watched.</p></li>
+<li><p>A brief summary of the problem setup and take-away message of the talk.</p></li>
+<li><p>If applicable: what did they use for vectorization for their particular persistence diagrams. What choices were made for this vectorization (e.g. number of landscapes, grid sizes, number of DL layers, <em>etc.</em>).</p></li>
+</ul>
+</section>
+</section>
+<section id="what-are-we-up-to">
+<h2>What are we up to?<a class="headerlink" href="#what-are-we-up-to" title="Link to this heading">#</a></h2>
+<p>In this lecture, we’re going to use all the vectorization methods for persistence that we went over <a class="reference internal" href="../14-MLAndPers/index.html"><span class="std std-doc">last class</span></a>. The basic formula is:</p>
+<ul class="simple">
+<li><p>Take input data.</p></li>
+<li><p>Turn it into persistence using whatever filtration.</p></li>
+<li><p>Turn the persistence diagram into a vector in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> using your chosen vectorization method.</p></li>
+</ul>
+<p>Here, we’ll cover the four methods introduced last time.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://dx.doi.org/10.4310/HHA.2016.v18.n1.a21">Algebraic Carlsson Coordinates</a></p></li>
+<li><p><a class="reference external" href="https://www.jmlr.org/papers/volume16/bubenik15a/bubenik15a.pdf">Persistence Landscapes</a></p></li>
+<li><p><a class="reference external" href="https://jmlr.org/papers/v18/16-337.html">Persistence Images</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1007/s10208-022-09567-7">Template Functions</a></p></li>
+</ul>
+<p>We’re going to do that by recreating some experiments that I used <a class="reference external" href="https://doi.org/10.1007/s10208-022-09567-7">in my paper defining template functions</a>, but can be applied to any sort of ML vectorization. The game is to generate some simple test data sets and then use the various methods to predict the label/input parameter values of these data points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.image</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpimg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">teaspoon.MakeData.PointCloud</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gPC</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">teaspoon.TDA.Draw</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">Draw</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">teaspoon.ML.feature_functions</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">Ff</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">teaspoon.ML.Base</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">MLBase</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">teaspoon.ML.PD_Classification</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">PD_CL</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generating-data">
+<h2>Generating data<a class="headerlink" href="#generating-data" title="Link to this heading">#</a></h2>
+<p>We’re going to use two different data sets. These are generated using <code class="docutils literal notranslate"><span class="pre">teaspoons</span></code>’s MakeData module. <em>(<a class="reference external" href="https://teaspoontda.github.io/teaspoon/modules/MakeData/PointCloud.html">Link to documentation</a>)</em></p>
+<section id="diagrams-from-normally-distributed-points">
+<h3>Diagrams from normally distributed points<a class="headerlink" href="#diagrams-from-normally-distributed-points" title="Link to this heading">#</a></h3>
+<p>To start, we’re going to use the dumbest example we could think of.</p>
+<p>First, we’re going to generate data points that don’t come from any sort of input data. All we’re going to do is generate points in a “persistence diagram” <em>(picture Liz doing giant air quotes as she says this…)</em> using different distributions, and then see if the vectorization methods can tell them apart.</p>
+<p>To do this, we will:</p>
+<ul class="simple">
+<li><p>Fix <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span></p></li>
+<li><p>generate <span class="math notranslate nohighlight">\(n\)</span> points in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> from normal distribution <span class="math notranslate nohighlight">\(N(\mu,\sigma)\)</span>.</p></li>
+<li><p>Discard any points that are below the diagonal (i.e. drop any point <span class="math notranslate nohighlight">\((a,b)\)</span> with <span class="math notranslate nohighlight">\(b&lt;a\)</span>)</p></li>
+</ul>
+<p>Here is a figure of some example data with the <span class="math notranslate nohighlight">\(\mu\)</span> values given as center.</p>
+<img src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/refs/heads/main/JupyterFigures/ExampleDgms-RandomOffDiagPts.png" alt="Example of persistence diagrams with random points" style="width: 500px;"/>
+<p>Next, we’ll actually generate two diagrams ourselves.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">gPC</span><span class="o">.</span><span class="n">normalDiagram</span><span class="p">(</span><span class="n">N</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">sd</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">drawDgm</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">gPC</span><span class="o">.</span><span class="n">normalDiagram</span><span class="p">(</span><span class="n">N</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">sd</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">drawDgm</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ffa9d2b2316c609647bcc39d06a0479bc8bbd2e553483112f6240e112c0dbffc.png" src="../../_images/ffa9d2b2316c609647bcc39d06a0479bc8bbd2e553483112f6240e112c0dbffc.png" />
+</div>
+</div>
+<section id="now-generate-a-lot-of-diagrams-but-with-different-means">
+<h4>Now generate a lot of diagrams but with different means<a class="headerlink" href="#now-generate-a-lot-of-diagrams-but-with-different-means" title="Link to this heading">#</a></h4>
+<p>The goal eventually: Build a classifier that can decide which of the two means generated the fake diagram. So, we’re going to make ourselves a big data frame with lots of persistence diagrams, each generated from a different mean.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simpleDF</span> <span class="o">=</span> <span class="n">gPC</span><span class="o">.</span><span class="n">testSetClassification</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                          <span class="n">numDgms</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+                          <span class="n">muRed</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                          <span class="n">muBlue</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+                          <span class="n">sd</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">simpleDF</span><span class="o">.</span><span class="n">shape</span>
+<span class="c1"># If the mean column shows all the same value, you can update your teaspoon since I fixed a bug yesterday. It won&#39;t affect anything though because it&#39;s the trainingLabel column that we are actually going to use. </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(200, 4)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each diagram is stored in the <code class="docutils literal notranslate"><span class="pre">Dgm</span></code> column as a <code class="docutils literal notranslate"><span class="pre">#(points)</span> <span class="pre">x</span> <span class="pre">2</span></code> array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  single diagram </span>
+<span class="n">simpleDF</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.14349805, 3.30032222],
+       [0.46946275, 4.72457635],
+       [3.14492053, 4.50469178],
+       [1.52135184, 2.91899649],
+       [0.19372646, 3.61719528],
+       [0.73090455, 3.80383984],
+       [0.01119941, 2.73530921],
+       [1.30796422, 4.60044478],
+       [0.87315116, 3.05549408],
+       [1.51944287, 3.29778742],
+       [2.00093196, 2.93147697],
+       [0.89056517, 2.47013509],
+       [0.09371519, 4.53064326],
+       [1.05670737, 1.69325201],
+       [2.76979064, 3.41842944],
+       [2.82274596, 4.66205581]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="diagrams-sampled-from-manifolds">
+<h3>Diagrams sampled from manifolds<a class="headerlink" href="#diagrams-sampled-from-manifolds" title="Link to this heading">#</a></h3>
+<p>Next, we’ll generate a data set that comes from some standard manifolds to actually see how this works.</p>
+<p>In this case, we have point clouds drawn from six example spaces, all using the default inputs from the teaspoon functions.</p>
+<ul class="simple">
+<li><p><strong>Torus</strong>: A torus embedded in <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> using the function <code class="docutils literal notranslate"><span class="pre">Torus()</span></code>.</p></li>
+<li><p><strong>Annulus</strong>: An annulus generated with default inputs of <code class="docutils literal notranslate"><span class="pre">Annulus()</span></code>.</p></li>
+<li><p><strong>Cube</strong>: Points drawn uniformly from the cube <span class="math notranslate nohighlight">\([0,1]^3 \subset \mathbb{R}^3\)</span> using the function <code class="docutils literal notranslate"><span class="pre">Cube()</span></code>.</p></li>
+<li><p><strong>3Cluster</strong>: Points are drawn using Clusters() with centers <span class="math notranslate nohighlight">\([0,0]\)</span>, <span class="math notranslate nohighlight">\([0,1.5]\)</span>, <span class="math notranslate nohighlight">\([1.5,0]\)</span> with <code class="docutils literal notranslate"><span class="pre">sd</span> <span class="pre">=</span> <span class="pre">0.05</span></code>.</p></li>
+<li><p><strong>3Clusters of 3Clusters</strong>: Points are drawn with 9 different centers, which can be loosely grouped into three groups of three; again uses <code class="docutils literal notranslate"><span class="pre">Clusters()</span></code> with <code class="docutils literal notranslate"><span class="pre">sd</span> <span class="pre">=</span> <span class="pre">0.05</span></code>. The centers are <span class="math notranslate nohighlight">\([0,0]\)</span>, <span class="math notranslate nohighlight">\([0,1.5]\)</span>, <span class="math notranslate nohighlight">\([1.5,0]\)</span>; this set rotated 45 degrees and shifted up by 4; and the first set shifted right 3 and up 4.</p></li>
+<li><p><strong>Sphere</strong>: Points drawn from a sphere using <code class="docutils literal notranslate"><span class="pre">Sphere()</span></code> with <code class="docutils literal notranslate"><span class="pre">noise</span> <span class="pre">=</span> <span class="pre">.05</span></code>.</p></li>
+</ul>
+<p><img alt="Manifold data set example" src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/refs/heads/main/JupyterFigures/ManifoldExperiment.jpg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This will take longer than the other example since it does have to compute persistence for 6*numDgms point clouds. For speedups, you can decrease the number of diagrams or the number of points sampled in each point cloud. </span>
+<span class="n">manifoldDF</span> <span class="o">=</span> <span class="n">gPC</span><span class="o">.</span><span class="n">testSetManifolds</span><span class="p">(</span><span class="n">numDgms</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> 
+                                  <span class="n">numPts</span><span class="o">=</span> <span class="mi">500</span><span class="p">,</span> 
+                                  <span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+
+<span class="n">manifoldDF</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, we track the 0- and 1-dimensinoal diagrams in the two columns, plus a <code class="docutils literal notranslate"><span class="pre">trainingLabel</span></code> column which we will use for classification later.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">manifoldDF</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Dgm0</th>
+      <th>Dgm1</th>
+      <th>trainingLabel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[[0.0, 0.009180114604532719], [0.0, 0.01371909...</td>
+      <td>[[0.860607385635376, 0.9120365977287292], [0.8...</td>
+      <td>Torus</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>[[0.0, 0.007567704655230045], [0.0, 0.00768248...</td>
+      <td>[[0.46230122447013855, 0.48311299085617065], [...</td>
+      <td>Sphere</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>[[0.0, 0.0054537588730454445], [0.0, 0.0107017...</td>
+      <td>[[0.30187922716140747, 0.3032122552394867], [0...</td>
+      <td>Annulus</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>[[0.0, 0.020688075572252274], [0.0, 0.03624243...</td>
+      <td>[[0.8614302277565002, 0.9710468053817749], [0....</td>
+      <td>Torus</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>[[0.0, 0.004080696031451225], [0.0, 0.00557038...</td>
+      <td>[[1.7299253940582275, 1.7423832416534424], [1....</td>
+      <td>3Clusters of 3Clusters</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can get out one of the rows as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">manifoldDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dgm0             [[0.0, 0.005057202652096748], [0.0, 0.00709510...
+Dgm1             [[0.35105574131011963, 0.38014885783195496], [...
+trainingLabel                                              Annulus
+Name: 14, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also take a look at the individual diagrams. Since this particular example came from an annulus (as seen in the trainingLabel entry above), it’s good that we’re seeing one prominent off-diagonal point in the 1-dimensional diagram.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Draw</span><span class="o">.</span><span class="n">drawDgm</span><span class="p">(</span><span class="n">manifoldDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">14</span><span class="p">][</span><span class="s1">&#39;Dgm1&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/914b619e593b32ca452be54b13c3e1ee229f6366d21cef0863d9df600ff213f4.png" src="../../_images/914b619e593b32ca452be54b13c3e1ee229f6366d21cef0863d9df600ff213f4.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="vectorization-methods">
+<h2>Vectorization Methods<a class="headerlink" href="#vectorization-methods" title="Link to this heading">#</a></h2>
+<p>Next, we’re going to set up the vectorization methods that we discussed last time. For this, we’ll be using teaspoon; see <a class="reference external" href="https://teaspoontda.github.io/teaspoon/modules/ML/index.html">the teaspoon Machine Learning documentation</a> for more information and other available methods.</p>
+<section id="carlsson-coordinates">
+<h3>Carlsson Coordinates<a class="headerlink" href="#carlsson-coordinates" title="Link to this heading">#</a></h3>
+<p>This code generates feature matrix to be used in machine learning applications using Carlsson Coordinates which is composed of five different functions shown in Eq. :eq:<code class="docutils literal notranslate"><span class="pre">1st_coord</span></code> - :eq:<code class="docutils literal notranslate"><span class="pre">5th_coord</span></code>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f_{1}(PD) = \sum b_{i}(d_{i}-b_{i})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f_{2}(PD) = \sum (d_{max}-d_{i})(d_{i}-b_{i})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f_{3}(PD) = \sum b_{i}^{2}(d_{i}-b_{i})^{4}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f_{4}(PD) = \sum (d_{max}-d_{i})^{2}(d_{i}-b_{i})^{4}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f_{5}(PD) = max(d_{i}-b_{i})\)</span></p></li>
+</ul>
+<p>There are two inputs to the function. These are persistence diagrams and number of coordinates that user wants to use in feature matrix.
+This particular function is set up to return all combinations of these 5 equations; we’ll just focus on the array that gives us all of them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simpleDF</span><span class="o">.</span><span class="n">Dgm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47     [[1.1434980494203302, 3.300322220934327], [0.4...
+19     [[2.109650594345767, 3.095810994799408], [2.28...
+98     [[2.372907599303179, 5.532741291182399], [1.57...
+53     [[0.5287804192812411, 4.373618143545626], [1.6...
+145    [[2.065010718288077, 5.7734580337302335], [3.7...
+                             ...                        
+24     [[2.0483093648546316, 4.236661283504928], [1.1...
+118    [[2.575252042840591, 6.0626563054333635], [3.8...
+157    [[3.768537781165112, 6.728387115341577], [2.28...
+177    [[2.321539127499081, 5.925163883800649], [2.21...
+18     [[0.433962982261067, 2.369740510904326], [1.53...
+Name: Dgm, Length: 200, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FeatureMatrix</span><span class="p">,</span> <span class="n">_</span> <span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Ff</span><span class="o">.</span><span class="n">F_CCoordinates</span><span class="p">(</span><span class="n">simpleDF</span><span class="o">.</span><span class="n">Dgm</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">FeatureMatrix</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">simpleDF</span><span class="o">.</span><span class="n">trainingLabel</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;X is a matrix of size </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y is a vector of size </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X is a matrix of size (200, 5)
+y is a vector of size (200,)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can just pass this matrix into our favorite boiler plate SVM model to do prediction:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
+
+<span class="c1"># X: feature matrix, y: label vector</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.4
+              precision    recall  f1-score   support
+
+          -1       0.41      0.43      0.42        30
+           1       0.39      0.37      0.38        30
+
+    accuracy                           0.40        60
+   macro avg       0.40      0.40      0.40        60
+weighted avg       0.40      0.40      0.40        60
+</pre></div>
+</div>
+</div>
+</div>
+<section id="do-this">
+<h4>Do this:<a class="headerlink" href="#do-this" title="Link to this heading">#</a></h4>
+<p>The accuracy on this isn’t particularly great. Below, write code to simulate a new data set where the means of the two normal distributions are farther apart. Does the classifier do better?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now set up the same classification test for the manifold data set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="landscapes">
+<h3>Landscapes<a class="headerlink" href="#landscapes" title="Link to this heading">#</a></h3>
+<p>Next we’re going to look at the persistence landscapes.</p>
+<p><img alt="Landscape Definition By Picture" src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/refs/heads/main/JupyterFigures/LandscapeSetup.png" /></p>
+<section id="annulus-example">
+<h4>Annulus example<a class="headerlink" href="#annulus-example" title="Link to this heading">#</a></h4>
+<p>Let’s look at the persistence landscapes using an annulus. If you have the same set seed as me, the following row is an annulus.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">manifoldDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">90</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dgm0             [[0.0, 0.002596599282696843], [0.0, 0.00295830...
+Dgm1             [[0.35392576456069946, 0.41318178176879883], [...
+trainingLabel                                              Annulus
+Name: 90, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Draw</span><span class="o">.</span><span class="n">drawDgm</span><span class="p">(</span><span class="n">manifoldDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">90</span><span class="p">][</span><span class="s1">&#39;Dgm1&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7dc0ed57215b027ff1d1937d5b061c962340b790e1f695b9f06a180f99a39908.png" src="../../_images/7dc0ed57215b027ff1d1937d5b061c962340b790e1f695b9f06a180f99a39908.png" />
+</div>
+</div>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">PLandscape</span></code> class to generate the landscape functions for this particular persistence diagram.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PLC</span> <span class="o">=</span> <span class="n">Ff</span><span class="o">.</span><span class="n">PLandscape</span><span class="p">(</span><span class="n">manifoldDF</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">90</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">PLC</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>teaspoon.ML.feature_functions.PLandscape
+</pre></div>
+</div>
+</div>
+</div>
+<p>This class stores lots of information about the landscape functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are a total of&#39;</span><span class="p">,</span> <span class="n">PLC</span><span class="o">.</span><span class="n">PL_number</span><span class="p">,</span> <span class="s1">&#39;landscape functions.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are a total of 40 landscape functions.
+</pre></div>
+</div>
+</div>
+</div>
+<p>All the functions are stored in the <code class="docutils literal notranslate"><span class="pre">.AllPL</span></code> data frame as seen here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PLC</span><span class="o">.</span><span class="n">AllPL</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Landscape Number</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>[[0.08555641770362854, 0.0], [0.10098668932914...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>[[0.0894632562994957, 0.0], [0.093510430306196...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>[[0.09643901884555817, 0.0], [0.09699831157922...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>[[0.10695430636405945, 0.0], [0.10710240155458...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>[[0.12506087124347687, 0.0], [0.12696910649538...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>So we can plot the first landscape manually if we wanted to.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FirstFunc</span> <span class="o">=</span> <span class="n">PLC</span><span class="o">.</span><span class="n">AllPL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Points&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">FirstFunc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">FirstFunc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7128b8fc0795b23e689936a6fb968966257d30a54f35e889627adcfebbdfdf38.png" src="../../_images/7128b8fc0795b23e689936a6fb968966257d30a54f35e889627adcfebbdfdf38.png" />
+</div>
+</div>
+<p>We also have code to plot more easily. The function below plots the landscape functions number 1 through 4 (this is caused by passing in <code class="docutils literal notranslate"><span class="pre">range(1,5)</span></code> which is <code class="docutils literal notranslate"><span class="pre">[1,2,3,4]</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">PLC</span><span class="o">.</span><span class="n">PLandscape_plot</span><span class="p">(</span><span class="n">PLC</span><span class="o">.</span><span class="n">AllPL</span><span class="p">[</span><span class="s1">&#39;Points&#39;</span><span class="p">],</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/07743052fd32e909d9fec4e6bfb6d713d7907a3a656d07da0689a4c8f11dca2c.png" src="../../_images/07743052fd32e909d9fec4e6bfb6d713d7907a3a656d07da0689a4c8f11dca2c.png" />
+</div>
+</div>
+</section>
+<section id="id1">
+<h4>Do this:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>Find a row in <code class="docutils literal notranslate"><span class="pre">manifoldDF</span></code> that has one of the other manifold types. Compute and plot the landscapes. Do these look different than the annulus?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="running-a-classifier-with-landscapes">
+<h4>Running a classifier with Landscapes<a class="headerlink" href="#running-a-classifier-with-landscapes" title="Link to this heading">#</a></h4>
+<p>We can similarly flatten out these landscape functions and pass them to a SVM. However, here we’re going to use the <code class="docutils literal notranslate"><span class="pre">getPercentScore</span></code> function from teaspoon to speed up the process. Note that this function requires an input of a <code class="docutils literal notranslate"><span class="pre">parameterBucket</span></code> which stores all the parameters needed for ML training.</p>
+<p><em>Warning: The code below is slow, took about 5 minutes on my machine.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">teaspoon.ML.Base</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParameterBucket</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">teaspoon.ML.PD_Classification</span><span class="w"> </span><span class="kn">import</span> <span class="n">getPercentScore</span>
+
+<span class="n">labels_col</span><span class="o">=</span><span class="s1">&#39;trainingLabel&#39;</span>
+<span class="n">dgm_col</span><span class="o">=</span><span class="s1">&#39;Dgm1&#39;</span>
+
+<span class="c1"># convert categorical labels into integers</span>
+<span class="n">label_encoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">manifoldDF</span><span class="p">[</span><span class="n">labels_col</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">manifoldDF</span><span class="p">[</span><span class="n">labels_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+
+<span class="c1"># set classification parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">ParameterBucket</span><span class="p">()</span>
+<span class="n">params</span><span class="o">.</span><span class="n">feature_function</span> <span class="o">=</span> <span class="n">Ff</span><span class="o">.</span><span class="n">F_Landscape</span>
+<span class="n">params</span><span class="o">.</span><span class="n">PL_Number</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">params</span><span class="o">.</span><span class="n">k_fold_cv</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">params</span><span class="o">.</span><span class="n">clf_model</span> <span class="o">=</span> <span class="n">SVC</span>
+
+<span class="c1"># perform classification</span>
+<span class="n">c_report_train</span><span class="p">,</span><span class="n">c_report_test</span><span class="o">=</span><span class="n">getPercentScore</span><span class="p">(</span><span class="n">manifoldDF</span><span class="p">,</span>
+                                           <span class="n">labels_col</span><span class="o">=</span><span class="s1">&#39;trainingLabel&#39;</span><span class="p">,</span>
+                                           <span class="n">dgm_col</span><span class="o">=</span><span class="s1">&#39;Dgm1&#39;</span><span class="p">,</span>
+                                           <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                                           <span class="n">precomputed</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                                           <span class="n">saving</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                                           <span class="n">saving_path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Beginning experiments
+
+Run Number: 1
+Test set acc.: 0.983 
+Training set acc.: 1.000
+------------------------------
+Run Number: 2
+Test set acc.: 0.967 
+Training set acc.: 1.000
+------------------------------
+Run Number: 3
+Test set acc.: 1.000 
+Training set acc.: 1.000
+------------------------------
+Run Number: 4
+Test set acc.: 1.000 
+Training set acc.: 1.000
+------------------------------
+Run Number: 5
+Test set acc.: 0.983 
+Training set acc.: 1.000
+------------------------------
+
+Finished with training/testing experiments
+
+Test Set 
+---------
+Average accuracy: 0.987
+Standard deviation: 0.012
+
+Training Set 
+---------
+Average accuracy: 1.000
+Standard deviation: 0.000
+
+For more metrics, see the outputs.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h4>Do this:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<p>Set up a similar classifier for the <code class="docutils literal notranslate"><span class="pre">simpleDF</span></code>. Does this representation do any better on classifying the diagrams?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="persistence-images">
+<h3>Persistence Images<a class="headerlink" href="#persistence-images" title="Link to this heading">#</a></h3>
+<p>Next we focus on persistence images, which give a function on the (rotated) plane by sticking a Gaussian at each point in the persistence diagram, weighted by distance to the diagonal.</p>
+<p><img alt="Persistence Images" src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/refs/heads/main/JupyterFigures/Adams2017_1.png" /></p>
+<p>The code below computes the persistence images for the 1-dimensional diagrams in the manifold data set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Diagrams_H1</span> <span class="o">=</span> <span class="n">manifoldDF</span><span class="p">[</span><span class="s1">&#39;Dgm1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+<span class="n">PS</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">var</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">feature_PI</span> <span class="o">=</span> <span class="n">Ff</span><span class="o">.</span><span class="n">F_Image</span><span class="p">(</span><span class="n">Diagrams_H1</span><span class="p">,</span> <span class="n">PS</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">pers_imager</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The images themselves can be found in the <code class="docutils literal notranslate"><span class="pre">pers_images</span></code> entry of the <code class="docutils literal notranslate"><span class="pre">feature_PI</span></code> dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_PI</span><span class="p">[</span><span class="s1">&#39;pers_images&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(182, 168)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are some plots of the first four persistence images from the <code class="docutils literal notranslate"><span class="pre">manifoldDF</span></code> data frame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot example images</span>
+<span class="n">Ff</span><span class="o">.</span><span class="n">plot_F_Images</span><span class="p">(</span><span class="n">feature_PI</span><span class="p">,</span> <span class="n">num_plots</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">rows</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eedd38d96f4cba89b0235b7dd8f2806ae9836e5d851c6243c2b6f3589f78a8d5.png" src="../../_images/eedd38d96f4cba89b0235b7dd8f2806ae9836e5d851c6243c2b6f3589f78a8d5.png" />
+</div>
+</div>
+<p>For comparison, the top left image comes from the following diagram.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Draw</span><span class="o">.</span><span class="n">drawDgm</span><span class="p">(</span><span class="n">manifoldDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Dgm1&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/43f88a91ac3141b1d6118ffad5db45aa70e41689ff7b44781f6692c14a5611d3.png" src="../../_images/43f88a91ac3141b1d6118ffad5db45aa70e41689ff7b44781f6692c14a5611d3.png" />
+</div>
+</div>
+<p>The flatteded versions of the persistence images are stored in the <code class="docutils literal notranslate"><span class="pre">F_Matrix</span></code> part of the output. So, we can just pass this along to our favorite ML algorithm to train.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">feature_PI</span><span class="p">[</span><span class="s1">&#39;F_Matrix&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">manifoldDF</span><span class="p">[</span><span class="s1">&#39;trainingLabel&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.9888888888888889
+              precision    recall  f1-score   support
+
+           0       1.00      0.93      0.97        15
+           1       1.00      1.00      1.00        15
+           2       1.00      1.00      1.00        15
+           3       0.94      1.00      0.97        15
+           4       1.00      1.00      1.00        15
+           5       1.00      1.00      1.00        15
+
+    accuracy                           0.99        90
+   macro avg       0.99      0.99      0.99        90
+weighted avg       0.99      0.99      0.99        90
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id3">
+<h4>Do this:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<p>Run a persistence images classifier for the <code class="docutils literal notranslate"><span class="pre">simpleDF</span></code> data set. Does this do better or worse than the other choices?</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Lectures/15-Python-ML-Pers"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 15</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-notes-and-reminders">Class notes and reminders</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-for-everyone">Homework for everyone!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-we-up-to">What are we up to?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-data">Generating data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrams-from-normally-distributed-points">Diagrams from normally distributed points</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#now-generate-a-lot-of-diagrams-but-with-different-means">Now generate a lot of diagrams but with different means</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrams-sampled-from-manifolds">Diagrams sampled from manifolds</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorization-methods">Vectorization Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carlsson-coordinates">Carlsson Coordinates</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#do-this">Do this:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landscapes">Landscapes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#annulus-example">Annulus example</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Do this:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-classifier-with-landscapes">Running a classifier with Landscapes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Do this:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persistence-images">Persistence Images</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Do this:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elizabeth Munch
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
