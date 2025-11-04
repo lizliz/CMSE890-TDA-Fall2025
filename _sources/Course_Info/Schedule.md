@@ -28,7 +28,7 @@ The course schedule is maintained below. Note that this schedule is subject to c
 | Th 10/23 | [15](../Lectures/15-Python-ML-Pers/index.md) | TDA-ML Pipelines in Python | 13.1 | | |
 | T 10/28 | | *Liz in Australia, No Class*  | | | |
 | Th 10/30 | | *No class* | | | |
-| T 11/4 | 16 | PL functions and Reeb Graphs | 3.1, 7.1 | | |
+| T 11/4 | [16](../Lectures/16-ReebGraphs/index.md) | PL functions and Reeb Graphs | 3.1, 7.1 | | |
 | Th 11/6 | 17 | Distances for Reeb graphs | My survey paper | | |
 | T 11/11 | 18 | Mapper - Theory | 9.1/9.3 | | |
 | Th 11/13 | 19 | Mapper - Practice | | | |
@@ -41,4 +41,4 @@ The course schedule is maintained below. Note that this schedule is subject to c
 
 ## Office hours
 
-I will hold office hours by appointment. You can find a time that I am available at [elizabethmunch.com/officehours](http://www.elizabethmunch.com/officehours). 
+I will hold office hours by appointment. You can find a time that I am available at [elizabethmunch.com/officehours](http://www.elizabethmunch.com/officehours).

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 8 &#8212; CMSE 890 - TDA</title>
+    <title>Lec 16 - Supplemental Reeb Graph Examples &#8212; CMSE 890 - TDA</title>
   
   
   
@@ -57,12 +57,11 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/08-InducedMaps/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/16-ReebGraphs/Lec16-ReebGraphExample';</script>
     <script src="https://tikzjax.com/v1/tikzjax.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lecture 9" href="../09-Persistence/index.html" />
-    <link rel="prev" title="Solution for last example" href="../07-Homology-Computing/Lec07-ExampleSoln.html" />
+    <link rel="prev" title="Lecture 16" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -227,7 +226,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../07-Homology-Computing/Lec07-ExampleSoln.html">Last Example Solution</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Day 08 (Th 9/18)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-InducedMaps/index.html">Day 08 (Th 9/18)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09-Persistence/index.html">Day 09 (Th 9/30)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10-Persistence_Algorithm/index.html">Day 10 (Th 10/2)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../11-PersistenceWithPython/index.html">Day 11 (T 10/7)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -249,8 +248,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../15-Python-ML-Pers/15-Python-ML-Pers.html">Jupyter Notebook</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../16-ReebGraphs/index.html">Day 16 (T 11/4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../16-ReebGraphs/Lec16-ReebGraphExample.html">Jupyter Notebook</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Day 16 (T 11/4)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Jupyter Notebook</a></li>
 </ul>
 </details></li>
 </ul>
@@ -307,7 +306,7 @@
       
       
       
-      <li><a href="../../_sources/Lectures/08-InducedMaps/index.md" target="_blank"
+      <li><a href="../../_sources/Lectures/16-ReebGraphs/Lec16-ReebGraphExample.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -317,7 +316,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -378,7 +377,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -389,11 +390,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 8</h1>
+    <h1>Lec 16 - Supplemental Reeb Graph Examples</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-example">Second example</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -403,19 +412,92 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-8">
-<h1>Lecture 8<a class="headerlink" href="#lecture-8" title="Link to this heading">#</a></h1>
-<p>This lecture covers induced maps and persistent homology.</p>
-<ul>
-<li><p><strong>Reading:</strong> Dey-Wang Ch 2.5.1, 3.1</p></li>
-<li><p><strong>Slides:</strong></p>
-<ul class="simple">
-<li><p><a class="reference download internal" download="" href="../../_downloads/1da7c44bd67951b2bbb9a331182efcc4/CompTop-Lec08-InducedMaps_and_Filtrations.pdf"><span class="xref download myst">Lecture 8 slides pdf</span></a></p></li>
-</ul>
-<!-- - [Transcript of slides](./CompTop-Lec6-HomologyPt2.md) -->
-</li>
-<li><p><strong>Annotated slides (Fall 2025):</strong> <a class="reference download internal" download="" href="../../_downloads/eb153f527d212dc2f44bc42d31e8d430/CompTop-Lec08-InducedMaps_and_Filtrations.pdf"><span class="xref download myst">Lecture 8 slides - Annotated</span></a></p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="lec-16-supplemental-reeb-graph-examples">
+<h1>Lec 16 - Supplemental Reeb Graph Examples<a class="headerlink" href="#lec-16-supplemental-reeb-graph-examples" title="Link to this heading">#</a></h1>
+<p>To see some examples, we will use the <a class="reference external" href="https://munchlab.github.io/ceREEBerus/">ceREEBerus</a> package.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run in case you don&#39;t already have it installed:</span>
+<span class="c1"># pip install cereeberus</span>
+<span class="c1"># Note you need at least version 0.1.9 of ceREEBerus due to updates in naming conventions.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cereeberus</span> <span class="kn">import</span> <span class="n">ReebGraph</span><span class="p">,</span> <span class="n">LowerStar</span><span class="p">,</span> <span class="n">computeReeb</span>
+<span class="kn">from</span> <span class="nn">cereeberus.data.ex_torus</span> <span class="kn">import</span> <span class="n">Torus</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The example we’ve been using in the class lecture can be coded as follows. Notice that because my triangles in the code are backwards from the figures from class, this is actually a mirror image of that representation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="n">Torus</span><span class="p">()</span>
+<span class="n">T</span><span class="o">.</span><span class="n">generate_grid</span><span class="p">(</span><span class="n">grid_size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> 
+     <span class="mi">7</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span> 
+     <span class="mi">11</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span> 
+     <span class="mi">15</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">:</span><span class="mi">5</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">assign_filtration</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
+<span class="n">T</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/4e913cecec7548546126c606e30f3a43183d49f27ff219e5ae3f79fb839676bb.png" src="../../_images/4e913cecec7548546126c606e30f3a43183d49f27ff219e5ae3f79fb839676bb.png" />
+</div>
+</div>
+<p>Then to compute the Reeb graph of this torus, we have the following.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="n">computeReeb</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">R</span><span class="o">.</span><span class="n">remove_all_regular_vertices</span><span class="p">()</span>
+<span class="n">R</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">cpx</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/65615623505540a00c140bccad9d3cd613ca5be766d1362ecd421f53015a7c86.png" src="../../_images/65615623505540a00c140bccad9d3cd613ca5be766d1362ecd421f53015a7c86.png" />
+</div>
+</div>
+<section id="second-example">
+<h2>Second example<a class="headerlink" href="#second-example" title="Link to this heading">#</a></h2>
+<p>Consider the following example:</p>
+<img src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/refs/heads/main/JupyterFigures/SmallComplexExample.jpeg" alt="Small Complex Example" width="300">
+<p>Below is the code to store this filtration. Note that I don’t need to specify every simplex, just the top dimensional ones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="n">LowerStar</span><span class="p">()</span>
+
+<span class="c1"># Add top dimensional simplices</span>
+<span class="n">K</span><span class="o">.</span><span class="n">insert</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">K</span><span class="o">.</span><span class="n">insert</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">K</span><span class="o">.</span><span class="n">insert</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">K</span><span class="o">.</span><span class="n">insert</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+
+<span class="c1"># Assign filtration values to vertices</span>
+<span class="n">K</span><span class="o">.</span><span class="n">assign_filtration</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">K</span><span class="o">.</span><span class="n">assign_filtration</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="n">K</span><span class="o">.</span><span class="n">assign_filtration</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">K</span><span class="o">.</span><span class="n">assign_filtration</span><span class="p">([</span><span class="mi">3</span><span class="p">],</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">K</span><span class="o">.</span><span class="n">assign_filtration</span><span class="p">([</span><span class="mi">4</span><span class="p">],</span> <span class="mf">9.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Do this:</strong> Compute the Reeb graph of this filtration. Is it the same as what you computed by hand in class?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -431,7 +513,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./Lectures/08-InducedMaps"
+            path: "./Lectures/16-ReebGraphs"
         },
         predefinedOutput: true
     }
@@ -449,22 +531,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../07-Homology-Computing/Lec07-ExampleSoln.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Solution for last example</p>
+        <p class="prev-next-title">Lecture 16</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../09-Persistence/index.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 9</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -472,6 +545,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-example">Second example</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
