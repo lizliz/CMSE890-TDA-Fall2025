@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -476,18 +476,18 @@ document.write(`
 <p>We’re going to do that by recreating some experiments that I used <a class="reference external" href="https://doi.org/10.1007/s10208-022-09567-7">in my paper defining template functions</a>, but can be applied to any sort of ML vectorization. The game is to generate some simple test data sets and then use the various methods to predict the label/input parameter values of these data points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.image</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpimg</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">teaspoon.MakeData.PointCloud</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gPC</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">teaspoon.TDA.Draw</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">Draw</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">teaspoon.ML.feature_functions</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">Ff</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">teaspoon.ML.Base</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">MLBase</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">teaspoon.ML.PD_Classification</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">PD_CL</span>
+<span class="kn">import</span> <span class="nn">teaspoon.MakeData.PointCloud</span> <span class="k">as</span> <span class="nn">gPC</span>
+<span class="kn">import</span> <span class="nn">teaspoon.TDA.Draw</span> <span class="k">as</span> <span class="nn">Draw</span>
+<span class="kn">import</span> <span class="nn">teaspoon.ML.feature_functions</span> <span class="k">as</span> <span class="nn">Ff</span>
+<span class="kn">import</span> <span class="nn">teaspoon.ML.Base</span> <span class="k">as</span> <span class="nn">MLBase</span>
+<span class="kn">import</span> <span class="nn">teaspoon.ML.PD_Classification</span> <span class="k">as</span> <span class="nn">PD_CL</span>
 </pre></div>
 </div>
 </div>
@@ -760,9 +760,9 @@ y is a vector of size (200,)
 <p>Now we can just pass this matrix into our favorite boiler plate SVM model to do prediction:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
 
 <span class="c1"># X: feature matrix, y: label vector</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
@@ -974,9 +974,9 @@ Name: 90, dtype: object
 <p><em>Warning: The code below is slow, took about 5 minutes on my machine.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">teaspoon.ML.Base</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParameterBucket</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">teaspoon.ML.PD_Classification</span><span class="w"> </span><span class="kn">import</span> <span class="n">getPercentScore</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">teaspoon.ML.Base</span> <span class="kn">import</span> <span class="n">ParameterBucket</span>
+<span class="kn">from</span> <span class="nn">teaspoon.ML.PD_Classification</span> <span class="kn">import</span> <span class="n">getPercentScore</span>
 
 <span class="n">labels_col</span><span class="o">=</span><span class="s1">&#39;trainingLabel&#39;</span>
 <span class="n">dgm_col</span><span class="o">=</span><span class="s1">&#39;Dgm1&#39;</span>

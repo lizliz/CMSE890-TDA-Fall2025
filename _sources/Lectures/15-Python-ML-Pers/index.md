@@ -1,4 +1,4 @@
-# Lecture 15 
+# Lecture 15
 
 This lecture uses the machine learning vectorization methods for persistence diagrams from last time in Python code for toy examples. 
 
@@ -7,3 +7,5 @@ This lecture uses the machine learning vectorization methods for persistence dia
   - None
 - **Jupyter Notebook:**
   - [15-Python-ML-Pers.ipynb](15-Python-ML-Pers.ipynb)
+
+  <!-- Notes for future me.... this one needs some love and attention. In particular, teaspoon needs some cleanup since some of this stuff is SLOW.  -->

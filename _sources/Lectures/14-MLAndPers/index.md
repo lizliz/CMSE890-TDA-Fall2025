@@ -6,7 +6,7 @@ This lecture surveys machine learning vectorization methods for persistence diag
 - **Slides:**
   - [CompTop-Lec14-MLAndPers.pdf](CompTop-Lec14-MLAndPers.pdf)
 - **Annotated slides (Fall 2025):**
-  - [CompTop-Lec14-MLAndPers.pdf - Annotated](../Annotated-Fall2025/CompTop-Lec14-MLAndPers.pdf) -->
+  - [CompTop-Lec14-MLAndPers.pdf - Annotated](../Annotated-Fall2025/CompTop-Lec14-MLAndPers.pdf) 
 <!-- - **Jupyter Notebook:**
   - [Lec13-Distances.ipynb](Lec13-Distances.ipynb) -->
 
