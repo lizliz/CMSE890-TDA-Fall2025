@@ -61,6 +61,7 @@
     <script src="https://tikzjax.com/v1/tikzjax.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lecture 17" href="../17-MoreReebGraphs/index.html" />
     <link rel="prev" title="Lecture 16" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -252,6 +253,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Jupyter Notebook</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../17-MoreReebGraphs/index.html">Day 17 (Th 11/6)</a></li>
 </ul>
 
     </div>
@@ -437,18 +439,19 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="n">Torus</span><span class="p">()</span>
 <span class="n">T</span><span class="o">.</span><span class="n">generate_grid</span><span class="p">(</span><span class="n">grid_size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> 
-     <span class="mi">7</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span> 
-     <span class="mi">11</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span> 
-     <span class="mi">15</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">:</span><span class="mi">5</span><span class="p">}</span>
-<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-    <span class="n">T</span><span class="o">.</span><span class="n">assign_filtration</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
+<span class="c1"># f = {3:11, 2:13, 1:15, 0:7, </span>
+<span class="c1">#      7:14, 6:1, 5:3, 4:16, </span>
+<span class="c1">#      11:9, 10:2, 9:4, 8:8, </span>
+<span class="c1">#      15:10, 14:12, 13:6, 12:5}</span>
+<span class="c1"># for v in f.keys():</span>
+<span class="c1">#     T.assign_filtration(v, f[v])</span>
+<span class="n">T</span><span class="o">.</span><span class="n">assign_random_values</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">T</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4e913cecec7548546126c606e30f3a43183d49f27ff219e5ae3f79fb839676bb.png" src="../../_images/4e913cecec7548546126c606e30f3a43183d49f27ff219e5ae3f79fb839676bb.png" />
+<img alt="../../_images/a54af7751a1218d23e89672720a0372cf4a7af5d5f9dfc7f48f36ed02734e2ff.png" src="../../_images/a54af7751a1218d23e89672720a0372cf4a7af5d5f9dfc7f48f36ed02734e2ff.png" />
 </div>
 </div>
 <p>Then to compute the Reeb graph of this torus, we have the following.</p>
@@ -461,7 +464,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/65615623505540a00c140bccad9d3cd613ca5be766d1362ecd421f53015a7c86.png" src="../../_images/65615623505540a00c140bccad9d3cd613ca5be766d1362ecd421f53015a7c86.png" />
+<img alt="../../_images/f3c8a78f980b5b9a85881e50b2b50bd4daf199eb05ebf82ba9f6557f5192b78b.png" src="../../_images/f3c8a78f980b5b9a85881e50b2b50bd4daf199eb05ebf82ba9f6557f5192b78b.png" />
 </div>
 </div>
 <section id="second-example">
@@ -495,6 +498,18 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="n">computeReeb</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+<span class="n">R</span><span class="o">.</span><span class="n">remove_all_regular_vertices</span><span class="p">()</span>
+<span class="n">R</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">cpx</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2283a2be090a08eb3af8956da797e918b9985fb63e9e74136f89ef1f309a7a30.png" src="../../_images/2283a2be090a08eb3af8956da797e918b9985fb63e9e74136f89ef1f309a7a30.png" />
 </div>
 </div>
 </section>
@@ -538,6 +553,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Lecture 16</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../17-MoreReebGraphs/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 17</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
