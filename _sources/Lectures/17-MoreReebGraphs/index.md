@@ -9,5 +9,4 @@ This lecture talks about more properties of Reeb graphs, and defines some metric
   - [Lecture 17 slides pdf](./CompTop-Lec17-ReebGraphs-Pt2.pdf)
   <!-- - [Transcript of slides](./CompTop-Lec6-HomologyPt2.md) -->
 - **Annotated slides (Fall 2025):** 
-  - Coming soon.....
-  <!-- - [Lecture 8 slides - Annotated](../Annotated-Fall2025/CompTop-Lec08-InducedMaps_and_Filtrations.pdf)   -->
+  - [Lecture 17 slides - Annotated](../Annotated-Fall2025/CompTop-Lec17-ReebGraphs-Pt2.pdf)  
