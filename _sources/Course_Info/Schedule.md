@@ -29,8 +29,8 @@ The course schedule is maintained below. Note that this schedule is subject to c
 | T 10/28 | | *Liz in Australia, No Class*  | | | |
 | Th 10/30 | | *No class* | | | |
 | T 11/4 | [16](../Lectures/16-ReebGraphs/index.md) | PL functions and Reeb Graphs | 3.1, 7.1 | | |
-| Th 11/6 | 17 | Distances for Reeb graphs | My survey paper | | |
-| T 11/11 | 18 | Mapper - Theory | 9.1/9.3 | | |
+| Th 11/6 | [17](../Lectures/17-MoreReebGraphs/index.md) | Distances for Reeb graphs | [My survey paper](https://arxiv.org/abs/2110.05631) | | |
+| T 11/11 | [18](../Lectures/18-MapperGraphs/index.md) | Mapper - Theory | 9.1/9.3 | | |
 | Th 11/13 | 19 | Mapper - Practice | | | |
 | T 11/18 | 20 | Directional Transform and the ECT | | | |
 | Th 11/20 | 21 | ECT and PHT | | | |
