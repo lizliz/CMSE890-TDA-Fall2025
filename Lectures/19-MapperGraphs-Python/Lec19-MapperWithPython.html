@@ -1,0 +1,889 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lecture 19: Mapper graphs in Python &#8212; CMSE 890 - TDA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/19-MapperGraphs-Python/Lec19-MapperWithPython';</script>
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Lecture 19" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/functionLogo.png" class="logo__image only-light" alt="CMSE 890 - TDA - Home"/>
+    <img src="../../_static/functionLogo.png" class="logo__image only-dark pst-js-only" alt="CMSE 890 - TDA - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CMSE 381 - Fall 2024</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Schedule.html">Course Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Syllabus/Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Course_Info/Textbook.html">Textbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01-IntroAndPointSetBasics/index.html">Day 01 (T 8/26)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-IntroAndPointSetBasics/CompTop-Lec1-IntroAndTopologyBasics.html">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02-MorseFunctions/index.html">Day 02 (Th 8/28)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-MorseFunctions/CompTop-Lec2-MorseFcns.html">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03-SimplicialComplex/index.html">Day 03 (T 9/2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-SimplicialComplex/CompTop-Lec3-SimplicialComplexes.html">Slide transcript</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04-CechRips/index.html">Day 04 (Th 9/4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-CechRips/CompTop-Lec4-CechRips.html">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05-HomologyPart1/index.html">Day 05 (T 9/9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-HomologyPart1/CompTop-Lec5-HomologyPt1.html">Slide transcript</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06-HomologyPart2/index.html">Day 06 (Th 9/11)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-HomologyPart2/CompTop-Lec6-HomologyPt2.html">Slide transcript</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07-Homology-Computing/index.html">Day 07 (T 9/16)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-Homology-Computing/Lec07-ComputingHomology.html">Lecture 7: Jupyter Notebook</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../07-Homology-Computing/Lec07-ExampleSoln.html">Last Example Solution</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-InducedMaps/index.html">Day 08 (Th 9/18)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-Persistence/index.html">Day 09 (Th 9/30)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10-Persistence_Algorithm/index.html">Day 10 (Th 10/2)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../11-PersistenceWithPython/index.html">Day 11 (T 10/7)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../11-PersistenceWithPython/11-PersistenceWithPython.html">Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11-PersistenceWithPython/11-PersistenceWithPython-Exercises.html">Solution for Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../12-PointCloudPersistence/index.html">Day 12 (Th 10/9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../12-PointCloudPersistence/12-RipsPersistence.html">Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12-PointCloudPersistence/12-RipsPersistence-Exercises.html">Solution for Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../13-BottleneckAndStability/index.html">Day 13 (T 10/14)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../13-BottleneckAndStability/Lec13-Distances.html">Jupyter Notebook</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../14-MLAndPers/index.html">Day 14 (Th 10/16)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../15-Python-ML-Pers/index.html">Day 15 (Th 10/23)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../15-Python-ML-Pers/15-Python-ML-Pers.html">Jupyter Notebook</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../16-ReebGraphs/index.html">Day 16 (T 11/4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../16-ReebGraphs/Lec16-ReebGraphExample.html">Jupyter Notebook</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../17-MoreReebGraphs/index.html">Day 17 (Th 11/6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18-MapperGraphs/index.html">Day 18 (T 11/11)</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Day 19 (Th 11/13)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Jupyter Notebook</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Lectures/19-MapperGraphs-Python/Lec19-MapperWithPython.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 19: Mapper graphs in Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapper-definition">Mapper definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapper-of-a-toy-dataset">Mapper of a toy dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-mapper-object">Initialize mapper object</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-lens-filter-function">Define lens / filter function</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#projection">Projection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-as-lens-function">PCA as lens function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#norm">Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eccentricity">Eccentricity</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-cover">Define cover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-clustering-algorithm">Specify clustering algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-mapper-graph">Construct mapper graph</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-mapper-graph">Visualize the mapper graph</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-turn">Your turn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-changing-parameters-on-this-data-set">Test changing parameters on this data set</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-data-sets">Different data sets</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-19-mapper-graphs-in-python">
+<h1>Lecture 19: Mapper graphs in Python<a class="headerlink" href="#lecture-19-mapper-graphs-in-python" title="Link to this heading">#</a></h1>
+<p>In this notebook, we will run through basic examples of constructing mapper graphs using the <a class="reference external" href="https://kepler-mapper.scikit-tda.org/en/latest/">KeplerMapper</a> from scikit-tda. If not already installed, uncomment and run the following cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install kmapper</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports </span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sklearn</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">kmapper</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">km</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
+<p>This notebook was modified by Liz Munch from a previous version written by <a class="reference external" href="https://sourabhpalande.github.io/">Sourabh Palande</a>.</p>
+</section>
+<section id="mapper-definition">
+<h2>Mapper definition<a class="headerlink" href="#mapper-definition" title="Link to this heading">#</a></h2>
+<p>We can think of mapper as a two-step soft clustering method, guided by a real-valued function (called a <em>lens</em> or a <em>filter function</em>) on the data. We use this <em>lens</em> to divide our data into smaller overlapping chunks (called cubes in <code class="docutils literal notranslate"><span class="pre">kmapper</span></code>) where a data point may fall into two or more chunks.
+This part of the process is called creating a <em>cover</em>.</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbb{X}\)</span> be the point cloud and <span class="math notranslate nohighlight">\(f : \mathbb{X} \to \mathbb{R}\)</span> be the <em>lens</em>. We divide the range of <span class="math notranslate nohighlight">\(f\)</span> into overlapping intervals to create a cover <span class="math notranslate nohighlight">\(\mathcal{U} = \{U_{\alpha}\}\)</span>.
+This, in turn, allows us to compute <span class="math notranslate nohighlight">\(f^{-1}(\mathcal{U}) = \{f^{-1}(U_{\alpha})\}\)</span>, which is a cover of <span class="math notranslate nohighlight">\(\mathbb{X}\)</span> (called a <em>pullback</em> cover).</p>
+<p>Once we have a cover of <span class="math notranslate nohighlight">\(\mathbb{X}\)</span>, we apply our favorite clustering algorithm to each cover element separately. Then, we construct a graph where each node of the graph corresponds to a cluster from the clustering step. Lastly, if two clusters share the same data point(s), we connect the corresponding vertices of the graph by an edge.</p>
+<p>The example we used in class is below.</p>
+<p><img alt="" src="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/refs/heads/main/JupyterFigures/MapperEx-web.png" /></p>
+</section>
+<section id="mapper-of-a-toy-dataset">
+<h2>Mapper of a toy dataset<a class="headerlink" href="#mapper-of-a-toy-dataset" title="Link to this heading">#</a></h2>
+<p>Here, we will create and visualize a simple dataset with 700 points.</p>
+<p>Download the data here: <a class="reference external" href="https://raw.githubusercontent.com/lizliz/CMSE890-TDA-Fall2025/refs/heads/main/JupyterFigures/MapperExampleCloud.txt">MapperExampleCloud.txt</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;MapperExampleCloud.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize sample data with a scatter plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/526a97caa69599cc8df5bbf66c937146a83b877927cc87a6a2aa5035ecd0b401.png" src="../../_images/526a97caa69599cc8df5bbf66c937146a83b877927cc87a6a2aa5035ecd0b401.png" />
+</div>
+</div>
+<section id="initialize-mapper-object">
+<h3>Initialize mapper object<a class="headerlink" href="#initialize-mapper-object" title="Link to this heading">#</a></h3>
+<p>Now we will create a mapper graph for this toy dataset. The first step is to initialize a KeplerMapper object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize mapper object</span>
+<span class="c1"># Set verbose = 0 to suppress output messages below</span>
+<span class="n">mapper</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">KeplerMapper</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KeplerMapper(verbose=1)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-lens-filter-function">
+<h3>Define lens / filter function<a class="headerlink" href="#define-lens-filter-function" title="Link to this heading">#</a></h3>
+<p>Next, we will need to define a <em>lens</em> function, which is any function <span class="math notranslate nohighlight">\(f:P \to \R\)</span> that gives a real number for each input data point. In practice, you just need an array of <span class="math notranslate nohighlight">\(n\)</span> numbers, one for each of the <span class="math notranslate nohighlight">\(n\)</span> data points in <span class="math notranslate nohighlight">\(P\)</span>.  It is possible that your data comes with a lens function grounded in the domain from which it was obtained. However, if not, below are a few examples of lens functions that can be computed just given input data.</p>
+<section id="projection">
+<h4>Projection<a class="headerlink" href="#projection" title="Link to this heading">#</a></h4>
+<p>First, we have the projection in some direction. In this case, we have the following code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span>  <span class="c1"># 45 degree angle</span>
+<span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>  <span class="c1"># direction vector</span>
+
+<span class="c1"># define a lens/filter function/projection by an inner product with w</span>
+<span class="n">lens_project</span> <span class="o">=</span> <span class="n">data</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>  <span class="c1"># projection lens</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we will draw the points with the filter function shown as color.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">lens_project</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Spectral&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ca5fe6b8ec9ad8ff27a20358630755499bffe78d276839834b56881812608990.png" src="../../_images/ca5fe6b8ec9ad8ff27a20358630755499bffe78d276839834b56881812608990.png" />
+</div>
+</div>
+<p><strong>Try this:</strong> Mess with the theta above, how does this change the lens function?</p>
+</section>
+<section id="pca-as-lens-function">
+<h4>PCA as lens function<a class="headerlink" href="#pca-as-lens-function" title="Link to this heading">#</a></h4>
+<p>As another option, we have the <a class="reference external" href="https://en.wikipedia.org/wiki/Principal_component_analysis">PCA projection</a> as a lens function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="n">lens_PCA</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">lens_PCA</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Spectral&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;PCA as lens&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/84e67ac80b1861ae68b098a402ecbc93663f4a678ca404fea51fd2292c23b03e.png" src="../../_images/84e67ac80b1861ae68b098a402ecbc93663f4a678ca404fea51fd2292c23b03e.png" />
+</div>
+</div>
+</section>
+<section id="norm">
+<h4>Norm<a class="headerlink" href="#norm" title="Link to this heading">#</a></h4>
+<p>We can do the norm of each data point, which is simply the distance of the point from 0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">numpy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+<span class="n">lens_norm</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">lens_norm</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Spectral&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distance from origin as lens&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e713f749f14cf82220f36c23e7c1b1f944f15dcc600bcb0a954726de940218ea.png" src="../../_images/e713f749f14cf82220f36c23e7c1b1f944f15dcc600bcb0a954726de940218ea.png" />
+</div>
+</div>
+<p>I’ll make a modified version too which gives me the distance from the point <span class="math notranslate nohighlight">\((-2,3)\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_pt</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">lens_norm2</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="o">-</span><span class="n">base_pt</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">lens_norm2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Spectral&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distance from point (-2,3) as lens&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/595d0a9181ac6a8c34d47db01e741ac93aa874c7409474d9009ed4b3b998c7d3.png" src="../../_images/595d0a9181ac6a8c34d47db01e741ac93aa874c7409474d9009ed4b3b998c7d3.png" />
+</div>
+</div>
+</section>
+<section id="eccentricity">
+<h4>Eccentricity<a class="headerlink" href="#eccentricity" title="Link to this heading">#</a></h4>
+<p>We can define the eccentricity of the points like we did in class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">cdist</span>
+
+<span class="c1"># Compute the pairwise distance matrix</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">cdist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Eccentricity (p=1 from the equation in class) is the mean distance to all other points</span>
+<span class="n">eccentricity</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">eccentricity</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Spectral&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Eccentricity as lens&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/4a2f6609c2307f3192866f24141dc8f5044b2a3d6f18bb50e8d2bef8d7baae23.png" src="../../_images/4a2f6609c2307f3192866f24141dc8f5044b2a3d6f18bb50e8d2bef8d7baae23.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="define-cover">
+<h3>Define cover<a class="headerlink" href="#define-cover" title="Link to this heading">#</a></h3>
+<p>Next step is to define the <em>cover</em>. To do so, we will split the range of the <em>lens</em> function into specified number of intervals (<code class="docutils literal notranslate"><span class="pre">n_cubes</span></code>). Where the size of overlap between consecutive intervals is given as a percentage of interval length (<code class="docutils literal notranslate"><span class="pre">perc_overlap</span></code>). For example, if the range of the <em>lens</em> is (0-100) and we specify <code class="docutils literal notranslate"><span class="pre">n_cube</span> <span class="pre">=</span> <span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">perc_overlap</span> <span class="pre">=</span> <span class="pre">0.1</span></code>, respectively, then the two intervals we get are <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">60)</span></code> and <code class="docutils literal notranslate"><span class="pre">[50-100)</span></code>.<br></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cover</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">Cover</span><span class="p">(</span><span class="n">n_cubes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">perc_overlap</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With Keppler Mapper
+Once the cover is defined, mapper will split the data so that all the data points that map to the same interval are put into the same chunk. Since the intervals overlap, there would be points that map to more than one interval and hence, belong to more than one chunk.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize cover</span>
+<span class="n">cover</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">Cover</span><span class="p">(</span><span class="n">n_cubes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">perc_overlap</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="specify-clustering-algorithm">
+<h3>Specify clustering algorithm<a class="headerlink" href="#specify-clustering-algorithm" title="Link to this heading">#</a></h3>
+<p>Next, we want to apply clustering to each chunk. So we specify our favorite clustering algorithm. The default algorithm used by mapper is <a class="reference external" href="https://en.wikipedia.org/wiki/DBSCAN">DBSCAN</a>, but we can use any clustering algorithm or indeed write our own if needed.
+Typically, one of the methods provided by scikit-learn’s cluster module is used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize clustering algorithm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">DBSCAN</span>
+<span class="n">clust_metric</span> <span class="o">=</span> <span class="s1">&#39;euclidean&#39;</span>
+<span class="n">clusterer</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="n">clust_metric</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="construct-mapper-graph">
+<h3>Construct mapper graph<a class="headerlink" href="#construct-mapper-graph" title="Link to this heading">#</a></h3>
+<p>Now, we have all the ingredients to construct the mapper graph. We use the <code class="docutils literal notranslate"><span class="pre">.map</span></code> method of the KepplerMapper object we made a while ago to construct the graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create mapper graph: a dictionary with nodes, edges and meta-information</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">lens</span><span class="o">=</span><span class="n">lens_project</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">cover</span><span class="o">=</span><span class="n">cover</span><span class="p">,</span> <span class="n">clusterer</span><span class="o">=</span><span class="n">clusterer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mapping on data shaped (700, 2) using lens shaped (700,)
+
+Creating 10 hypercubes.
+
+Created 18 edges and 17 nodes in 0:00:00.007807.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-the-mapper-graph">
+<h3>Visualize the mapper graph<a class="headerlink" href="#visualize-the-mapper-graph" title="Link to this heading">#</a></h3>
+<p>Lastly, we will use the <code class="docutils literal notranslate"><span class="pre">visualize</span></code> method of KepplerMapper object to create a visualization and save it in an html file. There are other ways to create visualizations, we can export the graph to a standard graph package like networkx or igraph. But the html version is very convenient. We will create the html file and then load it into a frame below. Click on the link that shows up to see your output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Visualize the created graph</span>
+<span class="c1"># from helper_functions import colorscale_from_matplotlib_cmap</span>
+<span class="c1"># cscale = colorscale_from_matplotlib_cmap(plt.get_cmap(&#39;coolwarm&#39;))</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span>
+                     <span class="n">path_html</span><span class="o">=</span><span class="s2">&quot;./example_mapper.html&quot;</span><span class="p">,</span>
+                     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;make_circles(n_samples=5000, noise=0.03, factor=0.3)&quot;</span><span class="p">,</span>
+                     <span class="n">color_values</span><span class="o">=</span><span class="n">lens_project</span><span class="p">,</span>
+                     <span class="n">color_function_name</span><span class="o">=</span><span class="s1">&#39;labels&#39;</span>
+                    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wrote visualization to: ./example_mapper.html
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the visualization, you can zoom in and out on parts of the graph.<br>
+Click on the <code class="docutils literal notranslate"><span class="pre">+</span></code> sign in from of <em>cluster details</em> to open a panel on the left. When you hover over a node in the graph, this panel will display information about the cluster.<br>
+Click on the <code class="docutils literal notranslate"><span class="pre">+</span></code> sign in from of <em>mapper summary</em> to open a panel on the right. This panel shows the parameters used to construct the mapper graph.</p>
+</section>
+</section>
+<section id="your-turn">
+<h2>Your turn<a class="headerlink" href="#your-turn" title="Link to this heading">#</a></h2>
+<p>Now you have all the tools to build mapper graphs!</p>
+<section id="test-changing-parameters-on-this-data-set">
+<h3>Test changing parameters on this data set<a class="headerlink" href="#test-changing-parameters-on-this-data-set" title="Link to this heading">#</a></h3>
+<p>Do the following.</p>
+<ul class="simple">
+<li><p>For each of the lens functions above, recompute the mapper graph. What changes for the different options?</p></li>
+<li><p>Pick on lens function you like (I’m always a fan of the projection for interpretability). Try using a different number of cover intervals, from 2 to 30. How does this affect the graph?</p></li>
+<li><p>Now try fixing the lens function and number of cover intervals, but change the percentage overlap, from 10 to 50%. What changes here?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="different-data-sets">
+<h3>Different data sets<a class="headerlink" href="#different-data-sets" title="Link to this heading">#</a></h3>
+<p>Load the circle data set from sklearn below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load sample data</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">make_circles</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2895c5ee8d30b3ebb421decde7c787b4f9c3fbc37ab1c16907ed311e1d87cfa6.png" src="../../_images/2895c5ee8d30b3ebb421decde7c787b4f9c3fbc37ab1c16907ed311e1d87cfa6.png" />
+</div>
+</div>
+<p>Do this:</p>
+<ul class="simple">
+<li><p>How do the different lens functions look on this data set?</p></li>
+<li><p>Which do you expect to have a mapper graph that is (approximately) two circles? Which do you expect <strong>not</strong> to look like two circles?</p></li>
+<li><p>Test your guess above by computing the mapper graphs of these lens functions.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Lectures/19-MapperGraphs-Python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 19</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapper-definition">Mapper definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapper-of-a-toy-dataset">Mapper of a toy dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-mapper-object">Initialize mapper object</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-lens-filter-function">Define lens / filter function</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#projection">Projection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-as-lens-function">PCA as lens function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#norm">Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eccentricity">Eccentricity</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-cover">Define cover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-clustering-algorithm">Specify clustering algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-mapper-graph">Construct mapper graph</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-mapper-graph">Visualize the mapper graph</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-turn">Your turn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-changing-parameters-on-this-data-set">Test changing parameters on this data set</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-data-sets">Different data sets</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elizabeth Munch
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

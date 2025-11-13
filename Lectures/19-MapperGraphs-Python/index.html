@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 14 &#8212; CMSE 890 - TDA</title>
+    <title>Lecture 19 &#8212; CMSE 890 - TDA</title>
   
   
   
@@ -60,12 +60,14 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/14-MLAndPers/index';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/19-MapperGraphs-Python/index';</script>
     <script src="https://tikzjax.com/v1/tikzjax.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lecture 15" href="../15-Python-ML-Pers/index.html" />
-    <link rel="prev" title="Lecture 13 - Bottleneck and Wasserstein Distances" href="../13-BottleneckAndStability/Lec13-Distances.html" />
+    <link rel="next" title="Lecture 19: Mapper graphs in Python" href="Lec19-MapperWithPython.html" />
+    <link rel="prev" title="Lecture 18" href="../18-MapperGraphs/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -233,7 +235,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../13-BottleneckAndStability/Lec13-Distances.html">Jupyter Notebook</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Day 14 (Th 10/16)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14-MLAndPers/index.html">Day 14 (Th 10/16)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../15-Python-ML-Pers/index.html">Day 15 (Th 10/23)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../15-Python-ML-Pers/15-Python-ML-Pers.html">Jupyter Notebook</a></li>
 </ul>
@@ -244,8 +246,8 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../17-MoreReebGraphs/index.html">Day 17 (Th 11/6)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../18-MapperGraphs/index.html">Day 18 (T 11/11)</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../19-MapperGraphs-Python/index.html">Day 19 (Th 11/13)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../19-MapperGraphs-Python/Lec19-MapperWithPython.html">Jupyter Notebook</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Day 19 (Th 11/13)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Lec19-MapperWithPython.html">Jupyter Notebook</a></li>
 </ul>
 </details></li>
 </ul>
@@ -307,7 +309,7 @@
       
       
       
-      <li><a href="../../_sources/Lectures/14-MLAndPers/index.md" target="_blank"
+      <li><a href="../../_sources/Lectures/19-MapperGraphs-Python/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -381,7 +383,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 14</h1>
+    <h1>Lecture 19</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -395,25 +397,29 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-14">
-<h1>Lecture 14<a class="headerlink" href="#lecture-14" title="Link to this heading">#</a></h1>
-<p>This lecture surveys machine learning vectorization methods for persistence diagrams.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-19">
+<h1>Lecture 19<a class="headerlink" href="#lecture-19" title="Link to this heading">#</a></h1>
+<p>This lecture computes the mapper graph for simple toy data.</p>
 <ul class="simple">
-<li><p><strong>Reading:</strong> DW Chapter 13</p></li>
+<li><p><strong>Reading:</strong></p>
+<ul>
+<li><p>DW Chapter 9.1, 9.3.</p></li>
+</ul>
+</li>
 <li><p><strong>Slides:</strong></p>
 <ul>
-<li><p><a class="reference download internal" download="" href="../../_downloads/ad22ab9354d80db378b7edf55590f884/CompTop-Lec14-MLAndPers.pdf"><span class="xref download myst">CompTop-Lec14-MLAndPers.pdf</span></a></p></li>
+<li><p>None</p></li>
 </ul>
 </li>
-<li><p><strong>Annotated slides (Fall 2025):</strong></p>
+<li><p><strong>Jupyter notebook:</strong></p>
 <ul>
-<li><p><a class="reference download internal" download="" href="../../_downloads/74a30a2df1493f6a195a67c1452f70d7/CompTop-Lec14-MLAndPers.pdf"><span class="xref download myst">CompTop-Lec14-MLAndPers.pdf - Annotated</span></a></p></li>
+<li><p><a class="reference internal" href="Lec19-MapperWithPython.html"><span class="std std-doc">Lec19-MapperWithPython.ipynb</span></a></p></li>
 </ul>
 </li>
 </ul>
-<!-- - **Jupyter Notebook:**
-  - [Lec13-Distances.ipynb](Lec13-Distances.ipynb) -->
-<!-- Note to self: This lecture went about 20 minutes short, more content could be added. Maybe more interactivity, more examples, more code? Also needed definition of Hasudorff distance since many weren't familiar. Could also use some more explanation of MDS.  --></section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -428,7 +434,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./Lectures/14-MLAndPers"
+            path: "./Lectures/19-MapperGraphs-Python"
         },
         predefinedOutput: true
     }
@@ -446,20 +452,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../13-BottleneckAndStability/Lec13-Distances.html"
+       href="../18-MapperGraphs/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lecture 13 - Bottleneck and Wasserstein Distances</p>
+        <p class="prev-next-title">Lecture 18</p>
       </div>
     </a>
     <a class="right-next"
-       href="../15-Python-ML-Pers/index.html"
+       href="Lec19-MapperWithPython.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 15</p>
+        <p class="prev-next-title">Lecture 19: Mapper graphs in Python</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
