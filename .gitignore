@@ -13,6 +13,7 @@ MNIST*
 data*
 .vscode/
 .conda*
+MapperInteractive/
 
 # Latex files
 
