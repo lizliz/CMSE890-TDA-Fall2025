@@ -514,20 +514,17 @@ document.write(`
 <p><em><strong>Do this:</strong></em> Change <span class="math notranslate nohighlight">\(i\)</span> to find some example of the colored “finger” leaves, some examples of the blue “apple” leaves, the parakeet, and the mermaid.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="n">file_names</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-<span class="c1"># shape = normalize(shape)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># Pick a number between 1 and 150</span>
+<span class="n">shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="n">file_names</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">shape</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">shape</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Flip y-axis for correct orientation</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">EmbeddedComplex</span><span class="p">()</span>  <span class="c1"># Using the unified EmbeddedComplex class</span>
 <span class="n">G</span><span class="o">.</span><span class="n">add_cycle</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
-<span class="n">G</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
-</pre></div>
-</div>
-<img alt="../../_images/f3a78157d104005161ad0d4683acb4beeba6adc2bd6fb22854cd88693c500342.png" src="../../_images/f3a78157d104005161ad0d4683acb4beeba6adc2bd6fb22854cd88693c500342.png" />
+<img alt="../../_images/a978715c5c744bb2b42107aad1a128d36d241fabcf0cedb89ef1a128f75fe358.png" src="../../_images/a978715c5c744bb2b42107aad1a128d36d241fabcf0cedb89ef1a128f75fe358.png" />
 </div>
 </div>
 <p>We’re going to align the leaf using the PCA coordinates, min-max center, and scale it to fit in a ball of radius 1 for ease of comparisons.</p>
@@ -540,7 +537,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/38c4e4de9904362275f1e270d940b9a35fb2906cebf14d899b3833d897916299.png" src="../../_images/38c4e4de9904362275f1e270d940b9a35fb2906cebf14d899b3833d897916299.png" />
+<img alt="../../_images/6a90e826837ce153c9c976b70c1a65b5e9cc056ff34823fed64541fdd1b4bf57.png" src="../../_images/6a90e826837ce153c9c976b70c1a65b5e9cc056ff34823fed64541fdd1b4bf57.png" />
 </div>
 </div>
 </section>
@@ -565,7 +562,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/98cbde5b3b0450ae254b2d570660cb0b94bad712e5073549a54ae94cf8a5fadb.png" src="../../_images/98cbde5b3b0450ae254b2d570660cb0b94bad712e5073549a54ae94cf8a5fadb.png" />
+<img alt="../../_images/2bf84f59b48f6823ab1ce7dd3d84f33fe435b06920d5b17c21fe8c3a8c7691dc.png" src="../../_images/2bf84f59b48f6823ab1ce7dd3d84f33fe435b06920d5b17c21fe8c3a8c7691dc.png" />
 </div>
 </div>
 <p>Let’s just make a data loader with all of this for ease in a bit.</p>
@@ -580,6 +577,7 @@ document.write(`
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;i must be between 1 and 150, got </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">filename</span> <span class="o">=</span> <span class="n">file_names</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Adjust for zero-based index</span>
     <span class="n">shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="n">shape</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">shape</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Flip y-axis for correct orientation</span>
     <span class="n">G</span> <span class="o">=</span> <span class="n">EmbeddedComplex</span><span class="p">()</span>  <span class="c1"># Using the unified EmbeddedComplex class  </span>
     <span class="n">G</span><span class="o">.</span><span class="n">add_cycle</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
     <span class="n">G</span><span class="o">.</span><span class="n">transform_coordinates</span><span class="p">(</span><span class="n">projection_type</span><span class="o">=</span><span class="s2">&quot;pca&quot;</span><span class="p">)</span>
@@ -614,7 +612,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a32b5d501aaec8b6d75add6ed9ecff37b223ea707de9e480b068e2fc99f4b11c.png" src="../../_images/a32b5d501aaec8b6d75add6ed9ecff37b223ea707de9e480b068e2fc99f4b11c.png" />
+<img alt="../../_images/ac3c9642ea4ddc13f2ee3ace67fcfd4ad6b2fd19d5ea78c4ca85ef21836569d4.png" src="../../_images/ac3c9642ea4ddc13f2ee3ace67fcfd4ad6b2fd19d5ea78c4ca85ef21836569d4.png" />
 </div>
 </div>
 <p><em><strong>Do this:</strong></em> What do you notice changes about the ECT, particularly for the “finger” leaves vs the “apple” leaves.</p>
@@ -661,8 +659,44 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a2e247cf023ec3047fec52d82deb6d346e9607fac7940719b4f8d485c46acefc.png" src="../../_images/a2e247cf023ec3047fec52d82deb6d346e9607fac7940719b4f8d485c46acefc.png" />
 </div>
-<p>And now we can load in all the outlines, compute their ECT and store it in a 3D array.</p>
+</div>
+<p>To get a distance between the two ECTs, we can compute the distance using standard <span class="math notranslate nohighlight">\(L_2\)</span> distance between matrices. That is</p>
+<div class="math notranslate nohighlight">
+\[
+\|M_1-M_2\| = \left( \sum_{i,j} \big|M_1[i,j] - M_2[i,j]\big|^2 \right) ^{1/2}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here&#39;s the difference matrix</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">fingerECT</span><span class="o">-</span><span class="n">appleECT</span>
+
+<span class="n">diff</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Difference between Finger and Apple ECTs&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/03b58764479fa143f50aa6aed877ac7decd5cf6fc9ca15d203fed67750405050.png" src="../../_images/03b58764479fa143f50aa6aed877ac7decd5cf6fc9ca15d203fed67750405050.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can get the actual distance by computing the L2 norm of the difference matrix</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">diff</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(135.68345514468592)
+</pre></div>
+</div>
+</div>
+</div>
+<p>That number doesn’t mean much to me without seeing it in the context of distances between other choices. So, let’s look at all the distances at once.</p>
+<p>In this cell, we load in all the outlines, compute their ECT, and store it in a 3D array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_dirs</span> <span class="o">=</span> <span class="mi">60</span>  <span class="c1"># set number of directional axes</span>
@@ -684,38 +718,26 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Let’s extract their ECT’s from the tensor we just built.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ECT_finger</span> <span class="o">=</span> <span class="n">ect_arr</span><span class="p">[</span><span class="n">finger_i</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
-<span class="n">ECT_apple</span> <span class="o">=</span> <span class="n">ect_arr</span><span class="p">[</span><span class="n">apple_i</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
-
-<span class="c1"># Plot the two ects side by side</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ECT_finger</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here, we are just going to compute the distance between two ECTs using <span class="math notranslate nohighlight">\(L_2\)</span> distance.</p>
-<p><strong>Questions:</strong></p>
-<ul class="simple">
-<li><p>What does entry <span class="math notranslate nohighlight">\(D[i,j]\)</span> mean?</p></li>
-<li><p>Why is there a dark blue (lower value) square in the bottom right?</p></li>
-</ul>
+<p>The next cell computes the distance between all pairs of ECTs using <span class="math notranslate nohighlight">\(L_2\)</span> distance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flattened_ect</span> <span class="o">=</span> <span class="n">ect_arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_names</span><span class="p">),</span> <span class="n">num_dirs</span> <span class="o">*</span> <span class="n">num_thresh</span><span class="p">)</span>
 <span class="n">D</span> <span class="o">=</span> <span class="n">distance_matrix</span><span class="p">(</span><span class="n">flattened_ect</span><span class="p">,</span> <span class="n">flattened_ect</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distance Matrix between Matisse Leaf ECTs&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f6fc0e0565ab673ba23a1a021bff8403ac4b52fdc0bc9b6f4b35624b397d9239.png" src="../../_images/f6fc0e0565ab673ba23a1a021bff8403ac4b52fdc0bc9b6f4b35624b397d9239.png" />
+<img alt="../../_images/bc1a2cd81c8e9e6f0332a580c3e3bef786baf79a3cf130e8b749bd9248899c55.png" src="../../_images/bc1a2cd81c8e9e6f0332a580c3e3bef786baf79a3cf130e8b749bd9248899c55.png" />
 </div>
 </div>
+<p><strong>Questions:</strong></p>
+<ul class="simple">
+<li><p>What does entry <span class="math notranslate nohighlight">\(D[i,j]\)</span> mean?</p></li>
+<li><p>Why is there a dark blue (lower value) square in the bottom right?</p></li>
+</ul>
 <p>For visualization purposes, we can project this data into 2D using <a class="reference external" href="https://en.wikipedia.org/wiki/Multidimensional_scaling">Multi Dimensional Scaling (MDS)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -752,18 +774,20 @@ document.write(`
     <span class="n">plt</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">trans_sh</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">trans_sh</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">col_df</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># plot shape</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;MDS of Matisse&#39;s Leaves via ECT distances&quot;</span><span class="p">)</span>
-<span class="c1"># plt.savefig(&quot;Matisse_MDS.png&quot;, bbox_inches = &#39;tight&#39;, dpi=300)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;MDS of Matisse&#39;s Leaves via ECT distances&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &quot;MDS of Matisse&#39;s Leaves via ECT distances&quot;)
-</pre></div>
-</div>
-<img alt="../../_images/a33a9c1d81561937f0cff85d7bcf60a45fabb794874073388d54f945ab7b2a6b.png" src="../../_images/a33a9c1d81561937f0cff85d7bcf60a45fabb794874073388d54f945ab7b2a6b.png" />
+<img alt="../../_images/7c4e715fdec56247b6a69d0be4a40ebf0cc4cd934ae28f5439a56f3a61a3ee44.png" src="../../_images/7c4e715fdec56247b6a69d0be4a40ebf0cc4cd934ae28f5439a56f3a61a3ee44.png" />
 </div>
 </div>
+<p><em><strong>Questions:</strong></em></p>
+<ul class="simple">
+<li><p>What do you notice about the placement of the leaves?</p></li>
+<li><p>Where did the parakeet and mermaid end up?</p></li>
+<li><p>What do you notice about the density of the apple leaves vs. the finger leaves? Why do you think this is?</p></li>
+</ul>
 </section>
 </section>
 
