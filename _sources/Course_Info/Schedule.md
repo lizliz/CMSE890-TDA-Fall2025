@@ -31,8 +31,8 @@ The course schedule is maintained below. Note that this schedule is subject to c
 | T 11/4 | [16](../Lectures/16-ReebGraphs/index.md) | PL functions and Reeb Graphs | 3.1, 7.1 | | |
 | Th 11/6 | [17](../Lectures/17-MoreReebGraphs/index.md) | Distances for Reeb graphs | [My survey paper](https://arxiv.org/abs/2110.05631) | | |
 | T 11/11 | [18](../Lectures/18-MapperGraphs/index.md) | Mapper - Theory | 9.1/9.3 | | |
-| Th 11/13 | 19 | Mapper - Practice | | | |
-| T 11/18 | 20 | Directional Transform and the ECT | | | |
+| Th 11/13 | [19](../Lectures/19-MapperGraphs-Python/index.md) | Mapper - Practice | | | |
+| T 11/18 | [20](../Lectures/20-DirectionalTransform/index.md) | Directional Transform and the ECT | | | |
 | Th 11/20 | 21 | ECT and PHT | | | |
 | T 11/25 | 22 | Discrete Morse Theory | | | |
 | Th 11/27 || *No class - Thanksgiving*  | | | |

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 9 &#8212; CMSE 890 - TDA</title>
+    <title>Lecture 20 &#8212; CMSE 890 - TDA</title>
   
   
   
@@ -57,12 +57,14 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/09-Persistence/index';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/20-DirectionalTransform/index';</script>
     <script src="https://tikzjax.com/v1/tikzjax.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lecture 10" href="../10-Persistence_Algorithm/index.html" />
-    <link rel="prev" title="Lecture 8" href="../08-InducedMaps/index.html" />
+    <link rel="next" title="Lecture 20: ECT on Matisse" href="Lec20-ECT_with_Matisse.html" />
+    <link rel="prev" title="Lecture 19: Mapper graphs in Python" href="../19-MapperGraphs-Python/Lec19-MapperWithPython.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -228,7 +230,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../08-InducedMaps/index.html">Day 08 (Th 9/18)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Day 09 (Th 9/30)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-Persistence/index.html">Day 09 (Th 9/30)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10-Persistence_Algorithm/index.html">Day 10 (Th 10/2)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../11-PersistenceWithPython/index.html">Day 11 (T 10/7)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../11-PersistenceWithPython/11-PersistenceWithPython.html">Jupyter Notebook</a></li>
@@ -259,8 +261,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../19-MapperGraphs-Python/Lec19-MapperWithPython.html">Jupyter Notebook</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../20-DirectionalTransform/index.html">Day 20 (T 11/18)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../20-DirectionalTransform/Lec20-ECT_with_Matisse.html">Jupyter Notebook</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Day 20 (T 11/18)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Lec20-ECT_with_Matisse.html">Jupyter Notebook</a></li>
 </ul>
 </details></li>
 </ul>
@@ -317,7 +319,7 @@
       
       
       
-      <li><a href="../../_sources/Lectures/09-Persistence/index.md" target="_blank"
+      <li><a href="../../_sources/Lectures/20-DirectionalTransform/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -399,7 +401,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 9</h1>
+    <h1>Lecture 20</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -413,19 +415,28 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-9">
-<h1>Lecture 9<a class="headerlink" href="#lecture-9" title="Link to this heading">#</a></h1>
-<p>This lecture covers persistent homology.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-20">
+<h1>Lecture 20<a class="headerlink" href="#lecture-20" title="Link to this heading">#</a></h1>
+<p>This lecture introduces the directional transform, including the ECT and PHT.</p>
 <ul>
-<li><p><strong>Reading:</strong> Dey-Wang Ch  3.1; EH VII.1</p></li>
+<li><p><strong>Reading:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doi.org/10.1080/00029890.2024.2409616">An Invitation to the ECT</a></p></li>
+</ul>
+</li>
 <li><p><strong>Slides:</strong></p>
 <ul class="simple">
-<li><p><a class="reference download internal" download="" href="../../_downloads/9605d4e489ab0803ef0c3acfb7ac7a80/CompTop-Lec09-Persistence.pdf"><span class="xref download myst">Lecture 9 slides pdf</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/0d853cb57c15df592743b805c2f95dbd/CompTop-Lec20-DirectionalTransform.pdf"><span class="xref download myst">Lecture 20 slides pdf</span></a></p></li>
 </ul>
 <!-- - [Transcript of slides](./CompTop-Lec6-HomologyPt2.md) -->
 </li>
-<li><p><strong>Annotated slides (Fall 2025):</strong>  <a class="reference download internal" download="" href="../../_downloads/6d10a4d683521c75c7fd607e86fc0a15/CompTop-Lec09-Persistence.pdf"><span class="xref download myst">Lecture 9 slides - Annotated</span></a></p></li>
+<li><p><strong>Annotated slides (Fall 2025):</strong> Coming soon…</p>
+<!-- - [Lecture 18 slides - Annotated](../Annotated-Fall2025/CompTop-Lec18-MapperGraphs.pdf)   -->
+</li>
+<li><p><strong>Jupyter notebook:</strong> <a class="reference internal" href="Lec20-ECT_with_Matisse.html"><span class="std std-doc">Lec20-ECT_with_Matisse.ipynb</span></a></p></li>
 </ul>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -441,7 +452,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./Lectures/09-Persistence"
+            path: "./Lectures/20-DirectionalTransform"
         },
         predefinedOutput: true
     }
@@ -459,20 +470,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../08-InducedMaps/index.html"
+       href="../19-MapperGraphs-Python/Lec19-MapperWithPython.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lecture 8</p>
+        <p class="prev-next-title">Lecture 19: Mapper graphs in Python</p>
       </div>
     </a>
     <a class="right-next"
-       href="../10-Persistence_Algorithm/index.html"
+       href="Lec20-ECT_with_Matisse.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 10</p>
+        <p class="prev-next-title">Lecture 20: ECT on Matisse</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

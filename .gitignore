@@ -14,6 +14,8 @@ data*
 .vscode/
 .conda*
 MapperInteractive/
+outlines/
+
 
 # Latex files
 
