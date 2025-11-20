@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 4 &#8212; CMSE 890 - TDA</title>
+    <title>Lecture 21 &#8212; CMSE 890 - TDA</title>
   
   
   
@@ -60,14 +60,11 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/04-CechRips/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lectures/21-PHT_and_Monodromy/index';</script>
     <script src="https://tikzjax.com/v1/tikzjax.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Slide transcript" href="CompTop-Lec4-CechRips.html" />
-    <link rel="prev" title="Slide transcript" href="../03-SimplicialComplex/CompTop-Lec3-SimplicialComplexes.html" />
+    <link rel="prev" title="Lecture 20: ECT on Matisse" href="../20-DirectionalTransform/Lec20-ECT_with_Matisse.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -189,8 +186,8 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Day 04 (Th 9/4)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="CompTop-Lec4-CechRips.html">Slide transcript</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04-CechRips/index.html">Day 04 (Th 9/4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-CechRips/CompTop-Lec4-CechRips.html">Slide transcript</a></li>
 
 
 </ul>
@@ -254,7 +251,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../20-DirectionalTransform/Lec20-ECT_with_Matisse.html">Jupyter Notebook</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../21-PHT_and_Monodromy/index.html">Day 21 (Th 11/20)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Day 21 (Th 11/20)</a></li>
 </ul>
 
     </div>
@@ -314,7 +311,7 @@
       
       
       
-      <li><a href="../../_sources/Lectures/04-CechRips/index.md" target="_blank"
+      <li><a href="../../_sources/Lectures/21-PHT_and_Monodromy/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -388,7 +385,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 4</h1>
+    <h1>Lecture 21</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -402,22 +399,30 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-4">
-<h1>Lecture 4<a class="headerlink" href="#lecture-4" title="Link to this heading">#</a></h1>
-<p>This lecture covers simplicial complexes arising from point clouds.</p>
-<ul class="simple">
-<li><p><strong>Reading:</strong> Dey-Wang Ch 2.2, 2.3.1</p></li>
-<li><p><strong>Slides:</strong></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-21">
+<h1>Lecture 21<a class="headerlink" href="#lecture-21" title="Link to this heading">#</a></h1>
+<p>This lecture discusses the PHT more in depth, and introduces the concept of monodromy.</p>
 <ul>
-<li><p><a class="reference download internal" download="" href="../../_downloads/0fb19ada0899424d15a038274f3e4ae2/CompTop-Lec4-CechRips.pdf"><span class="xref download myst">Lecture 4 slides pdf</span></a></p></li>
-<li><p><a class="reference internal" href="CompTop-Lec4-CechRips.html"><span class="std std-doc">Transcript of slides</span></a></p></li>
+<li><p><strong>Reading:</strong></p>
+<ul class="simple">
+<li><p>PHT:</p></li>
+<li><p>Finitely many directions:</p></li>
+<li><p>Bundles:</p></li>
+<li><p>Star shaped objects have no monodromy:</p></li>
 </ul>
 </li>
-<li><p><strong>Annotated slides (Fall 2025):</strong> <a class="reference download internal" download="" href="../../_downloads/9e18a37d8127e3ef4fbe4bef90845a0e/CompTop-Lec4-CechRips.pdf"><span class="xref download myst">Lecture 4 slides - Annotated</span></a></p></li>
+<li><p><strong>Slides:</strong></p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/3831940f86186aebedc024eb6804fb89/CompTop-Lec21-PHT.pdf"><span class="xref download myst">Lecture 21 slides pdf</span></a></p></li>
 </ul>
-<div class="toctree-wrapper compound">
-</div>
-</section>
+<!-- - [Transcript of slides](./CompTop-Lec6-HomologyPt2.md) -->
+</li>
+<li><p><strong>Annotated slides (Fall 2025):</strong> Coming soon…</p>
+<!-- - [Lecture 20 slides - Annotated](../Annotated-Fall2025/CompTop-Lec20-DirectionalTransform.pdf)   -->
+</li>
+</ul>
+<!-- - **Jupyter notebook:** [Lec20-ECT_with_Matisse.ipynb](./Lec20-ECT_with_Matisse.ipynb) -->
+<!-- This could be expanded. Some students didn't get through but most were done with the juptyer notebook very fast. Could add more stuff on rotation, and or orientation and how that affects the ECT.  --></section>
 
     <script type="text/x-thebe-config">
     {
@@ -432,7 +437,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./Lectures/04-CechRips"
+            path: "./Lectures/21-PHT_and_Monodromy"
         },
         predefinedOutput: true
     }
@@ -450,22 +455,13 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../03-SimplicialComplex/CompTop-Lec3-SimplicialComplexes.html"
+       href="../20-DirectionalTransform/Lec20-ECT_with_Matisse.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Slide transcript</p>
+        <p class="prev-next-title">Lecture 20: ECT on Matisse</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="CompTop-Lec4-CechRips.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Slide transcript</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

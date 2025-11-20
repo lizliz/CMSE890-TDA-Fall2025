@@ -33,7 +33,7 @@ The course schedule is maintained below. Note that this schedule is subject to c
 | T 11/11 | [18](../Lectures/18-MapperGraphs/index.md) | Mapper - Theory | 9.1/9.3 | | |
 | Th 11/13 | [19](../Lectures/19-MapperGraphs-Python/index.md) | Mapper - Practice | | | |
 | T 11/18 | [20](../Lectures/20-DirectionalTransform/index.md) | Directional Transform and the ECT | My Survey Paper: [Published](https://doi.org/10.1080/00029890.2024.2409616), [arXiv](https://arxiv.org/abs/2310.10395) | | |
-| Th 11/20 | 21 | ECT and PHT | | | |
+| Th 11/20 | [21](../Lectures/21-PHT_and_Monodromy/index.md) | PHT and Monodromy | | | |
 | T 11/25 | 22 | Discrete Morse Theory | | | |
 | Th 11/27 || *No class - Thanksgiving*  | | | |
 | T 12/2 | 23 | Multiparameter Persistence | | | |
