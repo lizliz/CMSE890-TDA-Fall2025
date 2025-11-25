@@ -26,15 +26,15 @@ The course schedule is maintained below. Note that this schedule is subject to c
 | Th 10/16 | [14](../Lectures/14-MLAndPers/index.md) | ML and Persistence | 13.1 | | |
 | T 10/21 | | *No class, Fall break* | | | |
 | Th 10/23 | [15](../Lectures/15-Python-ML-Pers/index.md) | TDA-ML Pipelines in Python | 13.1 | | |
-| T 10/28 | | *Liz in Australia, No Class*  | | | |
+| T 10/28 | | *No class*  | | | |
 | Th 10/30 | | *No class* | | | |
 | T 11/4 | [16](../Lectures/16-ReebGraphs/index.md) | PL functions and Reeb Graphs | 3.1, 7.1 | | |
 | Th 11/6 | [17](../Lectures/17-MoreReebGraphs/index.md) | Distances for Reeb graphs | [My survey paper](https://arxiv.org/abs/2110.05631) | | |
 | T 11/11 | [18](../Lectures/18-MapperGraphs/index.md) | Mapper - Theory | 9.1/9.3 | | |
 | Th 11/13 | [19](../Lectures/19-MapperGraphs-Python/index.md) | Mapper - Practice | | | |
 | T 11/18 | [20](../Lectures/20-DirectionalTransform/index.md) | Directional Transform and the ECT | My Survey Paper: [Published](https://doi.org/10.1080/00029890.2024.2409616), [arXiv](https://arxiv.org/abs/2310.10395) | | |
-| Th 11/20 | [21](../Lectures/21-PHT_and_Monodromy/index.md) | PHT and Monodromy |[PHT](https://doi.org/10.1093/imaiai/iau011), [Finite directions](http://doi.org/10.1090/btran/122), [Bundles](https://arxiv.org/abs/2210.05124), [Monodromy](https://arxiv.org/abs/2408.14995)  | | |
-| T 11/25 | 22 | Discrete Morse Theory | | | |
+| Th 11/20 | [21](../Lectures/21-PHT_and_Monodromy/index.md) | PHT and Monodromy |Papers: [PHT](https://doi.org/10.1093/imaiai/iau011), [Finite directions](http://doi.org/10.1090/btran/122), [Bundles](https://arxiv.org/abs/2210.05124), [Monodromy](https://arxiv.org/abs/2408.14995)  | | |
+| T 11/25 | [22](../Lectures/22-DiscreteMorseTheory/index.md) | Discrete Morse Theory | | | |
 | Th 11/27 || *No class - Thanksgiving*  | | | |
 | T 12/2 | 23 | Multiparameter Persistence | | | |
 | Th 12/4 | 24 | Merge Trees | | | |

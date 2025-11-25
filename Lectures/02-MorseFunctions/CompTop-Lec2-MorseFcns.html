@@ -266,6 +266,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../21-PHT_and_Monodromy/index.html">Day 21 (Th 11/20)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22-DiscreteMorseTheory/index.html">Day 22 (T 11/25)</a></li>
 </ul>
 
     </div>
@@ -543,27 +544,47 @@ Gradients</p></li>
 </ul>
 <p><strong>Definition:</strong>
 Given a smooth function <span class="math notranslate nohighlight">\(f:\mathbb{R}^d \to \mathbb{R}\)</span>, the gradient vector field
-<span class="math notranslate nohighlight">\(\nabla f:\mathbb{R}^d \to \mathbb{R}^d\)</span> at <span class="math notranslate nohighlight">\(x\)</span> is: $$\nabla f (x) =
-\left[
-\frac{\partial f}{\partial x_1}(x), \cdots,
-\frac{\partial f}{\partial x_d}(x)
-\right]</p>
+<span class="math notranslate nohighlight">\(\nabla f:\mathbb{R}^d \to \mathbb{R}^d\)</span> at <span class="math notranslate nohighlight">\(x\)</span> is:</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}*Note: This definition can be extended to more general settings
-$f:M \to \mathbb{R}$.*
-Ex. $f:\mathbb{R}^2 \to \mathbb{R}$, $f(x_1,x_2) = x^2+y^2$ at $(0,0)$ and $(1,0)$
-Critical points\\- Points in $\mathbb{R}^d$ where $\nabla f(p) = [0,\cdots,0]$\\![image](../Figures/Fig1p9.png)
-&quot;Nice&quot; critical points\\**Definition:**
-For a smooth $m$-manifold $M$, the Hessian matrix of $f:M \to \mathbb{R}$ is the
-matrix of second order partial derivatives\\![image](../Figures/Def1p27.png)\\A critical point of $f$ is non-degenerate if the Hessian is non-singular
-(has non-zero determinant); otherwise it is degenerate.\\TRY IT: Saddle Ex. $f:\mathbb{R}^2 \to \mathbb{R}$, $f(x,y) = x^2 - y^2$. Is the
-critical point at the origin degenerate?\\Interactive plot: &lt;https://www.desmos.com/3d/cw0km8przc&gt;
-TRY IT: Monkey saddle Ex. $f:\mathbb{R}^2 \to \mathbb{R}$, $f(x,y) = x^3 - 3xy^2$. Is
-the critical point at the origin degenerate?\\Interactive plot: &lt;https://www.desmos.com/3d/cw0km8przc&gt;
-Morse lemma\\::: theorem
-Given a smooth function $f: M \to \mathbb{R}$ defined on a smooth $m$-manifold
-$M$, let $p$ be a non-degenerate critical point of $f$.\\There is a local coordinate system in a neighborhood $U(p)$ so that\\- $U(p) = (0,\cdots,0)$\\- Locally any $x$ is of the form
-  $$f(x) = f(p) - x_1^2 - \cdots - x_s^2 + x_{s+1}^2 + \cdots + x_m^2.\end{aligned}\end{align} \]</div>
+\[\nabla f (x) =
+            \left[
+            \frac{\partial f}{\partial x_1}(x), \cdots,
+            \frac{\partial f}{\partial x_d}(x)
+            \right]
+\]</div>
+<p><em>Note: This definition can be extended to more general settings
+<span class="math notranslate nohighlight">\(f:M \to \mathbb{R}\)</span>.</em>
+Ex. <span class="math notranslate nohighlight">\(f:\mathbb{R}^2 \to \mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(f(x_1,x_2) = x^2+y^2\)</span> at <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((1,0)\)</span>
+Critical points</p>
+<ul class="simple">
+<li><p>Points in <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span> where <span class="math notranslate nohighlight">\(\nabla f(p) = [0,\cdots,0]\)</span></p></li>
+</ul>
+<p><img alt="image" src="../../_images/Fig1p9.png" />
+“Nice” critical points</p>
+<p><strong>Definition:</strong></p>
+<p>For a smooth <span class="math notranslate nohighlight">\(m\)</span>-manifold <span class="math notranslate nohighlight">\(M\)</span>, the Hessian matrix of <span class="math notranslate nohighlight">\(f:M \to \mathbb{R}\)</span> is the
+matrix of second order partial derivatives</p>
+<p><img alt="image" src="../../_images/Def1p27.png" /></p>
+<p>A critical point of <span class="math notranslate nohighlight">\(f\)</span> is non-degenerate if the Hessian is non-singular
+(has non-zero determinant); otherwise it is degenerate.</p>
+<p>TRY IT: Saddle Ex. <span class="math notranslate nohighlight">\(f:\mathbb{R}^2 \to \mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(f(x,y) = x^2 - y^2\)</span>. Is the
+critical point at the origin degenerate?</p>
+<p>Interactive plot: <a class="reference external" href="https://www.desmos.com/3d/cw0km8przc">https://www.desmos.com/3d/cw0km8przc</a>
+TRY IT: Monkey saddle Ex. <span class="math notranslate nohighlight">\(f:\mathbb{R}^2 \to \mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(f(x,y) = x^3 - 3xy^2\)</span>. Is
+the critical point at the origin degenerate?</p>
+<p>Interactive plot: <a class="reference external" href="https://www.desmos.com/3d/cw0km8przc">https://www.desmos.com/3d/cw0km8przc</a>
+Morse lemma</p>
+<p><strong>Theorem:</strong>
+Given a smooth function <span class="math notranslate nohighlight">\(f: M \to \mathbb{R}\)</span> defined on a smooth <span class="math notranslate nohighlight">\(m\)</span>-manifold
+<span class="math notranslate nohighlight">\(M\)</span>, let <span class="math notranslate nohighlight">\(p\)</span> be a non-degenerate critical point of <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>There is a local coordinate system in a neighborhood <span class="math notranslate nohighlight">\(U(p)\)</span> so that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(U(p) = (0,\cdots,0)\)</span></p></li>
+<li><p>Locally any <span class="math notranslate nohighlight">\(x\)</span> is of the form</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[f(x) = f(p) - x_1^2 - \cdots - x_s^2 + x_{s+1}^2 + \cdots + x_m^2.
+\]</div>
 <p>In this case, the integer <span class="math notranslate nohighlight">\(s\)</span> is called the index of the critical point
 <span class="math notranslate nohighlight">\(p\)</span>.</p>
 <p>Back to critical points <img alt="image" src="../../_images/Fig1p9.png" />

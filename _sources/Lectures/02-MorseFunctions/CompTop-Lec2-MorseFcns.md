@@ -144,12 +144,13 @@ Gradients
 
 **Definition:**
 Given a smooth function $f:\mathbb{R}^d \to \mathbb{R}$, the gradient vector field
-$\nabla f:\mathbb{R}^d \to \mathbb{R}^d$ at $x$ is: $$\nabla f (x) =
+$\nabla f:\mathbb{R}^d \to \mathbb{R}^d$ at $x$ is: 
+
+$$\nabla f (x) =
             \left[
             \frac{\partial f}{\partial x_1}(x), \cdots,
             \frac{\partial f}{\partial x_d}(x)
             \right]
-
 $$
 
 *Note: This definition can be extended to more general settings
@@ -163,6 +164,7 @@ Critical points
 "Nice" critical points
 
 **Definition:**
+
 For a smooth $m$-manifold $M$, the Hessian matrix of $f:M \to \mathbb{R}$ is the
 matrix of second order partial derivatives
 
@@ -181,7 +183,7 @@ the critical point at the origin degenerate?
 Interactive plot: <https://www.desmos.com/3d/cw0km8przc>
 Morse lemma
 
-::: theorem
+**Theorem:**
 Given a smooth function $f: M \to \mathbb{R}$ defined on a smooth $m$-manifold
 $M$, let $p$ be a non-degenerate critical point of $f$.
 
@@ -190,8 +192,8 @@ There is a local coordinate system in a neighborhood $U(p)$ so that
 - $U(p) = (0,\cdots,0)$
 
 - Locally any $x$ is of the form
-  $$f(x) = f(p) - x_1^2 - \cdots - x_s^2 + x_{s+1}^2 + \cdots + x_m^2.
-
+  
+$$f(x) = f(p) - x_1^2 - \cdots - x_s^2 + x_{s+1}^2 + \cdots + x_m^2.
 $$
 
 In this case, the integer $s$ is called the index of the critical point
