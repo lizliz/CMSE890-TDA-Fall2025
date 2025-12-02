@@ -15,6 +15,7 @@ data*
 .conda*
 MapperInteractive/
 outlines/
+rivet
 
 
 # Latex files
