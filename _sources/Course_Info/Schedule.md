@@ -36,8 +36,8 @@ The course schedule is maintained below. Note that this schedule is subject to c
 | Th 11/20 | [21](../Lectures/21-PHT_and_Monodromy/index.md) | PHT and Monodromy |Papers: [PHT](https://doi.org/10.1093/imaiai/iau011), [Finite directions](http://doi.org/10.1090/btran/122), [Bundles](https://arxiv.org/abs/2210.05124), [Monodromy](https://arxiv.org/abs/2408.14995)  | | |
 | T 11/25 | [22](../Lectures/22-DiscreteMorseTheory/index.md) | Discrete Morse Theory | | | |
 | Th 11/27 || *No class - Thanksgiving*  | | | |
-| T 12/2 | 23 | Multiparameter Persistence | | | |
-| Th 12/4 | 24 | Merge Trees | | | |
+| T 12/2 | [23](../Lectures/23-MultiparameterPersistence/index.md) | Multiparameter Persistence |[Survey](https://arxiv.org/abs/2203.14289); [RIVET](https://rivet.readthedocs.io); [CROCKER](https://doi.org/10.1371/journal.pone.0126383) | | |
+| Th 12/4 | 24 | Topological Signal Processing | | | |
 
 ## Office hours
 

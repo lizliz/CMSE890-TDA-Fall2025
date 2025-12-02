@@ -1,14 +1,18 @@
-# Lecture 22
+# Lecture 23
 
-This lecture discusses the basics of discrete Morse theory and its uses for speeding up persistence computations. 
+This lecture discusses the basics of multiparameter persistence, the RIVET software, and CROCKER plots. 
 
 - **Reading:**
-  - TBD 
+  - Multiparameter persistence survey
+    - Botnan, M. B., & Lesnick, M. (2022). An introduction to multiparameter persistence. [arXiv:2203.14289](https://arxiv.org/abs/2203.14289)
+  - RIVET
+    - [rivet.readthedocs.io](https://rivet.readthedocs.io)
+  - Crocker plots
+    - Topaz, Z., Ziegelmeier, L., & Halverson, T. (2015). Topological data analysis of biological aggregation models. PLoS ONE. [10.1371/journal.pone.0126383](https://doi.org/10.1371/journal.pone.0126383)
+
 - **Slides:**
   - [Lecture 23 slides pdf](./CompTop-Lec23-MultiparameterPersistence.pdf)
-  <!-- - [Transcript of slides](./CompTop-Lec6-HomologyPt2.md) -->
 - **Annotated slides (Fall 2025):** 
-  <!-- - [Lecture 22 slides - Annotated](../Annotated-Fall2025/CompTop-Lec22-DiscreteMorseTheory.pdf)   -->
-<!-- - **Jupyter notebook:** [Lec20-ECT_with_Matisse.ipynb](./Lec20-ECT_with_Matisse.ipynb) -->
+  - [Lecture 23 slides - Annotated](../Annotated-Fall2025/CompTop-Lec23-MultiparameterPersistence.pdf)  
 
-<!-- This one needs some love. I ran out of time prepping so the last slides especially need way more detail. There are also lots of places where examples can be duplicated and repeated to make points and explain definitions. I'd love to do more on persistence computation with morse theory and/or function simplification with Morse theory but again, no time. -->
+<!-- This one needs lots of love, it only ran for an hour. I spent too much time trying to get RIVET to install and failed. I think it would be way better with a jupyter notebook example to explore the data set before we talked about multiparameter persistence. In particular, I couldn't figure out the function for defining the density on the point cloud, and it would have been better with a small example. I feel like some more stuff in the crocker section would also be good, especially if i had videos and/or a juptyer notebook.  -->
