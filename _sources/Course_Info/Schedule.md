@@ -37,7 +37,7 @@ The course schedule is maintained below. Note that this schedule is subject to c
 | T 11/25 | [22](../Lectures/22-DiscreteMorseTheory/index.md) | Discrete Morse Theory | | | |
 | Th 11/27 || *No class - Thanksgiving*  | | | |
 | T 12/2 | [23](../Lectures/23-MultiparameterPersistence/index.md) | Multiparameter Persistence |[Survey](https://arxiv.org/abs/2203.14289); [RIVET](https://rivet.readthedocs.io); [CROCKER](https://doi.org/10.1371/journal.pone.0126383) | | |
-| Th 12/4 | 24 | Topological Signal Processing | | | |
+| Th 12/4 | [24](../Lectures/24-TopologicalSignalProcessing/index.md) | Topological Signal Processing | | | |
 
 ## Office hours
 
